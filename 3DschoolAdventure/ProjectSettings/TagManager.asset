@@ -8,6 +8,9 @@ TagManager:
   - Collectible
   - PlayerDestroyer
   - EndLine
+  - WalkableWall
+  - Teleport
+  - Slide
   layers:
   - Default
   - TransparentFX

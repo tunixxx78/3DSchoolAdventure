@@ -7,12 +7,13 @@ using TMPro;
 
 public class TuroPlayerMovement : MonoBehaviour
 {
+    [SerializeField] Camera MyCam;
     public CharacterController myCC;
-    [SerializeField] float moveSpeed, gravity = -9.81f, groundDistance = 0.4f, jumpForce, rotationSpeed, currentPoints, currentTime, startTime;
-    [SerializeField] Transform groundCheck;
+    public float moveSpeed, gravity = -9.81f, groundDistance = 0.4f, jumpForce, rotationSpeed, currentPoints, currentTime, startTime;
+    [SerializeField] Transform groundCheck, teleportSpawnPoint;
     [SerializeField] LayerMask groundMask;
-    bool isGrounded;
-    Vector3 velocity, movement;
+    bool isGrounded, canTurn = true;
+    public Vector3 velocity, movement;
     Rigidbody myRB;
 
     [SerializeField] TMP_Text points, time, gameOverPoints, winningPoints;
@@ -20,16 +21,31 @@ public class TuroPlayerMovement : MonoBehaviour
 
     [SerializeField] GameObject runCam, standCam;
 
+    private SoundFX sfx;
+
+
+    float x, z, xRot = 0f, mouseX;
+
+    private void Awake()
+    {
+        sfx = FindObjectOfType<SoundFX>();
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     private void Start()
     {
+
         myRB = GetComponent<Rigidbody>();
         currentTime = startTime;
         gM = FindObjectOfType<GameManager>();
+        Cursor.lockState = CursorLockMode.Locked;
         
     }
 
     private void Update()
     {
+
+
         currentTime -= 1 * Time.deltaTime;
 
         string tempTimer = string.Format("{0:00}", currentTime);
@@ -40,33 +56,84 @@ public class TuroPlayerMovement : MonoBehaviour
 
         if(currentTime <= 0)
         {
+            Cursor.lockState = CursorLockMode.None;
             gameOverPoints.text = currentPoints.ToString();
             gM.gameOverPanel.SetActive(true);
             Time.timeScale = 0;
         }
 
-        BasicRotation();
+        
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        if(isGrounded && velocity.y < 0)
+        x = Input.GetAxis("Horizontal");
+        z = Input.GetAxis("Vertical");
+
+        mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * 300;
+
+        if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
         }
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-
-        movement = transform.right * x + transform.forward * z;
-        myCC.Move(movement * Time.deltaTime * moveSpeed);
-
-        if(Input.GetButtonDown("Jump") && isGrounded)
+        transform.Rotate(Vector3.up * mouseX);
+        /*
+        if(mouseX > 0)
         {
-            velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
+            xRot += mouseX;
+
+            transform.localRotation = Quaternion.Euler(0, xRot * 300 * Time.deltaTime, 0);
+            transform.Rotate(Vector3.up * mouseX);
         }
+
+        if (mouseX < 0)
+        {
+            xRot += -mouseX;
+
+            transform.localRotation = Quaternion.Euler(0, -xRot, 0);
+
+            transform.Rotate(Vector3.up * mouseX);
+        }
+
+        
+        if(x > 0 && canTurn)
+        {
+            canTurn = false;
+
+            xRot += 90;
+
+            transform.localRotation = Quaternion.Euler(0, xRot, 0);
+
+            StartCoroutine(TurningBackToTrue());
+        }
+
+        if (x < 0 && canTurn)
+        {
+            canTurn = false;
+
+            xRot -= 90;
+
+            transform.localRotation = Quaternion.Euler(0, xRot, 0);
+
+            StartCoroutine(TurningBackToTrue());
+        }
+        
+        */
+        movement = transform.right * x + transform.forward * z;
+        myCC.Move(movement * moveSpeed * Time.deltaTime);
+
+        
 
         velocity.y += gravity * Time.deltaTime;
         myCC.Move(velocity * Time.deltaTime);
+
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            sfx.Jump.Play();
+            velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
+        }
+
+       
         /*
         if(x == 0 && z == 0 && velocity.y <= 0)
         {
@@ -83,16 +150,23 @@ public class TuroPlayerMovement : MonoBehaviour
         */
     }
 
-    void BasicRotation()
+    IEnumerator TurningBackToTrue()
     {
-        float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * rotationSpeed;
-        transform.Rotate(new Vector3(0, mouseX, 0));
+        yield return new WaitForSeconds(.5f);
+        canTurn = true;
     }
 
+    void BasicRotation()
+    {
+        
+
+    }
+    
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.tag == "Bouncer")
         {
+            sfx.Jump.Play();
             velocity.y = Mathf.Sqrt(jumpForce * collider.GetComponent<ThrowingPlatform>().BounceForce);
         }
         if(collider.gameObject.tag == "Collectible")
@@ -108,9 +182,20 @@ public class TuroPlayerMovement : MonoBehaviour
         }
         if(collider.gameObject.tag == "EndLine")
         {
+            Cursor.lockState = CursorLockMode.None;
             winningPoints.text = currentPoints.ToString();
             gM.winningPanel.SetActive(true);
             Time.timeScale = 0;
+        }
+        if(collider.gameObject.tag == "WalkableWall")
+        {
+            myRB.constraints = RigidbodyConstraints.FreezeAll;
+            gravity = 0;
+        }
+        if(collider.gameObject.tag == "Teleport")
+        {
+            sfx.Teleport.Play();
+            transform.position = new Vector3(teleportSpawnPoint.position.x, teleportSpawnPoint.position.y, teleportSpawnPoint.position.z);
         }
         
     }
@@ -121,6 +206,7 @@ public class TuroPlayerMovement : MonoBehaviour
         {
             Debug.Log("TULEEKO MITÄÄN OSUMAA?");
 
+            Cursor.lockState = CursorLockMode.None;
             gameOverPoints.text = currentPoints.ToString();
             gM.gameOverPanel.SetActive(true);
             Time.timeScale = 0;
