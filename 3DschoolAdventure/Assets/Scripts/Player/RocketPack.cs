@@ -7,7 +7,8 @@ public class RocketPack : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] float forceAmount, jetPackTime, originalMoveSpeed;
     CharacterController myCC;
-    bool canFly = false;
+    public bool canFly = false;
+
     private void Awake()
     {
         myCC = player.GetComponent<CharacterController>();
@@ -15,7 +16,7 @@ public class RocketPack : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.R) && canFly == false)
+        if (Input.GetButtonDown("Fire1") && canFly == false)
         {
             player.GetComponent<TuroPlayerMovement>().gravity = -1;
             originalMoveSpeed = player.GetComponent<TuroPlayerMovement>().moveSpeed;
@@ -25,6 +26,7 @@ public class RocketPack : MonoBehaviour
         }
         if(canFly == true)
         {
+            
             //myCC.Move(Vector3.forward * forceAmount * Time.deltaTime);
         }
     }

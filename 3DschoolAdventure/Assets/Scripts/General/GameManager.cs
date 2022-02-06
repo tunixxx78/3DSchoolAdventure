@@ -17,6 +17,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void StartThisGame()
+    {
+        SceneManager.LoadScene(1);
+    }
+
     public void QuitGame()
     {
         Application.Quit();
