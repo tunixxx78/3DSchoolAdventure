@@ -13,20 +13,19 @@ public class TuroPlayerMovement : MonoBehaviour
     public float moveSpeed, gravity = -9.81f, groundDistance = 0.4f, jumpForce, rotationSpeed, currentPoints, currentTime, startTime, wallforce;
     [SerializeField] Transform groundCheck, teleportSpawnPoint;
     [SerializeField] LayerMask groundMask;
-    bool isGrounded, canTurn = true, walkingInWall = false, playerCanBoost = false;
+    bool isGrounded, canTurn = true, walkingInWall = false, playerCanBoost = false, isFaceInCamDir = false;
     public Vector3 velocity, movement, turboMove;
     Rigidbody myRB;
     float playerBoosDuration;
     [SerializeField] TMP_Text points, time, gameOverPoints, winningPoints;
     GameManager gM;
 
-    [SerializeField] GameObject runCam, standCam, jumpCam
-        ;
+    [SerializeField] GameObject runCam, standCam, playerAvater;
 
     private SoundFX sfx;
 
 
-    float x, z, xRot = 0f, mouseX;
+    float x, z, xRot = 0f,xxRot = 0f, mouseX;
 
     private void Awake()
     {
@@ -42,7 +41,8 @@ public class TuroPlayerMovement : MonoBehaviour
         currentTime = startTime;
         gM = FindObjectOfType<GameManager>();
         Cursor.lockState = CursorLockMode.Locked;
-        
+        runCam.SetActive(true);
+
     }
 
     private void Update()
@@ -71,7 +71,7 @@ public class TuroPlayerMovement : MonoBehaviour
 
         x = Input.GetAxis("Horizontal");
         z = Input.GetAxis("Vertical");
-
+        xRot += 180;
         //mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * 300;
 
         if (isGrounded && velocity.y < 0)
@@ -80,10 +80,29 @@ public class TuroPlayerMovement : MonoBehaviour
         }
 
         if(velocity.y <= -5)
-        {
+        {/*
             jumpCam.SetActive(true);
             runCam.SetActive(false);
             standCam.SetActive(false);
+            */
+        }
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward, Camera.main.transform.up * Time.deltaTime);
+            
+        }
+        
+        if (Input.GetKeyDown(KeyCode.S) && canTurn)
+        {
+            playerAvater.transform.localRotation = Quaternion.Euler(0, xRot, 0);
+            canTurn = false;
+            
+        }
+
+        if (Input.GetKeyDown(KeyCode.W) && canTurn == false || Input.GetKeyDown(KeyCode.A) && canTurn == false || Input.GetKeyDown(KeyCode.D) && canTurn == false)
+        {
+            playerAvater.transform.localRotation = Quaternion.Euler(0, xRot, 0);
+            canTurn = true;
         }
 
         //transform.Rotate(Vector3.up * mouseX);
@@ -187,16 +206,19 @@ public class TuroPlayerMovement : MonoBehaviour
             playerAnimator.SetBool("RightRun", true);
         }
         else { playerAnimator.SetBool("RightRun", false); }
-
+        
         if( isGrounded && Input.GetButton("Fire2"))
         {
             runCam.SetActive(false);
             standCam.SetActive(true);
-            jumpCam.SetActive(false);
+            
         }
+        else { runCam.SetActive(true); standCam.SetActive(false); }
+        /*
         else if (isGrounded && velocity.y > -5) { runCam.SetActive(true); standCam.SetActive(false); jumpCam.SetActive(false); }
         
         else { runCam.SetActive(false); standCam.SetActive(false); jumpCam.SetActive(true); }
+        */
     }
 
     IEnumerator TurningBackToTrue()
