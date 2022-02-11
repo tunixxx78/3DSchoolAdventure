@@ -13,7 +13,7 @@ public class TuroPlayerMovement : MonoBehaviour
     public float moveSpeed, gravity = -9.81f, groundDistance = 0.4f, jumpForce, rotationSpeed, currentPoints, currentTime, startTime, wallforce;
     [SerializeField] Transform groundCheck, teleportSpawnPoint;
     [SerializeField] LayerMask groundMask;
-    bool isGrounded, canTurn = true, walkingInWall = false, playerCanBoost = false, isFaceInCamDir = false;
+    bool isGrounded, walkingInWall = false, playerCanBoost = false;
     public Vector3 velocity, movement, turboMove;
     Rigidbody myRB;
     float playerBoosDuration;
@@ -25,7 +25,7 @@ public class TuroPlayerMovement : MonoBehaviour
     private SoundFX sfx;
 
 
-    float x, z, xRot = 0f,xxRot = 0f, mouseX;
+    float x, z;
 
     private void Awake()
     {
@@ -48,11 +48,13 @@ public class TuroPlayerMovement : MonoBehaviour
     private void Update()
     {
         
-
+        // creates timer
         currentTime -= 1 * Time.deltaTime;
 
         string tempTimer = string.Format("{0:00}", currentTime);
         time.text = tempTimer;
+
+
 
         //time.text = currentTime.ToString();
         points.text = currentPoints.ToString();
@@ -66,90 +68,66 @@ public class TuroPlayerMovement : MonoBehaviour
         }
 
         
-
+        //Checks if player is in grounded.
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         x = Input.GetAxis("Horizontal");
         z = Input.GetAxis("Vertical");
-        xRot += 180;
-        //mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * 300;
+        
 
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
         }
 
-        if(velocity.y <= -5)
-        {/*
-            jumpCam.SetActive(true);
-            runCam.SetActive(false);
-            standCam.SetActive(false);
-            */
-        }
+
+        // transforms player avatars rotation to wanted directions.
         if (Input.GetKey(KeyCode.W))
         {
             transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward, Camera.main.transform.up * Time.deltaTime);
-            
+            MovePlayer();
+        }
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            playerAnimator.SetBool("Run", false);
         }
         
-        if (Input.GetKeyDown(KeyCode.S) && canTurn)
+        if (Input.GetKey(KeyCode.S))
         {
-            playerAvater.transform.localRotation = Quaternion.Euler(0, xRot, 0);
-            canTurn = false;
-            
+            playerAvater.transform.localRotation = Quaternion.Euler(0, 180, 0);
+            MovePlayer();
+        }
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            playerAvater.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            playerAnimator.SetBool("Run", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.W) && canTurn == false || Input.GetKeyDown(KeyCode.A) && canTurn == false || Input.GetKeyDown(KeyCode.D) && canTurn == false)
+        if (Input.GetKey(KeyCode.A))
         {
-            playerAvater.transform.localRotation = Quaternion.Euler(0, xRot, 0);
-            canTurn = true;
+            playerAvater.transform.localRotation = Quaternion.Euler(0, -90, 0);
+            MovePlayer();
+        }
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+            playerAvater.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            playerAnimator.SetBool("Run", false);
         }
 
-        //transform.Rotate(Vector3.up * mouseX);
-        /*
-        if(mouseX > 0)
+        if (Input.GetKey(KeyCode.D))
         {
-            xRot += mouseX;
-
-            transform.localRotation = Quaternion.Euler(0, xRot * 300 * Time.deltaTime, 0);
-            transform.Rotate(Vector3.up * mouseX);
+            playerAvater.transform.localRotation = Quaternion.Euler(0, 90, 0);
+            MovePlayer();
+        }
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            playerAvater.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            playerAnimator.SetBool("Run", false);
         }
 
-        if (mouseX < 0)
-        {
-            xRot += -mouseX;
 
-            transform.localRotation = Quaternion.Euler(0, -xRot, 0);
 
-            transform.Rotate(Vector3.up * mouseX);
-        }
-
-        
-        if(x > 0 && canTurn)
-        {
-            canTurn = false;
-
-            xRot += 90;
-
-            transform.localRotation = Quaternion.Euler(0, xRot, 0);
-
-            StartCoroutine(TurningBackToTrue());
-        }
-
-        if (x < 0 && canTurn)
-        {
-            canTurn = false;
-
-            xRot -= 90;
-
-            transform.localRotation = Quaternion.Euler(0, xRot, 0);
-
-            StartCoroutine(TurningBackToTrue());
-        }
-        
-        */
         movement = transform.right * x + transform.forward * z;
-        myCC.Move(movement * moveSpeed * Time.deltaTime);
 
         turboMove = transform.forward;
 
@@ -173,40 +151,7 @@ public class TuroPlayerMovement : MonoBehaviour
             myCC.Move(turboMove * moveSpeed * Time.deltaTime);
         }
 
-       
         /*
-        if(x == 0 && z == 0 && velocity.y <= 0)
-        {
-            Debug.Log("Pitäisi olla paikallaan");
-            standCam.SetActive(true);
-            runCam.SetActive(false);
-        }
-        else
-        {
-            Debug.Log("Pitäisi olla liikkeessä");
-            runCam.SetActive(true);
-            standCam.SetActive(false);
-        }
-        */
-
-        if(isGrounded && Input.GetKey(KeyCode.W) || isGrounded && Input.GetKey(KeyCode.S))
-        {
-            playerAnimator.SetBool("Run", true);
-        }
-        else { playerAnimator.SetBool("Run", false); }
-
-        if (isGrounded && Input.GetKey(KeyCode.A))
-        {
-            playerAnimator.SetBool("LeftRun", true);
-        }
-        else { playerAnimator.SetBool("LeftRun", false); }
-
-        if (isGrounded && Input.GetKey(KeyCode.D))
-        {
-            playerAnimator.SetBool("RightRun", true);
-        }
-        else { playerAnimator.SetBool("RightRun", false); }
-        
         if( isGrounded && Input.GetButton("Fire2"))
         {
             runCam.SetActive(false);
@@ -214,24 +159,23 @@ public class TuroPlayerMovement : MonoBehaviour
             
         }
         else { runCam.SetActive(true); standCam.SetActive(false); }
-        /*
-        else if (isGrounded && velocity.y > -5) { runCam.SetActive(true); standCam.SetActive(false); jumpCam.SetActive(false); }
-        
-        else { runCam.SetActive(false); standCam.SetActive(false); jumpCam.SetActive(true); }
         */
-    }
-
-    IEnumerator TurningBackToTrue()
-    {
-        yield return new WaitForSeconds(.5f);
-        canTurn = true;
-    }
-
-    void BasicRotation()
-    {
         
-
+        
     }
+
+
+    public void MovePlayer()
+    {
+        myCC.Move(movement * moveSpeed * Time.deltaTime);
+
+        if (isGrounded)
+        {
+            playerAnimator.SetBool("Run", true);
+        }
+        
+    }
+
     
     private void OnTriggerEnter(Collider collider)
     {
