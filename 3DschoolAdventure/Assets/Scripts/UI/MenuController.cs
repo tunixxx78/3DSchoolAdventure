@@ -22,7 +22,7 @@ public class MenuController : MonoBehaviour
     {
         switch (menuState)
         {
-            case MenuStates.MAINMENU:
+            case MenuStates.STARTMENU:
                 ControlMainMenu();
                 break;
             case MenuStates.GAMEVIEW:
@@ -39,9 +39,9 @@ public class MenuController : MonoBehaviour
 
     public void ControlMainMenu()
     {
-        if(SceneManager.GetActiveScene() != SceneManager.GetSceneByName("MainMenu"))
+        if(SceneManager.GetActiveScene() != SceneManager.GetSceneByName("StartMenu"))
         {
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("StartMenu");
         }
     }
 

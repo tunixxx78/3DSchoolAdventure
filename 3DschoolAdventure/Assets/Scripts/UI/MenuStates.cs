@@ -1,7 +1,7 @@
 
 public enum MenuStates
 {
-    MAINMENU,
+    STARTMENU,
     GAMEVIEW,
     PAUSE,
     SETTINGS
