@@ -4,5 +4,6 @@ public enum MenuStates
     STARTMENU,
     GAMEVIEW,
     PAUSE,
-    SETTINGS
+    SETTINGS,
+    RETURN
 }
