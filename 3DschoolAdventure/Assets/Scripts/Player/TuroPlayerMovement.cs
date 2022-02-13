@@ -140,12 +140,12 @@ public class TuroPlayerMovement : MonoBehaviour
             playerAnimator.SetTrigger("Jump");
             velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity / 2);
         }
-
+        /*
         if(Input.GetButton("Fire1") && GetComponent<RocketPack>().canFly == true)
         {
             myCC.Move(turboMove * moveSpeed * Time.deltaTime);
         }
-
+        */
         if(playerCanBoost == true)
         {
             myCC.Move(turboMove * moveSpeed * Time.deltaTime);
@@ -211,7 +211,8 @@ public class TuroPlayerMovement : MonoBehaviour
         }
         if(collider.gameObject.tag == "WalkableWall")
         {
-            gravity = 0;
+            gravity = -1f;
+            myCC.Move(new Vector3(0, 0, 0));
             walkingInWall = true;
         }
         if(collider.gameObject.tag == "Teleport")
