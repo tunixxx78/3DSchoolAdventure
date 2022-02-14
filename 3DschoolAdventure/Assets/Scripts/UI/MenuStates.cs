@@ -5,5 +5,6 @@ public enum MenuStates
     GAMEVIEW,
     PAUSE,
     SETTINGS,
-    RETURN
+    RETURN,
+    GAMEOVER
 }
