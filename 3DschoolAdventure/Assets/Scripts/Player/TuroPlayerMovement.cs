@@ -30,7 +30,7 @@ public class TuroPlayerMovement : MonoBehaviour
     private void Awake()
     {
         sfx = FindObjectOfType<SoundFX>();
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
         playerAnimator = GetComponentInChildren<Animator>();
     }
 
@@ -40,7 +40,7 @@ public class TuroPlayerMovement : MonoBehaviour
         myRB = GetComponent<Rigidbody>();
         currentTime = startTime;
         gM = FindObjectOfType<GameManager>();
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
         runCam.SetActive(true);
 
     }
