@@ -12,6 +12,8 @@ TagManager:
   - Teleport
   - Slide
   - Conveyer
+  - Dash
+  - Walkable
   layers:
   - Default
   - TransparentFX
