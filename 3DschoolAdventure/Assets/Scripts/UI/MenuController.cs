@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class MenuController : MonoBehaviour
 {
     public GameObject settingsMenu, pauseMenu, gameOver;
-    public GameObject settingsFirstButton, pauseFirstButton, startMenuFirstButton;
+    //public GameObject settingsFirstButton, pauseFirstButton, startMenuFirstButton;
     private MenuStates menuState;
 
     public MenuStates MenuState
@@ -24,7 +24,7 @@ public class MenuController : MonoBehaviour
 
     private void Start()
     {
-        EventSystem.current.SetSelectedGameObject(null);
+        //EventSystem.current.SetSelectedGameObject(null);
     }
 
     private void Update()
@@ -50,6 +50,9 @@ public class MenuController : MonoBehaviour
             case MenuStates.STARTMENU:
                 ControlStartMenu(transform);
                 break;
+            case MenuStates.CHARACTERSELECTION:
+                ControlCharacterSelection();
+                break;
             case MenuStates.GAMEVIEW:
                 ControlGameView(transform);
                 break;
@@ -70,18 +73,18 @@ public class MenuController : MonoBehaviour
 
     public void ControlStartMenu(Transform transform)
     {
-        if(SceneManager.GetActiveScene() != SceneManager.GetSceneByBuildIndex(2))
+        if(SceneManager.GetActiveScene() != SceneManager.GetSceneByName("StartMenu"))
         {
-            SceneManager.LoadScene(2);
-            EventSystem.current.SetSelectedGameObject(null);
-            EventSystem.current.SetSelectedGameObject(startMenuFirstButton);
+            SceneManager.LoadScene("StartMenu");
+            //EventSystem.current.SetSelectedGameObject(null);
+            //EventSystem.current.SetSelectedGameObject(startMenuFirstButton);
         }
 
         //What happens from buttons
         switch (transform.name)
         {
             case "Play":
-                MenuState = MenuStates.GAMEVIEW;
+                MenuState = MenuStates.CHARACTERSELECTION;
                 break;
             case "Settings":
                 MenuState = MenuStates.SETTINGS;
@@ -92,19 +95,27 @@ public class MenuController : MonoBehaviour
         }
     }
 
+    public void ControlCharacterSelection()
+    {
+        if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("CharacterSelection"))
+        {
+            SceneManager.LoadScene("CharacterSelection");
+        }
+    }
+
     public void ControlGameView(Transform transform)
     {
-        if(SceneManager.GetActiveScene() != SceneManager.GetSceneByBuildIndex(1))
+        if(SceneManager.GetActiveScene() != SceneManager.GetSceneByName("TuronTestScene"))
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene("TuronTestScene");
         }
     }
 
     public void ControlPauseMenu(Transform transform)
     {
         pauseMenu.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(pauseFirstButton);
+        //EventSystem.current.SetSelectedGameObject(null);
+        //EventSystem.current.SetSelectedGameObject(pauseFirstButton);
         Time.timeScale = 0;
 
         //What happens from buttons
@@ -128,8 +139,8 @@ public class MenuController : MonoBehaviour
     public void ControlSettingsMenu(Transform transform)
     {
         settingsMenu.gameObject.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(settingsFirstButton);
+        //EventSystem.current.SetSelectedGameObject(null);
+        //EventSystem.current.SetSelectedGameObject(settingsFirstButton);
 
         //What happens from buttons
         switch (transform.name)
