@@ -157,13 +157,13 @@ public class MenuController : MonoBehaviour
         if (settingsMenu.gameObject.activeSelf)
         {
             settingsMenu.gameObject.SetActive(false);
-            EventSystem.current.SetSelectedGameObject(null);
+            //EventSystem.current.SetSelectedGameObject(null);
         }
 
         if (pauseMenu.gameObject.activeSelf)
         {
             pauseMenu.gameObject.SetActive(false);
-            EventSystem.current.SetSelectedGameObject(null);
+            //EventSystem.current.SetSelectedGameObject(null);
             Time.timeScale = 1;
         }
     }
