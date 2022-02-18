@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerSelectionInfo : MonoBehaviour
 {
     public static PlayerSelectionInfo pSI;
     public int mySelectedCharacter;
-    public GameObject[] allCharacters;
+    public Image[] allCharacters;
+    [SerializeField] GameObject goButton;
 
     private void OnEnable()
     {
@@ -37,5 +39,10 @@ public class PlayerSelectionInfo : MonoBehaviour
             mySelectedCharacter = 0;
             PlayerPrefs.SetInt("MyCharacter", mySelectedCharacter);
         }
+    }
+
+    public void ReadyToStartGame()
+    {
+        goButton.SetActive(true);
     }
 }
