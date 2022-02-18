@@ -18,7 +18,7 @@ public class TuroPlayerMovement : MonoBehaviour
     public Vector3 velocity, movement, turboMove;
     Rigidbody myRB;
     float playerBoosDuration;
-    [SerializeField] TMP_Text points, time, gameOverPoints, winningPoints, dashAmountText;
+    [SerializeField] TMP_Text points, time, finalPointsText, dashAmountText, resultText;
     GameManager gM;
 
     [SerializeField] GameObject runCam, standCam, playerAvater;
@@ -40,6 +40,7 @@ public class TuroPlayerMovement : MonoBehaviour
 
         myRB = GetComponent<Rigidbody>();
         currentTime = startTime;
+        currentPoints = 0;
         gM = FindObjectOfType<GameManager>();
         //Cursor.lockState = CursorLockMode.Locked;
         runCam.SetActive(true);
@@ -63,8 +64,9 @@ public class TuroPlayerMovement : MonoBehaviour
         if(currentTime <= 0)
         {
             Cursor.lockState = CursorLockMode.None;
-            gameOverPoints.text = currentPoints.ToString();
-            gM.gameOverPanel.SetActive(true);
+            finalPointsText.text = currentPoints.ToString();
+            resultText.text = "You lost!";
+            gM.resultPanel.SetActive(true);
             Time.timeScale = 0;
         }
 
@@ -206,8 +208,9 @@ public class TuroPlayerMovement : MonoBehaviour
         if(collider.gameObject.tag == "EndLine")
         {
             Cursor.lockState = CursorLockMode.None;
-            winningPoints.text = currentPoints.ToString();
-            gM.winningPanel.SetActive(true);
+            finalPointsText.text = currentPoints.ToString();
+            resultText.text = "YOU WIN!";
+            gM.resultPanel.SetActive(true);
             Time.timeScale = 0;
         }
         if(collider.gameObject.tag == "WalkableWall")
@@ -226,8 +229,9 @@ public class TuroPlayerMovement : MonoBehaviour
             Debug.Log("TULEEKO MITÄÄN OSUMAA?");
 
             Cursor.lockState = CursorLockMode.None;
-            gameOverPoints.text = currentPoints.ToString();
-            gM.gameOverPanel.SetActive(true);
+            finalPointsText.text = currentPoints.ToString();
+            resultText.text = "YOU LOST!";
+            gM.resultPanel.SetActive(true);
             Time.timeScale = 0;
         }
 
@@ -266,8 +270,9 @@ public class TuroPlayerMovement : MonoBehaviour
             Debug.Log("TULEEKO MITÄÄN OSUMAA?");
 
             Cursor.lockState = CursorLockMode.None;
-            gameOverPoints.text = currentPoints.ToString();
-            gM.gameOverPanel.SetActive(true);
+            finalPointsText.text = currentPoints.ToString();
+            resultText.text = "YOU LOST!";
+            gM.resultPanel.SetActive(true);
             Time.timeScale = 0;
         }
     }
