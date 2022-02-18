@@ -10,14 +10,15 @@ public class TuroPlayerMovement : MonoBehaviour
     [SerializeField] Animator playerAnimator;
     [SerializeField] Camera MyCam;
     public CharacterController myCC;
-    public float moveSpeed, gravity = -9.81f, groundDistance = 0.4f, jumpForce, rotationSpeed, currentPoints, currentTime, startTime, wallforce;
+    public float moveSpeed, gravity = -9.81f, groundDistance = 0.4f, jumpForce, rotationSpeed, currentTime, startTime, wallforce;
+    public int currentPoints, dashAmount;
     [SerializeField] Transform groundCheck, teleportSpawnPoint;
     [SerializeField] LayerMask groundMask;
     bool isGrounded, walkingInWall = false, playerCanBoost = false;
     public Vector3 velocity, movement, turboMove;
     Rigidbody myRB;
     float playerBoosDuration;
-    [SerializeField] TMP_Text points, time, gameOverPoints, winningPoints;
+    [SerializeField] TMP_Text points, time, gameOverPoints, winningPoints, dashAmountText;
     GameManager gM;
 
     [SerializeField] GameObject runCam, standCam, playerAvater;
@@ -56,7 +57,7 @@ public class TuroPlayerMovement : MonoBehaviour
 
 
 
-        //time.text = currentTime.ToString();
+        dashAmountText.text = dashAmount.ToString();
         points.text = currentPoints.ToString();
 
         if(currentTime <= 0)
@@ -187,7 +188,7 @@ public class TuroPlayerMovement : MonoBehaviour
         if(collider.gameObject.tag == "Collectible")
         {
             float addTime = collider.GetComponent<Collectibles>().timeAmount;
-            float addPoints = collider.GetComponent<Collectibles>().pointAmount;
+            int addPoints = collider.GetComponent<Collectibles>().pointAmount;
 
             currentTime = currentTime + addTime;
             currentPoints = currentPoints + addPoints;
@@ -228,6 +229,22 @@ public class TuroPlayerMovement : MonoBehaviour
             gameOverPoints.text = currentPoints.ToString();
             gM.gameOverPanel.SetActive(true);
             Time.timeScale = 0;
+        }
+
+        if(collider.gameObject.tag == "Dash")
+        {
+            int addDash = collider.GetComponent<DashObeject>().dashIncreaseAmount;
+
+            dashAmount = dashAmount + addDash;
+
+            if(collider.GetComponent<DashObeject>().hasDashBoostAddOn == true)
+            {
+                playerBoosDuration = collider.GetComponent<BoostAdOnToCollectible>().boostDuration;
+                playerCanBoost = true;
+                StartCoroutine(PlayerCanNotBoost());
+            }
+
+            Destroy(collider.gameObject);
         }
         
     }

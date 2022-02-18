@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Collectibles : MonoBehaviour
 {
-    public float pointAmount, timeAmount;
+    public float timeAmount;
+    public int pointAmount;
     public bool hasBoosAdOn = false;
 }
