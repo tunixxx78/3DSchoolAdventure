@@ -21,13 +21,14 @@ public class TuroPlayerMovement : MonoBehaviour
     [SerializeField] TMP_Text points, time, finalPointsText, dashAmountText, resultText;
     GameManager gM;
 
-    [SerializeField] GameObject runCam, standCam, playerAvater;
+    [SerializeField] GameObject runCam, playerAvater;
 
     private SoundFX sfx;
-
-
     float x, z;
 
+    
+    public static Vector3 currentcheckPoint = Vector3.zero;
+    
     private void Awake()
     {
         sfx = FindObjectOfType<SoundFX>();
@@ -88,8 +89,9 @@ public class TuroPlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward, Camera.main.transform.up * Time.deltaTime);
-            MovePlayer();
+             MovePlayer();
         }
+
         if (Input.GetKeyUp(KeyCode.W))
         {
             playerAnimator.SetBool("Run", false);
@@ -228,11 +230,14 @@ public class TuroPlayerMovement : MonoBehaviour
         {
             Debug.Log("TULEEKO MITÄÄN OSUMAA?");
 
+            transform.position = currentcheckPoint == Vector3.zero ? transform.position : currentcheckPoint;
+            /*
             Cursor.lockState = CursorLockMode.None;
             finalPointsText.text = currentPoints.ToString();
             resultText.text = "YOU LOST!";
             gM.resultPanel.SetActive(true);
             Time.timeScale = 0;
+            */
         }
 
         if(collider.gameObject.tag == "Dash")
@@ -249,6 +254,11 @@ public class TuroPlayerMovement : MonoBehaviour
             }
 
             Destroy(collider.gameObject);
+        }
+
+        if(collider.gameObject.tag == "CheckPoint")
+        {
+            currentcheckPoint = collider.transform.position;
         }
         
     }
@@ -269,11 +279,14 @@ public class TuroPlayerMovement : MonoBehaviour
         {
             Debug.Log("TULEEKO MITÄÄN OSUMAA?");
 
+            transform.position = currentcheckPoint == Vector3.zero ? transform.position : currentcheckPoint;
+            /*
             Cursor.lockState = CursorLockMode.None;
             finalPointsText.text = currentPoints.ToString();
             resultText.text = "YOU LOST!";
             gM.resultPanel.SetActive(true);
             Time.timeScale = 0;
+            */
         }
     }
     IEnumerator PlayerCanNotBoost()

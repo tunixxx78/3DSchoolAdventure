@@ -14,6 +14,7 @@ TagManager:
   - Conveyer
   - Dash
   - Walkable
+  - CheckPoint
   layers:
   - Default
   - TransparentFX
