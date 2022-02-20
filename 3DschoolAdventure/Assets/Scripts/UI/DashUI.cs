@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DashUI : MonoBehaviour
 {
@@ -8,8 +9,9 @@ public class DashUI : MonoBehaviour
     public int activePlayer;
     public GameObject[] players;
 
-    public int dashNum;
+    public float dashNum;
     public GameObject[] dashImage;
+    public Slider dashSlider;
 
     private void Awake()
     {
@@ -18,6 +20,9 @@ public class DashUI : MonoBehaviour
         {
             playerScript = players[activePlayer].GetComponent<TuroPlayerMovement>();
             dashNum = playerScript.dashAmount;
+
+            //Slider
+            dashSlider.value = dashSlider.minValue;
         }
     }
 
@@ -25,8 +30,12 @@ public class DashUI : MonoBehaviour
     {
         dashNum = playerScript.dashAmount;
         DashImageActivation();
+
+        //Slider
+        dashSlider.value = dashNum;
     }
 
+    //Dashpanel's images
     private void DashImageActivation()
     {
         switch (dashNum)
