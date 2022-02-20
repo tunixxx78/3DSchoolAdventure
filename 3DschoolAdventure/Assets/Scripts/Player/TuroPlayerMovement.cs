@@ -10,15 +10,21 @@ public class TuroPlayerMovement : MonoBehaviour
     [SerializeField] Animator playerAnimator;
     [SerializeField] Camera MyCam;
     public CharacterController myCC;
-    public float moveSpeed, gravity = -9.81f, groundDistance = 0.4f, jumpForce, rotationSpeed, currentTime, startTime, wallforce;
+    public float moveSpeed, gravity = -9.81f, groundDistance = 0.4f, jumpForce, rotationSpeed, startTime, wallforce, boostDuration;
+
+    // For UI programmer use!
     public int currentPoints, dashAmount;
+    public float currentTime;
+    [SerializeField] TMP_Text points, time, finalPointsText, dashAmountText, resultText;
+
+
     [SerializeField] Transform groundCheck, teleportSpawnPoint;
     [SerializeField] LayerMask groundMask;
     bool isGrounded, walkingInWall = false, playerCanBoost = false;
     public Vector3 velocity, movement, turboMove;
     Rigidbody myRB;
     float playerBoosDuration;
-    [SerializeField] TMP_Text points, time, finalPointsText, dashAmountText, resultText;
+    
     GameManager gM;
 
     [SerializeField] GameObject runCam, playerAvater;
@@ -88,7 +94,12 @@ public class TuroPlayerMovement : MonoBehaviour
         // transforms player avatars rotation to wanted directions.
         if (Input.GetKey(KeyCode.W))
         {
-            transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward, Camera.main.transform.up * Time.deltaTime);
+            Vector3 dir = Camera.main.transform.forward;
+            dir.y = 0;
+            dir.Normalize();
+            transform.rotation = Quaternion.LookRotation(dir, transform.up * Time.deltaTime);
+
+            //transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward, Camera.main.transform.up * Time.deltaTime);
              MovePlayer();
         }
 
@@ -145,28 +156,19 @@ public class TuroPlayerMovement : MonoBehaviour
             playerAnimator.SetTrigger("Jump");
             velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity / 2);
         }
-        /*
-        if(Input.GetButton("Fire1") && GetComponent<RocketPack>().canFly == true)
+        
+        if(Input.GetButtonDown("Fire1") && dashAmount != 0)
         {
-            myCC.Move(turboMove * moveSpeed * Time.deltaTime);
+            playerBoosDuration = boostDuration;
+            playerCanBoost = true;
+            dashAmount -= 1;
+            StartCoroutine(PlayerCanNotBoost());
         }
-        */
+        
         if(playerCanBoost == true)
         {
             myCC.Move(turboMove * moveSpeed * Time.deltaTime);
-        }
-
-        /*
-        if( isGrounded && Input.GetButton("Fire2"))
-        {
-            runCam.SetActive(false);
-            standCam.SetActive(true);
-            
-        }
-        else { runCam.SetActive(true); standCam.SetActive(false); }
-        */
-        
-        
+        }        
     }
 
 
