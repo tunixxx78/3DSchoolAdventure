@@ -23,7 +23,6 @@ public class HourglassController : MonoBehaviour
             playerScript = players[activePlayer].GetComponent<TuroPlayerMovement>();
             hourGlass.value = playerScript.startTime;
             currentTime = hourGlass.value;
-            //hourGlass.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
         }
     }
 
@@ -34,17 +33,17 @@ public class HourglassController : MonoBehaviour
         ActivateTimeText();
     }
 
-    //private void ValueChangeCheck()
-    //{
-    //    Debug.Log(hourGlass.value);
-    //}
-
     private void ActivateTimeText()
     {
         if (currentTime <= 9 && currentTime > 0)
         {
             timeText.gameObject.SetActive(true);
             timeText.text = currentTime.ToString(string.Format("{0:0}", currentTime));
+        }
+        else
+        {
+            timeText.gameObject.SetActive(false);
+            timeText.text = 9.ToString();
         }
 
     }
