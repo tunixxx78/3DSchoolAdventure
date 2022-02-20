@@ -11,6 +11,7 @@ public class MenuController : MonoBehaviour
     public GameObject settingsMenu, pauseMenu, gameOver;
     //public GameObject settingsFirstButton, pauseFirstButton, startMenuFirstButton;
     private MenuStates menuState;
+    private bool tryAgain = false;
 
     public MenuStates MenuState
     {
@@ -109,6 +110,10 @@ public class MenuController : MonoBehaviour
         {
             SceneManager.LoadScene("TuronTestScene");
         }
+        if (tryAgain)
+        {
+            SceneManager.LoadScene("TuronTestScene");
+        }
     }
 
     public void ControlPauseMenu(Transform transform)
@@ -128,6 +133,7 @@ public class MenuController : MonoBehaviour
                 MenuState = MenuStates.SETTINGS;
                 break;
             case "Try Again":
+                tryAgain = true;
                 MenuState = MenuStates.GAMEVIEW;
                 break;
             case "Quit":
