@@ -16,7 +16,7 @@ public class RotatingObstacle : MonoBehaviour
     {
         if (canRotate)
         {
-            transform.Rotate(Vector3.down * rotatingSpeed);
+            transform.Rotate(Vector3.down * rotatingSpeed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.P))
         {

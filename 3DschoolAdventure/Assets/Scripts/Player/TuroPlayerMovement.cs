@@ -10,7 +10,7 @@ public class TuroPlayerMovement : MonoBehaviour
     [SerializeField] Animator playerAnimator;
     [SerializeField] Camera MyCam;
     public CharacterController myCC;
-    public float moveSpeed, gravity = -9.81f, groundDistance = 0.4f, jumpForce, rotationSpeed, startTime, wallforce, boostDuration;
+    public float moveSpeed, dashMoveSpeed, gravity = -9.81f, groundDistance = 0.4f, jumpForce, rotationSpeed, startTime, wallforce, boostDuration, gameOverDelay;
 
     // For UI programmer use!
     public int currentPoints, dashAmount;
@@ -75,6 +75,7 @@ public class TuroPlayerMovement : MonoBehaviour
             resultText.text = "You lost!";
             gM.resultPanel.SetActive(true);
             Time.timeScale = 0;
+            sfx.gameOver.Play();
         }
 
         
@@ -83,7 +84,13 @@ public class TuroPlayerMovement : MonoBehaviour
 
         x = Input.GetAxis("Horizontal");
         z = Input.GetAxis("Vertical");
-        
+
+        Vector3 z2 = z * MyCam.transform.forward;
+        Vector3 x2 = x * MyCam.transform.right;
+
+        movement = (z2 + x2).normalized;
+
+        //movement = transform.right * x + transform.forward * z;
 
         if (isGrounded && velocity.y < 0)
         {
@@ -118,11 +125,13 @@ public class TuroPlayerMovement : MonoBehaviour
             playerAvater.transform.localRotation = Quaternion.Euler(0, 0, 0);
             playerAnimator.SetBool("Run", false);
         }
-
+        
         if (Input.GetKey(KeyCode.A))
         {
             playerAvater.transform.localRotation = Quaternion.Euler(0, -90, 0);
+
             MovePlayer();
+            
         }
         if (Input.GetKeyUp(KeyCode.A))
         {
@@ -140,14 +149,14 @@ public class TuroPlayerMovement : MonoBehaviour
             playerAvater.transform.localRotation = Quaternion.Euler(0, 0, 0);
             playerAnimator.SetBool("Run", false);
         }
+        
 
 
-
-        movement = transform.right * x + transform.forward * z;
+        
 
         turboMove = transform.forward;
 
-        velocity.y += gravity * 2 * Time.deltaTime;
+        velocity.y += gravity * 2.5f * Time.deltaTime;
         myCC.Move(velocity * Time.deltaTime);
 
         if (Input.GetButtonDown("Jump") && isGrounded)
@@ -162,24 +171,38 @@ public class TuroPlayerMovement : MonoBehaviour
             playerBoosDuration = boostDuration;
             playerCanBoost = true;
             dashAmount -= 1;
+            sfx.Teleport.Play();
             StartCoroutine(PlayerCanNotBoost());
         }
         
         if(playerCanBoost == true)
         {
-            myCC.Move(turboMove * moveSpeed * Time.deltaTime);
+            myCC.Move(turboMove * (moveSpeed * dashMoveSpeed) * Time.deltaTime);
         }        
     }
 
 
     public void MovePlayer()
     {
-        myCC.Move(movement * moveSpeed * Time.deltaTime);
-
-        if (isGrounded)
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
         {
-            playerAnimator.SetBool("Run", true);
+            myCC.Move(movement * (moveSpeed / 2) * Time.deltaTime);
+
+            if (isGrounded)
+            {
+                playerAnimator.SetBool("Run", true);
+            }
         }
+        else
+        {
+            myCC.Move(movement * moveSpeed * Time.deltaTime);
+
+            if (isGrounded)
+            {
+                playerAnimator.SetBool("Run", true);
+            }
+        }
+        
         
     }
 
@@ -199,6 +222,8 @@ public class TuroPlayerMovement : MonoBehaviour
             currentTime = currentTime + addTime;
             currentPoints = currentPoints + addPoints;
 
+            
+
             if(collider.GetComponent<Collectibles>().hasBoosAdOn == true)
             {
                 playerBoosDuration = collider.GetComponent<BoostAdOnToCollectible>().boostDuration;
@@ -206,6 +231,7 @@ public class TuroPlayerMovement : MonoBehaviour
                 StartCoroutine(PlayerCanNotBoost());
             }
 
+            sfx.collectingTime.Play();
             Debug.Log(" Extra Time is : " + addTime + " seconds " + " Extra points are : " + addPoints);
             Destroy(collider.gameObject);
         }
@@ -214,6 +240,7 @@ public class TuroPlayerMovement : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             finalPointsText.text = currentPoints.ToString();
             resultText.text = "YOU WIN!";
+            sfx.winning.Play();
             gM.resultPanel.SetActive(true);
             Time.timeScale = 0;
         }
@@ -231,8 +258,10 @@ public class TuroPlayerMovement : MonoBehaviour
         if(collider.gameObject.tag == "PlayerDestroyer")
         {
             Debug.Log("TULEEKO MITÄÄN OSUMAA?");
+            sfx.gameOver.Play();
+            playerAvater.SetActive(false);
 
-            transform.position = currentcheckPoint == Vector3.zero ? transform.position : currentcheckPoint;
+            StartCoroutine(ToCheckPoint());
             /*
             Cursor.lockState = CursorLockMode.None;
             finalPointsText.text = currentPoints.ToString();
@@ -254,6 +283,7 @@ public class TuroPlayerMovement : MonoBehaviour
                 playerCanBoost = true;
                 StartCoroutine(PlayerCanNotBoost());
             }
+            sfx.dashObject.Play();
 
             Destroy(collider.gameObject);
         }
@@ -281,7 +311,10 @@ public class TuroPlayerMovement : MonoBehaviour
         {
             Debug.Log("TULEEKO MITÄÄN OSUMAA?");
 
-            transform.position = currentcheckPoint == Vector3.zero ? transform.position : currentcheckPoint;
+            sfx.gameOver.Play();
+            playerAvater.SetActive(false);
+
+            StartCoroutine(ToCheckPoint());
             /*
             Cursor.lockState = CursorLockMode.None;
             finalPointsText.text = currentPoints.ToString();
@@ -296,5 +329,14 @@ public class TuroPlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(playerBoosDuration);
 
         playerCanBoost = false;
+    }
+    IEnumerator ToCheckPoint()
+    {
+        yield return new WaitForSeconds(gameOverDelay);
+
+        transform.position = currentcheckPoint == Vector3.zero ? transform.position : currentcheckPoint;
+
+        sfx.Teleport.Play();
+        playerAvater.SetActive(true);
     }
 }
