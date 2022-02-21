@@ -5,7 +5,7 @@ using UnityEngine.Audio;
 
 public class SoundFX : MonoBehaviour
 {
-    public AudioSource Jump, Teleport;
+    public AudioSource Jump, Teleport, collectingTime, dashObject, gameOver, winning;
 
     
 }

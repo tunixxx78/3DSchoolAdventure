@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject gameOverPanel, winningPanel;
+    public GameObject resultPanel;
 
     private void Start()
     {
@@ -17,9 +17,9 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void StartThisGame()
+    public void StartThisGame(int sceneNumber)
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(sceneNumber);
     }
 
     public void QuitGame()
