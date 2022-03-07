@@ -32,7 +32,7 @@ public class TuroPlayerMovement : MonoBehaviour
     private SoundFX sfx;
     float x, z;
 
-    
+
     public static Vector3 currentcheckPoint = Vector3.zero;
     
     private void Awake()
@@ -53,6 +53,7 @@ public class TuroPlayerMovement : MonoBehaviour
         runCam.SetActive(true);
 
     }
+
 
     private void Update()
     {
@@ -97,7 +98,7 @@ public class TuroPlayerMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
-
+        
         // transforms player avatars rotation to wanted directions.
         if (Input.GetKey(KeyCode.W))
         {
@@ -150,7 +151,6 @@ public class TuroPlayerMovement : MonoBehaviour
             playerAnimator.SetBool("Run", false);
         }
         
-
 
         
 

@@ -5,13 +5,15 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class MenuController : MonoBehaviour
 {
     public GameObject settingsMenu, pauseMenu, gameOver;
     //public GameObject settingsFirstButton, pauseFirstButton, startMenuFirstButton;
     private MenuStates menuState;
-    private bool tryAgain = false;
+    public bool tryAgain = false, win = false, lose = false;
+    public TMP_Text resultText, finalPointsText;
 
     public MenuStates MenuState
     {
@@ -41,6 +43,11 @@ public class MenuController : MonoBehaviour
             Debug.Log("Escape pressed");
             MenuState = MenuStates.RETURN;
         }
+
+        if (win || lose)
+        {
+            MenuState = MenuStates.GAMEOVER;
+        }
     }
 
     //Calls a method when the menuState value changes
@@ -67,7 +74,7 @@ public class MenuController : MonoBehaviour
                 ControlReturn();
                 break;
             case MenuStates.GAMEOVER:
-                ControlGameOver();
+                ControlGameOver(transform);
                 break;
         }
     }
@@ -174,9 +181,29 @@ public class MenuController : MonoBehaviour
         }
     }
 
-    public void ControlGameOver()
+    public void ControlGameOver(Transform transform)
     {
         gameOver.SetActive(true);
         Time.timeScale = 0;
+
+        if (win)
+        {
+            resultText.text = "You have reached the finishline!";
+        }
+        if (lose)
+        {
+            resultText.text = "You did not make it in this lifetime.";
+        }
+
+        switch (transform.name)
+        {
+            case "Try Again":
+                tryAgain = true;
+                MenuState = MenuStates.GAMEVIEW;
+                break;
+            case "Quit":
+                MenuState = MenuStates.STARTMENU;
+                break;
+        }
     }
 }
