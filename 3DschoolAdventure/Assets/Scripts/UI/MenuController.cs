@@ -14,6 +14,7 @@ public class MenuController : MonoBehaviour
     private MenuStates menuState;
     public bool tryAgain = false, win = false, lose = false;
     public TMP_Text resultText, finalPointsText;
+    public GameObject yesButton, noButton;
 
     public MenuStates MenuState
     {
@@ -188,20 +189,24 @@ public class MenuController : MonoBehaviour
 
         if (win)
         {
-            resultText.text = "You have reached the finishline!";
+            resultText.text = "YOU HAVE REACHED THE FINISHLINE!";
+            yesButton.SetActive(false);
+            noButton.SetActive(false);
         }
         if (lose)
         {
-            resultText.text = "You did not make it in this lifetime.";
+            resultText.text = "YOU COULDN'T MAKE IT IN THIS LIFETIME. TRY AGAIN?";
+            yesButton.SetActive(true);
+            noButton.SetActive(true);
         }
 
         switch (transform.name)
         {
-            case "Try Again":
+            case "Yes":
                 tryAgain = true;
                 MenuState = MenuStates.GAMEVIEW;
                 break;
-            case "Quit":
+            case "No":
                 MenuState = MenuStates.STARTMENU;
                 break;
         }

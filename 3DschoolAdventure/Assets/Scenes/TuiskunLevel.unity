@@ -920,7 +920,7 @@ PrefabInstance:
     - target: {fileID: 2448374085300209674, guid: e1c9c734ca9c9482e8ac984145a3f902, type: 3}
       propertyPath: finalPointsText
       value: 
-      objectReference: {fileID: 1764457509}
+      objectReference: {fileID: 2058130745}
     - target: {fileID: 2448374085300209674, guid: e1c9c734ca9c9482e8ac984145a3f902, type: 3}
       propertyPath: teleportSpawnPoint
       value: 
@@ -935,7 +935,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2448374086587679163, guid: e1c9c734ca9c9482e8ac984145a3f902, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.13253443
+      value: 0.13253444
       objectReference: {fileID: 0}
     - target: {fileID: 2448374086587679163, guid: e1c9c734ca9c9482e8ac984145a3f902, type: 3}
       propertyPath: m_LocalRotation.y
@@ -943,7 +943,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2448374086587679163, guid: e1c9c734ca9c9482e8ac984145a3f902, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.009267769
+      value: 0.009267773
       objectReference: {fileID: 0}
     - target: {fileID: 6290232320121847607, guid: e1c9c734ca9c9482e8ac984145a3f902, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -3202,7 +3202,7 @@ PrefabInstance:
     - target: {fileID: 4051116596232165066, guid: 74d87d7b4b4804b8b98675485081ad3e, type: 3}
       propertyPath: finalPointsText
       value: 
-      objectReference: {fileID: 1764457509}
+      objectReference: {fileID: 2058130745}
     - target: {fileID: 4051116596232165066, guid: 74d87d7b4b4804b8b98675485081ad3e, type: 3}
       propertyPath: teleportSpawnPoint
       value: 
@@ -8987,7 +8987,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1083414044}
-  m_LocalRotation: {x: 0.06284471, y: -0.07482746, z: 0.004725228, w: 0.9952031}
+  m_LocalRotation: {x: 0.062844716, y: -0.07482746, z: 0.004725228, w: 0.9952031}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -15184,7 +15184,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1728064465}
-  m_LocalRotation: {x: 0.13253441, y: -0.06913817, z: 0.009267769, w: 0.9887208}
+  m_LocalRotation: {x: 0.13253441, y: -0.06913814, z: 0.009267776, w: 0.9887208}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -15531,17 +15531,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce7f299072c3e4ef6b2df6bf726a7be2, type: 3}
---- !u!114 &1764457509 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3138927187910907821, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
-  m_PrefabInstance: {fileID: 3138927189367827336}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1773078671 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5366971001229923346, guid: 2d8b0b7a42e524616b30c8b32b814ecf, type: 3}
@@ -17173,7 +17162,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1993926857}
-  m_LocalRotation: {x: 0.15049681, y: -0.0689581, z: 0.010523829, w: 0.98614645}
+  m_LocalRotation: {x: 0.15049681, y: -0.06895822, z: 0.010523829, w: 0.98614645}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -17605,6 +17594,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2058130745 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8772356459280542039, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
+  m_PrefabInstance: {fileID: 3138927189367827336}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2063904151
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19083,7 +19083,7 @@ PrefabInstance:
     - target: {fileID: 4247777701880904451, guid: 24c0a0d49c8c6458081ceceeffa88cc6, type: 3}
       propertyPath: finalPointsText
       value: 
-      objectReference: {fileID: 1764457509}
+      objectReference: {fileID: 2058130745}
     - target: {fileID: 4247777701880904451, guid: 24c0a0d49c8c6458081ceceeffa88cc6, type: 3}
       propertyPath: teleportSpawnPoint
       value: 
