@@ -126,6 +126,7 @@ public class MenuController : MonoBehaviour
 
     public void ControlPauseMenu(Transform transform)
     {
+        settingsMenu.gameObject.SetActive(false);
         pauseMenu.SetActive(true);
         //EventSystem.current.SetSelectedGameObject(null);
         //EventSystem.current.SetSelectedGameObject(pauseFirstButton);
@@ -153,6 +154,7 @@ public class MenuController : MonoBehaviour
     public void ControlSettingsMenu(Transform transform)
     {
         settingsMenu.gameObject.SetActive(true);
+        pauseMenu.gameObject.SetActive(false);
         //EventSystem.current.SetSelectedGameObject(null);
         //EventSystem.current.SetSelectedGameObject(settingsFirstButton);
 
@@ -160,7 +162,7 @@ public class MenuController : MonoBehaviour
         switch (transform.name)
         {
             case "Continue":
-                MenuState = MenuStates.RETURN;
+                MenuState = MenuStates.PAUSE;
                 break;
         }
     }
@@ -168,12 +170,6 @@ public class MenuController : MonoBehaviour
     //Inactivates gameobjects from the UI
     public void ControlReturn()
     {
-        if (settingsMenu.gameObject.activeSelf)
-        {
-            settingsMenu.gameObject.SetActive(false);
-            //EventSystem.current.SetSelectedGameObject(null);
-        }
-
         if (pauseMenu.gameObject.activeSelf)
         {
             pauseMenu.gameObject.SetActive(false);
