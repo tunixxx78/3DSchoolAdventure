@@ -27,4 +27,10 @@ public class AudioSliders : MonoBehaviour
         effectsAudioMixer.SetFloat("EffectsVol", Mathf.Log10(effectsSlider) * 20);
         PlayerPrefs.SetFloat("EffectsVol", effectsSlider);
     }
+
+    public void MuteButtonPressed()
+    {
+        musicSlider.value = 0;
+        effectsSlider.value = 0;
+    }
 }
