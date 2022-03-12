@@ -1927,6 +1927,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DashSlider
       objectReference: {fileID: 0}
+    - target: {fileID: 8191351085889209717, guid: 9d76f07e050cce5428f214adfeb36eb1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8191351085889209717, guid: 9d76f07e050cce5428f214adfeb36eb1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d76f07e050cce5428f214adfeb36eb1, type: 3}
 --- !u!224 &3138927188575357927 stripped
@@ -2602,14 +2610,6 @@ PrefabInstance:
     - target: {fileID: 6963415144747553359, guid: 3c831ea046d64b64f9ef50835d97df6b, type: 3}
       propertyPath: m_Name
       value: Hourglass
-      objectReference: {fileID: 0}
-    - target: {fileID: 7323279856443215826, guid: 3c831ea046d64b64f9ef50835d97df6b, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7323279856443215826, guid: 3c831ea046d64b64f9ef50835d97df6b, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c831ea046d64b64f9ef50835d97df6b, type: 3}
