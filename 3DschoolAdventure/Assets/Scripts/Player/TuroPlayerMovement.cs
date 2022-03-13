@@ -26,6 +26,7 @@ public class TuroPlayerMovement : MonoBehaviour
     float playerBoosDuration;
     
     GameManager gM;
+    MenuController menuController;
 
     [SerializeField] GameObject runCam, playerAvater;
 
@@ -50,6 +51,7 @@ public class TuroPlayerMovement : MonoBehaviour
         currentTime = startTime;
         currentPoints = 0;
         gM = FindObjectOfType<GameManager>();
+        menuController = FindObjectOfType<MenuController>();
         //Cursor.lockState = CursorLockMode.Locked;
         runCam.SetActive(true);
 
@@ -74,9 +76,10 @@ public class TuroPlayerMovement : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             finalPointsText.text = currentPoints.ToString();
-            resultText.text = "You lost!";
-            gM.resultPanel.SetActive(true);
-            Time.timeScale = 0;
+            //resultText.text = "You lost!";
+            //gM.resultPanel.SetActive(true);
+            //Time.timeScale = 0;
+            menuController.lose = true;
             sfx.gameOver.Play();
         }
 
@@ -257,10 +260,11 @@ public class TuroPlayerMovement : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             finalPointsText.text = currentPoints.ToString();
-            resultText.text = "YOU WIN!";
+            //resultText.text = "YOU WIN!";
             sfx.winning.Play();
-            gM.resultPanel.SetActive(true);
-            Time.timeScale = 0;
+            //gM.resultPanel.SetActive(true);
+            //Time.timeScale = 0;
+            menuController.win = true;
         }
         if(collider.gameObject.tag == "WalkableWall")
         {
