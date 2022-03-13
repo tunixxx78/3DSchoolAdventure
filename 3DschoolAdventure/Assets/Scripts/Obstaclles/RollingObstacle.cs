@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class RollingObstacle : MonoBehaviour
 {
+    //Pyörivät laatikot
+
     [SerializeField] float rollingSpeed, rollingTime;
-    bool canRotate = false;
+    bool canRotate = false, isRotating = false;
+    [SerializeField] Rigidbody rb;
+
+
+    private void Awake()
+    {
+        rb = GetComponentInParent<Rigidbody>();
+    }
 
     private void Start()
     {
@@ -14,9 +23,10 @@ public class RollingObstacle : MonoBehaviour
 
     private void Update()
     {
+
         if (canRotate)
         {
-            transform.Rotate(Vector3.right, rollingSpeed);
+            rb.transform.Rotate(Vector3.right, rollingSpeed);
         }
         
     }
@@ -24,11 +34,12 @@ public class RollingObstacle : MonoBehaviour
     private void OnTriggerEnter(Collider collider)
 
     {
-        if(collider.gameObject.tag == "Player")
+        if(collider.gameObject.tag == "Player" && isRotating == false)
         {
             canRotate = true;
             StartCoroutine(StopRolling());
         }
+        else { return; }
     }
 
 

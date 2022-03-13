@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 4538872404470996389}
   - component: {fileID: 5296900220526336846}
   - component: {fileID: 6554259696813627172}
+  - component: {fileID: 1393897320873888103}
+  - component: {fileID: 1429405891800449097}
   m_Layer: 7
   m_Name: RotatingObstacle
   m_TagString: Untagged
@@ -32,7 +34,7 @@ Transform:
   m_GameObject: {fileID: 5139234967424839603}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 11.45, y: 22.32, z: -55.1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -116,6 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotatingSpeed: 2
   rotatingBreak: 1
+  rb: {fileID: 0}
 --- !u!64 &4538872404470996389
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -125,7 +128,7 @@ MeshCollider:
   m_GameObject: {fileID: 5139234967424839603}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -156,3 +159,29 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.8110611, y: 0.42366025, z: 2.0055954}
   m_Center: {x: -0.73282087, y: 0.10725607, z: 1.5642225}
+--- !u!65 &1393897320873888103
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5139234967424839603}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.13433, y: 0.1, z: 2.1506224}
+  m_Center: {x: 0.7323606, y: -0.07, z: -1.5524104}
+--- !u!65 &1429405891800449097
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5139234967424839603}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.8110611, y: 0.12, z: 2.0055954}
+  m_Center: {x: -0.73282087, y: -0.05, z: 1.5642225}

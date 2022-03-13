@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5366971001229923346}
   - component: {fileID: 5366971001229923347}
   - component: {fileID: 5366971001229923344}
-  - component: {fileID: 5366971001229923345}
+  - component: {fileID: 952478833250650411}
   m_Layer: 0
   m_Name: Teleport
   m_TagString: Teleport
@@ -83,8 +83,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5366971001229923345
-BoxCollider:
+--- !u!135 &952478833250650411
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,8 +94,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.170888, y: 0.92974854, z: 3.1276474}
-  m_Center: {x: 0.015077114, y: -0.17589808, z: 0.016086578}
+  m_Radius: 1.32
+  m_Center: {x: 0, y: -0.20811985, z: 0}
 --- !u!1001 &8951545387732625460
 PrefabInstance:
   m_ObjectHideFlags: 0
