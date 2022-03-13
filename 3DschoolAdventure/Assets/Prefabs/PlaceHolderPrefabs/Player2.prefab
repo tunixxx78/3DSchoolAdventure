@@ -2973,14 +2973,23 @@ MonoBehaviour:
   MyCam: {fileID: 4051116597033066364}
   myCC: {fileID: 4051116596232165065}
   moveSpeed: 14
+  dashMoveSpeed: 0
   gravity: -9.81
   groundDistance: 0.6
-  jumpForce: 11
+  jumpForce: 16
   rotationSpeed: 100
-  currentPoints: 0
-  currentTime: 0
   startTime: 30
   wallforce: 5
+  boostDuration: 0
+  gameOverDelay: 0
+  currentPoints: 0
+  dashAmount: 0
+  currentTime: 0
+  points: {fileID: 0}
+  time: {fileID: 0}
+  finalPointsText: {fileID: 0}
+  dashAmountText: {fileID: 0}
+  resultText: {fileID: 0}
   groundCheck: {fileID: 4051116596923535271}
   teleportSpawnPoint: {fileID: 0}
   groundMask:
@@ -2989,12 +2998,7 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   movement: {x: 0, y: 0, z: 0}
   turboMove: {x: 0, y: 0, z: 0}
-  points: {fileID: 0}
-  time: {fileID: 0}
-  gameOverPoints: {fileID: 0}
-  winningPoints: {fileID: 0}
   runCam: {fileID: 0}
-  standCam: {fileID: 0}
   playerAvater: {fileID: 586498827277396517}
 --- !u!136 &4051116596232165063
 CapsuleCollider:
