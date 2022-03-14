@@ -6,6 +6,7 @@ public class RotatingObstacle : MonoBehaviour
 {
     [SerializeField] float rotatingSpeed, rotatingBreak;
     bool canRotate;
+    
 
     private void Start()
     {

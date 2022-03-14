@@ -26,6 +26,7 @@ public class TuroPlayerMovement : MonoBehaviour
     float playerBoosDuration;
     
     GameManager gM;
+    MenuController menuController;
 
     [SerializeField] GameObject runCam, playerAvater;
 
@@ -40,6 +41,7 @@ public class TuroPlayerMovement : MonoBehaviour
         sfx = FindObjectOfType<SoundFX>();
         //Cursor.lockState = CursorLockMode.Locked;
         playerAnimator = GetComponentInChildren<Animator>();
+        currentcheckPoint = Vector3.zero;
     }
 
     private void Start()
@@ -49,6 +51,7 @@ public class TuroPlayerMovement : MonoBehaviour
         currentTime = startTime;
         currentPoints = 0;
         gM = FindObjectOfType<GameManager>();
+        menuController = FindObjectOfType<MenuController>();
         //Cursor.lockState = CursorLockMode.Locked;
         runCam.SetActive(true);
 
@@ -73,9 +76,10 @@ public class TuroPlayerMovement : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             finalPointsText.text = currentPoints.ToString();
-            resultText.text = "You lost!";
-            gM.resultPanel.SetActive(true);
-            Time.timeScale = 0;
+            //resultText.text = "You lost!";
+            //gM.resultPanel.SetActive(true);
+            //Time.timeScale = 0;
+            menuController.lose = true;
             sfx.gameOver.Play();
         }
 
@@ -150,9 +154,26 @@ public class TuroPlayerMovement : MonoBehaviour
             playerAvater.transform.localRotation = Quaternion.Euler(0, 0, 0);
             playerAnimator.SetBool("Run", false);
         }
-        
 
-        
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
+        {
+            playerAvater.transform.localRotation = Quaternion.Euler(0, 45, 0);
+        }
+
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+        {
+            playerAvater.transform.localRotation = Quaternion.Euler(0, -45, 0);
+        }
+
+        if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
+        {
+            playerAvater.transform.localRotation = Quaternion.Euler(0, 135, 0);
+        }
+
+        if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
+        {
+            playerAvater.transform.localRotation = Quaternion.Euler(0, -135, 0);
+        }
 
         turboMove = transform.forward;
 
@@ -239,10 +260,11 @@ public class TuroPlayerMovement : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             finalPointsText.text = currentPoints.ToString();
-            resultText.text = "YOU WIN!";
+            //resultText.text = "YOU WIN!";
             sfx.winning.Play();
-            gM.resultPanel.SetActive(true);
-            Time.timeScale = 0;
+            //gM.resultPanel.SetActive(true);
+            //Time.timeScale = 0;
+            menuController.win = true;
         }
         if(collider.gameObject.tag == "WalkableWall")
         {
@@ -253,7 +275,7 @@ public class TuroPlayerMovement : MonoBehaviour
         if(collider.gameObject.tag == "Teleport")
         {
             sfx.Teleport.Play();
-            transform.position = new Vector3(teleportSpawnPoint.position.x, teleportSpawnPoint.position.y, teleportSpawnPoint.position.z);
+            //transform.position = new Vector3(teleportSpawnPoint.position.x, teleportSpawnPoint.position.y, teleportSpawnPoint.position.z);
         }
         if(collider.gameObject.tag == "PlayerDestroyer")
         {
@@ -292,6 +314,10 @@ public class TuroPlayerMovement : MonoBehaviour
         {
             currentcheckPoint = collider.transform.position;
         }
+        if (collider.gameObject.tag == "Roller")
+        {
+            myCC.slopeLimit = 0;
+        }
         
     }
 
@@ -302,6 +328,10 @@ public class TuroPlayerMovement : MonoBehaviour
             walkingInWall = false;
             gravity = -9.81f;
 
+        }
+        if (collider.gameObject.tag == "Roller")
+        {
+            myCC.slopeLimit = 45;
         }
     }
 
