@@ -17,6 +17,7 @@ TagManager:
   - CheckPoint
   - Roller
   - RollerLeft
+  - Spinner
   layers:
   - Default
   - TransparentFX
