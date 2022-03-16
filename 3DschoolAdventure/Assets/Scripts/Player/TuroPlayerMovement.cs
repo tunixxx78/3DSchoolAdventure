@@ -20,7 +20,7 @@ public class TuroPlayerMovement : MonoBehaviour
 
     [SerializeField] Transform groundCheck, teleportSpawnPoint;
     [SerializeField] LayerMask groundMask;
-    bool isGrounded, walkingInWall = false, playerCanBoost = false;
+    bool isGrounded, walkingInWall = false, playerCanBoost = false, isOnSpinner = false;
     public Vector3 velocity, movement, turboMove;
     Rigidbody myRB;
     float playerBoosDuration;
@@ -122,6 +122,7 @@ public class TuroPlayerMovement : MonoBehaviour
                 playerAvater.transform.localRotation = Quaternion.Euler(0, 0, 0);
                 MovePlayer();
                 myCC.enabled = true;
+                
             }
             
 
@@ -132,6 +133,11 @@ public class TuroPlayerMovement : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.W))
         {
             playerAnimator.SetBool("Run", false);
+            if (isOnSpinner)
+            {
+                myCC.enabled = false;
+            }
+            
             
         }
         
@@ -155,7 +161,11 @@ public class TuroPlayerMovement : MonoBehaviour
         {
             playerAvater.transform.localRotation = Quaternion.Euler(0, 0, 0);
             playerAnimator.SetBool("Run", false);
-            
+            if (isOnSpinner)
+            {
+                myCC.enabled = false;
+            }
+
         }
         
         if (Input.GetKey(KeyCode.A))
@@ -181,7 +191,10 @@ public class TuroPlayerMovement : MonoBehaviour
         {
             playerAvater.transform.localRotation = Quaternion.Euler(0, 0, 0);
             playerAnimator.SetBool("Run", false);
-            
+            if (isOnSpinner)
+            {
+                myCC.enabled = false;
+            }
         }
 
         if (Input.GetKey(KeyCode.D))
@@ -204,7 +217,10 @@ public class TuroPlayerMovement : MonoBehaviour
         {
             playerAvater.transform.localRotation = Quaternion.Euler(0, 0, 0);
             playerAnimator.SetBool("Run", false);
-            
+            if (isOnSpinner)
+            {
+                myCC.enabled = false;
+            }
         }
 
         if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
@@ -234,8 +250,11 @@ public class TuroPlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
+            //For spinningPlatform functionality -> returning normalStage
             myCC.enabled = true;
             transform.SetParent(GameObject.Find("Players").transform);
+            isOnSpinner = false;
+
             sfx.Jump.Play();
             playerAnimator.SetTrigger("Jump");
             velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity / 2);
@@ -374,9 +393,11 @@ public class TuroPlayerMovement : MonoBehaviour
 
         if (collider.gameObject.tag == "Spinner")
         {
+            // Spinning platform functonality -> enterin platform mode.
             Debug.Log("OSAAAAAAAN LENTÄÄÄÄÄÄÄÄ!");
             myCC.enabled = false;
             transform.SetParent(collider.transform);
+            isOnSpinner = true;
         }
         
     }
@@ -400,6 +421,11 @@ public class TuroPlayerMovement : MonoBehaviour
         if (collider.gameObject.tag == "Roller")
         {
             myCC.slopeLimit = 45;
+        }
+        if (collider.gameObject.tag == "Spinner")
+        {
+            isOnSpinner = false;
+            myCC.enabled = true;
         }
     }
 
