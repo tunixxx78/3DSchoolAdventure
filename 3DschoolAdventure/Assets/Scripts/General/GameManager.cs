@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public void StartThisGame(int sceneNumber)
     {
         SceneManager.LoadScene(sceneNumber);
+        Cursor.visible = false;
     }
 
     public void QuitGame()

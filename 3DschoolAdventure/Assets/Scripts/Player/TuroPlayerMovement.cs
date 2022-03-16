@@ -111,48 +111,100 @@ public class TuroPlayerMovement : MonoBehaviour
             dir.Normalize();
             transform.rotation = Quaternion.LookRotation(dir, transform.up * Time.deltaTime);
 
+            if (Input.GetKey(KeyCode.S))
+            {
+                
+                playerAvater.transform.localRotation = Quaternion.Euler(0, 180, 0);
+                playerAnimator.SetBool("Run", false);
+            }
+            else
+            {
+                playerAvater.transform.localRotation = Quaternion.Euler(0, 0, 0);
+                MovePlayer();
+                myCC.enabled = true;
+            }
+            
+
             //transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward, Camera.main.transform.up * Time.deltaTime);
-             MovePlayer();
+             
         }
 
         if (Input.GetKeyUp(KeyCode.W))
         {
             playerAnimator.SetBool("Run", false);
+            
         }
         
         if (Input.GetKey(KeyCode.S))
         {
-            playerAvater.transform.localRotation = Quaternion.Euler(0, 180, 0);
-            MovePlayer();
+            if (Input.GetKey(KeyCode.W))
+            {
+                playerAvater.transform.localRotation = Quaternion.Euler(0, 0, 0);
+                playerAnimator.SetBool("Run", false);
+            }
+            else
+            {
+                playerAvater.transform.localRotation = Quaternion.Euler(0, 180, 0);
+                MovePlayer();
+                myCC.enabled = true;
+            }
+            
+            
         }
         if (Input.GetKeyUp(KeyCode.S))
         {
             playerAvater.transform.localRotation = Quaternion.Euler(0, 0, 0);
             playerAnimator.SetBool("Run", false);
+            
         }
         
         if (Input.GetKey(KeyCode.A))
         {
-            playerAvater.transform.localRotation = Quaternion.Euler(0, -90, 0);
+            if (Input.GetKey(KeyCode.D))
+            {
+                playerAvater.transform.localRotation = Quaternion.Euler(0, 90, 0);
+                playerAnimator.SetBool("Run", false);
+            }
+            else
+            {
+                playerAvater.transform.localRotation = Quaternion.Euler(0, -90, 0);
 
-            MovePlayer();
+                MovePlayer();
+                myCC.enabled = true;
+            }
+            
+
+            
             
         }
         if (Input.GetKeyUp(KeyCode.A))
         {
             playerAvater.transform.localRotation = Quaternion.Euler(0, 0, 0);
             playerAnimator.SetBool("Run", false);
+            
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            playerAvater.transform.localRotation = Quaternion.Euler(0, 90, 0);
-            MovePlayer();
+            if (Input.GetKey(KeyCode.A))
+            {
+                playerAvater.transform.localRotation = Quaternion.Euler(0, -90, 0);
+                playerAnimator.SetBool("Run", false);
+            }
+            else
+            {
+                playerAvater.transform.localRotation = Quaternion.Euler(0, 90, 0);
+                MovePlayer();
+                myCC.enabled = true;
+            }
+            
+            
         }
         if (Input.GetKeyUp(KeyCode.D))
         {
             playerAvater.transform.localRotation = Quaternion.Euler(0, 0, 0);
             playerAnimator.SetBool("Run", false);
+            
         }
 
         if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
@@ -182,6 +234,8 @@ public class TuroPlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
+            myCC.enabled = true;
+            transform.SetParent(GameObject.Find("Players").transform);
             sfx.Jump.Play();
             playerAnimator.SetTrigger("Jump");
             velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity / 2);
@@ -205,26 +259,25 @@ public class TuroPlayerMovement : MonoBehaviour
 
     public void MovePlayer()
     {
-        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
-        {
-            myCC.Move(movement * (moveSpeed / 2) * Time.deltaTime);
-
-            if (isGrounded)
+            if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A) ||
+                Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.A))
             {
-                playerAnimator.SetBool("Run", true);
-            }
-        }
-        else
-        {
-            myCC.Move(movement * moveSpeed * Time.deltaTime);
+                myCC.Move(movement * (moveSpeed / 2) * Time.deltaTime);
 
-            if (isGrounded)
-            {
-                playerAnimator.SetBool("Run", true);
+                if (isGrounded)
+                {
+                    playerAnimator.SetBool("Run", true);
+                }
             }
-        }
-        
-        
+            else
+            {
+                myCC.Move(movement * moveSpeed * Time.deltaTime);
+
+                if (isGrounded)
+                {
+                    playerAnimator.SetBool("Run", true);
+                }
+            }  
     }
 
     
@@ -318,7 +371,22 @@ public class TuroPlayerMovement : MonoBehaviour
         {
             myCC.slopeLimit = 0;
         }
+
+        if (collider.gameObject.tag == "Spinner")
+        {
+            Debug.Log("OSAAAAAAAN LENTÄÄÄÄÄÄÄÄ!");
+            myCC.enabled = false;
+            transform.SetParent(collider.transform);
+        }
         
+    }
+
+    private void OnTriggerStay(Collider collider)
+    {
+        if (collider.gameObject.tag == "Spinner")
+        {
+            
+        }
     }
 
     private void OnTriggerExit(Collider collider)
@@ -353,6 +421,13 @@ public class TuroPlayerMovement : MonoBehaviour
             Time.timeScale = 0;
             */
         }
+
+        if (collision.collider.CompareTag("Spinner"))
+        {
+            Debug.Log("OSAN LENTÄÄ!");
+        }
+
+        
     }
     IEnumerator PlayerCanNotBoost()
     {
