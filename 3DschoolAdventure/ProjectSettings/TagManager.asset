@@ -15,6 +15,9 @@ TagManager:
   - Dash
   - Walkable
   - CheckPoint
+  - Roller
+  - RollerLeft
+  - Spinner
   layers:
   - Default
   - TransparentFX
@@ -24,7 +27,7 @@ TagManager:
   - UI
   - 
   - Ground
-  - 
+  - Player
   - 
   - 
   - 

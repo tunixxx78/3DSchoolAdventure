@@ -14,6 +14,7 @@ public class MenuController : MonoBehaviour
     private MenuStates menuState;
     public bool tryAgain = false, win = false, lose = false;
     public TMP_Text resultText, finalPointsText;
+    public GameObject yesButton, noButton;
 
     public MenuStates MenuState
     {
@@ -116,15 +117,18 @@ public class MenuController : MonoBehaviour
         if(SceneManager.GetActiveScene() != SceneManager.GetSceneByName("TuronTestScene"))
         {
             SceneManager.LoadScene("TuronTestScene");
+            Cursor.visible = false;
         }
         if (tryAgain)
         {
             SceneManager.LoadScene("TuronTestScene");
+            Cursor.visible = false;
         }
     }
 
     public void ControlPauseMenu(Transform transform)
     {
+        settingsMenu.gameObject.SetActive(false);
         pauseMenu.SetActive(true);
         //EventSystem.current.SetSelectedGameObject(null);
         //EventSystem.current.SetSelectedGameObject(pauseFirstButton);
@@ -152,6 +156,7 @@ public class MenuController : MonoBehaviour
     public void ControlSettingsMenu(Transform transform)
     {
         settingsMenu.gameObject.SetActive(true);
+        pauseMenu.gameObject.SetActive(false);
         //EventSystem.current.SetSelectedGameObject(null);
         //EventSystem.current.SetSelectedGameObject(settingsFirstButton);
 
@@ -159,7 +164,7 @@ public class MenuController : MonoBehaviour
         switch (transform.name)
         {
             case "Continue":
-                MenuState = MenuStates.RETURN;
+                MenuState = MenuStates.PAUSE;
                 break;
         }
     }
@@ -167,17 +172,12 @@ public class MenuController : MonoBehaviour
     //Inactivates gameobjects from the UI
     public void ControlReturn()
     {
-        if (settingsMenu.gameObject.activeSelf)
-        {
-            settingsMenu.gameObject.SetActive(false);
-            //EventSystem.current.SetSelectedGameObject(null);
-        }
-
         if (pauseMenu.gameObject.activeSelf)
         {
             pauseMenu.gameObject.SetActive(false);
             //EventSystem.current.SetSelectedGameObject(null);
             Time.timeScale = 1;
+            Cursor.visible = false;
         }
     }
 
@@ -188,20 +188,24 @@ public class MenuController : MonoBehaviour
 
         if (win)
         {
-            resultText.text = "You have reached the finishline!";
+            resultText.text = "YOU HAVE REACHED THE FINISHLINE!";
+            yesButton.SetActive(false);
+            noButton.SetActive(false);
         }
         if (lose)
         {
-            resultText.text = "You did not make it in this lifetime.";
+            resultText.text = "YOU COULDN'T MAKE IT IN THIS LIFETIME. TRY AGAIN?";
+            yesButton.SetActive(true);
+            noButton.SetActive(true);
         }
 
         switch (transform.name)
         {
-            case "Try Again":
+            case "Yes":
                 tryAgain = true;
                 MenuState = MenuStates.GAMEVIEW;
                 break;
-            case "Quit":
+            case "No":
                 MenuState = MenuStates.STARTMENU;
                 break;
         }

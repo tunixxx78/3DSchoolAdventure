@@ -6,6 +6,7 @@ public class RotatingObstacle : MonoBehaviour
 {
     [SerializeField] float rotatingSpeed, rotatingBreak;
     bool canRotate;
+    
 
     private void Start()
     {
@@ -28,7 +29,7 @@ public class RotatingObstacle : MonoBehaviour
         }
 
     }
-
+    /*
     private void OnTriggerEnter(Collider collider)
     {
         if(collider.gameObject.tag == "Player")
@@ -38,6 +39,7 @@ public class RotatingObstacle : MonoBehaviour
             StartCoroutine(StartRotating());
         }
     }
+    */
 
     IEnumerator StartRotating()
     {
