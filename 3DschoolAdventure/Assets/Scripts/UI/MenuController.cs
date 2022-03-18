@@ -117,10 +117,12 @@ public class MenuController : MonoBehaviour
         if(SceneManager.GetActiveScene() != SceneManager.GetSceneByName("TuronTestScene"))
         {
             SceneManager.LoadScene("TuronTestScene");
+            Cursor.visible = false;
         }
         if (tryAgain)
         {
             SceneManager.LoadScene("TuronTestScene");
+            Cursor.visible = false;
         }
     }
 
@@ -175,6 +177,7 @@ public class MenuController : MonoBehaviour
             pauseMenu.gameObject.SetActive(false);
             //EventSystem.current.SetSelectedGameObject(null);
             Time.timeScale = 1;
+            Cursor.visible = false;
         }
     }
 
