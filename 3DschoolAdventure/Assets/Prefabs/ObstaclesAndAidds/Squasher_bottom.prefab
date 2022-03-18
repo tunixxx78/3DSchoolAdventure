@@ -41,7 +41,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4616232550591531406}
-  m_Mesh: {fileID: -6680242954927219676, guid: 7ca575b807ac64c43a9cb4d7e05d5197, type: 3}
+  m_Mesh: {fileID: -6680242954927219676, guid: a65f001fd8af6e841b43ad50bffdb8f2, type: 3}
 --- !u!23 &4616232550591531392
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1437d03168eb94b81851996d4ef3169a, type: 2}
+  - {fileID: -190524942773555562, guid: a65f001fd8af6e841b43ad50bffdb8f2, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -194,7 +194,11 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 6086fd55e7d544564a4fbdd2db49865f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e5a8b88c394fc42f49e3a39a3dcfb884, type: 2}
+      objectReference: {fileID: -190524942773555562, guid: 18862a253fcadca4189551cf1d3e3460, type: 3}
+    - target: {fileID: -5754084199372789682, guid: 6086fd55e7d544564a4fbdd2db49865f, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -6849175507826523453, guid: 18862a253fcadca4189551cf1d3e3460, type: 3}
     - target: {fileID: 919132149155446097, guid: 6086fd55e7d544564a4fbdd2db49865f, type: 3}
       propertyPath: m_Name
       value: Squasher

@@ -41,7 +41,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5366971001229923350}
-  m_Mesh: {fileID: 4484052843275181868, guid: 5a6e23369fa524c8a82e6e5761a25928, type: 3}
+  m_Mesh: {fileID: 4484052843275181868, guid: 675e89acd3f637c4f9459463975891e8, type: 3}
 --- !u!23 &5366971001229923344
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f21a20a63441848bf8c87d2ac2500af8, type: 2}
+  - {fileID: -190524942773555562, guid: 675e89acd3f637c4f9459463975891e8, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -103,6 +103,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5366971001229923346}
     m_Modifications:
+    - target: {fileID: 5425075403236156141, guid: ce066f6b2ade04ca8af15e37335423b8, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -8116138440861595531, guid: c7d028501f67e694b817d22084b047b1, type: 3}
+    - target: {fileID: 7830996828023248423, guid: ce066f6b2ade04ca8af15e37335423b8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -190524942773555562, guid: c7d028501f67e694b817d22084b047b1, type: 3}
     - target: {fileID: 8623749453052311538, guid: ce066f6b2ade04ca8af15e37335423b8, type: 3}
       propertyPath: m_Name
       value: PillarTall
