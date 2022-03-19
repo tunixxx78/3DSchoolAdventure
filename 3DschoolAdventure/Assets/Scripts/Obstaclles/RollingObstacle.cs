@@ -6,14 +6,15 @@ public class RollingObstacle : MonoBehaviour
 {
     //Pyörivät laatikot
 
-    [SerializeField] float rollingSpeed, rollingTime;
-    bool canRotate = false, isRotating = false;
-    [SerializeField] Rigidbody rb;
+    [SerializeField] Animator boxAnimator;
+    bool turnLeft = false, turnRight = false, canRotate = false;
+    
 
 
     private void Awake()
     {
-        rb = GetComponentInParent<Rigidbody>();
+        boxAnimator = GetComponentInParent<Animator>();
+
     }
 
     private void Start()
@@ -23,10 +24,13 @@ public class RollingObstacle : MonoBehaviour
 
     private void Update()
     {
-
-        if (canRotate)
+        if (turnLeft)
         {
-            rb.transform.Rotate(Vector3.right, rollingSpeed);
+            boxAnimator.SetTrigger("TurnLeft");
+        }
+        if (turnRight)
+        {
+            boxAnimator.SetTrigger("TurnRight");
         }
         
     }
@@ -34,21 +38,10 @@ public class RollingObstacle : MonoBehaviour
     private void OnTriggerEnter(Collider collider)
 
     {
-        if(collider.gameObject.tag == "Player" && isRotating == false)
-        {
-            canRotate = true;
-            StartCoroutine(StopRolling());
-        }
-        else { return; }
-    }
-
-
-    IEnumerator StopRolling()
-    {
-        yield return new WaitForSeconds(rollingTime);
-
-            canRotate = false;
         
         
     }
+
+
+   
 }
