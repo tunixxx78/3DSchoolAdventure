@@ -8,6 +8,7 @@ public class AudioSliders : MonoBehaviour
 {
     public AudioMixer musicAudioMixer, effectsAudioMixer;
     public Slider musicSlider, effectsSlider;
+    public bool muted;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,17 @@ public class AudioSliders : MonoBehaviour
 
     public void MuteButtonPressed()
     {
-        musicSlider.value = 0;
-        effectsSlider.value = 0;
+        if (muted)
+        {
+            musicSlider.value = 1;
+            effectsSlider.value = 1;
+            muted = false;
+        }
+        else
+        {
+            musicSlider.value = 0;
+            effectsSlider.value = 0;
+            muted = true;
+        }
     }
 }
