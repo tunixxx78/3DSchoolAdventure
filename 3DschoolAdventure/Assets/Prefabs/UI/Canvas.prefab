@@ -2619,14 +2619,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hourglass
       objectReference: {fileID: 0}
-    - target: {fileID: 7323279856443215826, guid: 3c831ea046d64b64f9ef50835d97df6b, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7323279856443215826, guid: 3c831ea046d64b64f9ef50835d97df6b, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 7323279857239694851, guid: 3c831ea046d64b64f9ef50835d97df6b, type: 3}
+      propertyPath: timeText
+      value: 
+      objectReference: {fileID: 3138927188977521284}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c831ea046d64b64f9ef50835d97df6b, type: 3}
 --- !u!224 &3138927188268071143 stripped
