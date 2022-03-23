@@ -34,7 +34,7 @@ public class MenuController : MonoBehaviour
     private void Update()
     {
         //Pause activates from Esc and returns from pressing Esc again
-        if (Input.GetKeyDown(KeyCode.Escape) && MenuState != MenuStates.PAUSE)
+        if (Input.GetKeyDown(KeyCode.Escape) && MenuState != MenuStates.PAUSE && MenuState != MenuStates.GAMEOVER)
         {
             Debug.Log("Escape pressed");
             MenuState = MenuStates.PAUSE;
