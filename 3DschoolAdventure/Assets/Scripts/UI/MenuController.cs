@@ -14,7 +14,7 @@ public class MenuController : MonoBehaviour
     private MenuStates menuState;
     public bool tryAgain = false, win = false, lose = false;
     public TMP_Text resultText, finalPointsText;
-    public GameObject yesButton, noButton;
+    public GameObject yesButton, noButton, quitButton, startOverButton;
 
     public MenuStates MenuState
     {
@@ -34,7 +34,7 @@ public class MenuController : MonoBehaviour
     private void Update()
     {
         //Pause activates from Esc and returns from pressing Esc again
-        if (Input.GetKeyDown(KeyCode.Escape) && MenuState != MenuStates.PAUSE)
+        if (Input.GetKeyDown(KeyCode.Escape) && MenuState != MenuStates.PAUSE && MenuState != MenuStates.GAMEOVER)
         {
             Debug.Log("Escape pressed");
             MenuState = MenuStates.PAUSE;
@@ -191,12 +191,16 @@ public class MenuController : MonoBehaviour
             resultText.text = "YOU HAVE REACHED THE FINISHLINE!";
             yesButton.SetActive(false);
             noButton.SetActive(false);
+            quitButton.SetActive(true);
+            startOverButton.SetActive(true);
         }
         if (lose)
         {
             resultText.text = "YOU COULDN'T MAKE IT IN THIS LIFETIME. TRY AGAIN?";
             yesButton.SetActive(true);
             noButton.SetActive(true);
+            quitButton.SetActive(false);
+            startOverButton.SetActive(false);
         }
 
         switch (transform.name)
@@ -206,6 +210,13 @@ public class MenuController : MonoBehaviour
                 MenuState = MenuStates.GAMEVIEW;
                 break;
             case "No":
+                MenuState = MenuStates.STARTMENU;
+                break;
+            case "Start Over":
+                tryAgain = true;
+                MenuState = MenuStates.GAMEVIEW;
+                break;
+            case "Quit":
                 MenuState = MenuStates.STARTMENU;
                 break;
         }

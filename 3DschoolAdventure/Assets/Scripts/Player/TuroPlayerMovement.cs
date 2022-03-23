@@ -64,8 +64,8 @@ public class TuroPlayerMovement : MonoBehaviour
         // creates timer
         currentTime -= 1 * Time.deltaTime;
 
-        string tempTimer = string.Format("{0:00}", currentTime);
-        time.text = tempTimer;
+        //string tempTimer = string.Format("{0:00}", currentTime);
+        //time.text = tempTimer;
 
 
 
