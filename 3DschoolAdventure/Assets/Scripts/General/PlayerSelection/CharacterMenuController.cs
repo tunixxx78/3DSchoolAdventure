@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class CharacterMenuController : MonoBehaviour
 {
+    private void Start()
+    {
+        
+    }
+
     public void OnClickedCharacterPick(int whichCharacter)
     {
         if(PlayerSelectionInfo.pSI != null)
