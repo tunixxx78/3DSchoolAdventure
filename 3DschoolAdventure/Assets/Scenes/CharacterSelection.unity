@@ -773,9 +773,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300000, guid: bcdc93c90c84d4370a85ce124fb5a091, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: bcdc93c90c84d4370a85ce124fb5a091, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: 2bb0293f863e13e47b7aa5962c02f05c, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 4bbfcb86d80898e449bbd26ed166907d, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 4bbfcb86d80898e449bbd26ed166907d, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -1153,9 +1153,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300000, guid: b0e3fe4036e7c4dfb82e87689803b823, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: b0e3fe4036e7c4dfb82e87689803b823, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: 2bb0293f863e13e47b7aa5962c02f05c, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 4bbfcb86d80898e449bbd26ed166907d, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 4bbfcb86d80898e449bbd26ed166907d, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -1310,7 +1310,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &902617670
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1464,7 +1464,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294638330
+    rgba: 16448250
   m_fontColor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -1733,9 +1733,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: d1b6966a270ea4591b5ea083dd54d844, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: d1b6966a270ea4591b5ea083dd54d844, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: d1b6966a270ea4591b5ea083dd54d844, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: 2bb0293f863e13e47b7aa5962c02f05c, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 4bbfcb86d80898e449bbd26ed166907d, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 4bbfcb86d80898e449bbd26ed166907d, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
