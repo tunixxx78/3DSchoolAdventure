@@ -130,6 +130,7 @@ public class MenuController : MonoBehaviour
     {
         settingsMenu.gameObject.SetActive(false);
         pauseMenu.SetActive(true);
+        Cursor.visible = true;
         //EventSystem.current.SetSelectedGameObject(null);
         //EventSystem.current.SetSelectedGameObject(pauseFirstButton);
         Time.timeScale = 0;
@@ -157,6 +158,7 @@ public class MenuController : MonoBehaviour
     {
         settingsMenu.gameObject.SetActive(true);
         pauseMenu.gameObject.SetActive(false);
+        Cursor.visible = true;
         //EventSystem.current.SetSelectedGameObject(null);
         //EventSystem.current.SetSelectedGameObject(settingsFirstButton);
 
@@ -184,6 +186,7 @@ public class MenuController : MonoBehaviour
     public void ControlGameOver(Transform transform)
     {
         gameOver.SetActive(true);
+        Cursor.visible = true;
         Time.timeScale = 0;
 
         if (win)
