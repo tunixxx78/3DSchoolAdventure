@@ -10,7 +10,7 @@ public class TuroPlayerMovement : MonoBehaviour
     [SerializeField] Animator playerAnimator;
     [SerializeField] Camera MyCam;
     public CharacterController myCC;
-    public float moveSpeed, dashMoveSpeed, gravity = -9.81f, groundDistance = 0.4f, jumpForce, rotationSpeed, startTime, wallforce, boostDuration, gameOverDelay;
+    public float moveSpeed, dashMoveSpeed, gravity = -9.81f, groundDistance = 0.4f, jumpForce, rotationSpeed, startTime, wallforce, boostDuration, gameOverDelay, boxRideOffTime;
 
     // For UI programmer use!
     public int currentPoints, dashAmount;
@@ -20,7 +20,7 @@ public class TuroPlayerMovement : MonoBehaviour
 
     [SerializeField] Transform groundCheck, teleportSpawnPoint;
     [SerializeField] LayerMask groundMask;
-    bool isGrounded, walkingInWall = false, playerCanBoost = false, isOnSpinner = false;
+    bool isGrounded, walkingInWall = false, playerCanBoost = false, isOnSpinner = false, canrideWithBox = false;
     public Vector3 velocity, movement, turboMove;
     Rigidbody myRB;
     float playerBoosDuration;
@@ -28,13 +28,14 @@ public class TuroPlayerMovement : MonoBehaviour
     GameManager gM;
     MenuController menuController;
 
-    [SerializeField] GameObject runCam, playerAvater;
+    [SerializeField] GameObject runCam, playerAvater, extraCollider;
 
     private SoundFX sfx;
     float x, z;
 
 
     public static Vector3 currentcheckPoint = Vector3.zero;
+
     
     private void Awake()
     {
@@ -42,6 +43,7 @@ public class TuroPlayerMovement : MonoBehaviour
         //Cursor.lockState = CursorLockMode.Locked;
         playerAnimator = GetComponentInChildren<Animator>();
         currentcheckPoint = Vector3.zero;
+
     }
 
     private void Start()
@@ -54,6 +56,7 @@ public class TuroPlayerMovement : MonoBehaviour
         menuController = FindObjectOfType<MenuController>();
         //Cursor.lockState = CursorLockMode.Locked;
         runCam.SetActive(true);
+        canrideWithBox = true;
 
     }
 
@@ -248,11 +251,12 @@ public class TuroPlayerMovement : MonoBehaviour
         velocity.y += gravity * 2.5f * Time.deltaTime;
         myCC.Move(velocity * Time.deltaTime);
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButton("Jump") && isGrounded)
         {
             //For spinningPlatform functionality -> returning normalStage
             myCC.enabled = true;
             transform.SetParent(GameObject.Find("Players").transform);
+            this.transform.localRotation = Quaternion.Euler(0, -90, 0);
             isOnSpinner = false;
 
             sfx.Jump.Play();
@@ -388,7 +392,16 @@ public class TuroPlayerMovement : MonoBehaviour
         }
         if (collider.gameObject.tag == "Roller")
         {
-            myCC.slopeLimit = 0;
+            if (canrideWithBox)
+            {
+                canrideWithBox = false;
+                myCC.enabled = false;
+                transform.SetParent(collider.transform);
+
+                StartCoroutine(CanRideWithBoxAgain(boxRideOffTime));
+                //extraCollider.SetActive(true);
+            }
+
         }
 
         if (collider.gameObject.tag == "Spinner")
@@ -402,13 +415,6 @@ public class TuroPlayerMovement : MonoBehaviour
         
     }
 
-    private void OnTriggerStay(Collider collider)
-    {
-        if (collider.gameObject.tag == "Spinner")
-        {
-            
-        }
-    }
 
     private void OnTriggerExit(Collider collider)
     {
@@ -429,32 +435,15 @@ public class TuroPlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (collision.collider.CompareTag("PlayerDestroyer"))
+        if(hit.gameObject.tag == ("Spinner"))
         {
-            Debug.Log("TULEEKO MITÄÄN OSUMAA?");
-
-            sfx.gameOver.Play();
-            playerAvater.SetActive(false);
-
-            StartCoroutine(ToCheckPoint());
-            /*
-            Cursor.lockState = CursorLockMode.None;
-            finalPointsText.text = currentPoints.ToString();
-            resultText.text = "YOU LOST!";
-            gM.resultPanel.SetActive(true);
-            Time.timeScale = 0;
-            */
+            Debug.Log("VIHDOINKIN JOTAIN TOIMIVAA!");
         }
-
-        if (collision.collider.CompareTag("Spinner"))
-        {
-            Debug.Log("OSAN LENTÄÄ!");
-        }
-
-        
     }
+
+
     IEnumerator PlayerCanNotBoost()
     {
         yield return new WaitForSeconds(playerBoosDuration);
@@ -469,5 +458,11 @@ public class TuroPlayerMovement : MonoBehaviour
 
         sfx.Teleport.Play();
         playerAvater.SetActive(true);
+    }
+    IEnumerator CanRideWithBoxAgain(float offTime)
+    {
+        yield return new WaitForSeconds(offTime);
+
+        canrideWithBox = true;
     }
 }
