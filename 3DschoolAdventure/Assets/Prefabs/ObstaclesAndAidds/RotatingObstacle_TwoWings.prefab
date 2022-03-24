@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8573636424714403725}
   m_Layer: 7
   m_Name: Wing (1)
-  m_TagString: Untagged
+  m_TagString: Spinner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91,7 +91,7 @@ MeshCollider:
   m_GameObject: {fileID: 2574087566655676888}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -109,8 +109,6 @@ GameObject:
   - component: {fileID: 5139234967424839604}
   - component: {fileID: 5139234967424839601}
   - component: {fileID: 4312253881065846233}
-  - component: {fileID: 2503477915648893338}
-  - component: {fileID: 3139714277397699691}
   m_Layer: 7
   m_Name: RotatingObstacle_TwoWings
   m_TagString: Spinner
@@ -211,34 +209,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9929e13d83a4d4eabbe5fa18e20b1bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotatingSpeed: 10
+  rotatingSpeed: 20
   rotatingBreak: 0
---- !u!65 &2503477915648893338
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5139234967424839603}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.923296, y: 0.20805821, z: 3.2803862}
-  m_Center: {x: 3.478252, y: -0.00054495037, z: 0.15698159}
---- !u!65 &3139714277397699691
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5139234967424839603}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4.317498, y: 0.20805821, z: 3.180343}
-  m_Center: {x: -3.2967587, y: -0.00054495037, z: 0.08322084}
 --- !u!1 &7352656530199881344
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,7 +225,7 @@ GameObject:
   - component: {fileID: 1082586830418565577}
   m_Layer: 7
   m_Name: Wing
-  m_TagString: Untagged
+  m_TagString: Spinner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -330,7 +302,7 @@ MeshCollider:
   m_GameObject: {fileID: 7352656530199881344}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
