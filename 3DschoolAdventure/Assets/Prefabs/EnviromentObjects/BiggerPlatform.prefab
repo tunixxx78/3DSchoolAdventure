@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7785082999656109527}
   - component: {fileID: 1559496296963100828}
   m_Layer: 0
-  m_Name: Plate
+  m_Name: BiggerPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
