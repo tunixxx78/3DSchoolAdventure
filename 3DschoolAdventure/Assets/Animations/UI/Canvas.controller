@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Character1Idle
+  m_Name: C1Front
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -41,7 +41,7 @@ AnimatorStateTransition:
     m_ConditionEvent: C2Active
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: SwapToC3
+    m_ConditionEvent: TriggerC0
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4498157032955043998}
@@ -52,7 +52,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.625
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -64,7 +64,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Character2Idle
+  m_Name: C2Front
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -121,13 +121,7 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: C1Active
-    m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: SwapToC3
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -5860096766313504713}
   m_Solo: 0
@@ -149,7 +143,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Character3Idle
+  m_Name: C0Front
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -178,7 +172,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Character1Chosen
+  m_Name: C1Chosen
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -204,7 +198,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CharacterSwap2-3
+  m_Name: Swap2-0
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -231,13 +225,7 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: C1Active
-    m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: SwapToC2
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7005575648692849582}
   m_Solo: 0
@@ -289,10 +277,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: C3Active
+    m_ConditionEvent: C0Active
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: SwapToC2
+    m_ConditionEvent: TriggerC2
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5233670375785543579}
@@ -302,7 +290,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
-  m_ExitTime: 0.625
+  m_ExitTime: 0
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -316,8 +304,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 3
-    m_ConditionEvent: C3Active
+  - m_ConditionMode: 1
+    m_ConditionEvent: C0Active
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: PlayPressed
@@ -369,7 +357,7 @@ AnimatorStateMachine:
     m_Position: {x: 190, y: 80, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4498157032955043998}
-    m_Position: {x: 450, y: 80, z: 0}
+    m_Position: {x: 490, y: 90, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7005575648692849582}
     m_Position: {x: 320, y: 220, z: 0}
@@ -418,13 +406,7 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: C3Active
-    m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: SwapToC2
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7005575648692849582}
   m_Solo: 0
@@ -446,7 +428,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CharacterSwap1-2
+  m_Name: Swap1-2
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -478,7 +460,7 @@ AnimatorStateTransition:
     m_ConditionEvent: C2Active
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: SwapToC1
+    m_ConditionEvent: TriggerC1
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -170843153530944470}
@@ -501,13 +483,7 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: C2Active
-    m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: SwapToC1
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8444578188700004813}
   m_Solo: 0
@@ -534,7 +510,7 @@ AnimatorStateTransition:
     m_ConditionEvent: C1Active
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: SwapToC2
+    m_ConditionEvent: TriggerC2
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -899036561312633881}
@@ -545,7 +521,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.625
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -557,7 +533,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CharacterSwap2-1
+  m_Name: Swap2-1
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -586,6 +562,12 @@ AnimatorController:
   m_Name: Canvas
   serializedVersion: 5
   m_AnimatorParameters:
+  - m_Name: C0Active
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 1
+    m_Controller: {fileID: 0}
   - m_Name: C1Active
     m_Type: 4
     m_DefaultFloat: 0
@@ -598,35 +580,29 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: C3Active
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
   - m_Name: PlayPressed
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: SwapToC1
-    m_Type: 4
+  - m_Name: TriggerC0
+    m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: SwapToC2
-    m_Type: 4
+  - m_Name: TriggerC1
+    m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: SwapToC3
-    m_Type: 4
+  - m_Name: TriggerC2
+    m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 0
+    m_DefaultBool: 1
     m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
@@ -648,7 +624,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Character2Chosen
+  m_Name: C2Chosen
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -674,13 +650,7 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: C3Active
-    m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: SwapToC1
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8444578188700004813}
   m_Solo: 0
@@ -702,7 +672,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CharacterSwap3-1
+  m_Name: Swap0-1
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -743,13 +713,7 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: C2Active
-    m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: SwapToC3
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -5860096766313504713}
   m_Solo: 0
@@ -771,7 +735,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CharacterSwap1-3
+  m_Name: Swap1-0
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -877,7 +841,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CharacterSwap3-2
+  m_Name: Swap0-2
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -891,7 +855,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 8bd38497467803a42a091aea2dd9e214, type: 2}
+  m_Motion: {fileID: 7400000, guid: f41b2921453cdd74ea19917d99acc488, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -918,7 +882,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Character3Chosen
+  m_Name: C0Chosen
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -949,7 +913,7 @@ AnimatorStateTransition:
     m_ConditionEvent: C1Active
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: SwapToC3
+    m_ConditionEvent: TriggerC0
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3146825621158667193}
@@ -960,7 +924,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.625
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -974,10 +938,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: C3Active
+    m_ConditionEvent: C0Active
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: SwapToC1
+    m_ConditionEvent: TriggerC1
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1779137294001820989}
@@ -988,7 +952,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.625
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
