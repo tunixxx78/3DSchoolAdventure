@@ -456,6 +456,11 @@ public class TuroPlayerMovement : MonoBehaviour
 
         transform.position = currentcheckPoint == Vector3.zero ? transform.position : currentcheckPoint;
 
+        myCC.enabled = true;
+        transform.SetParent(GameObject.Find("Players").transform);
+        this.transform.localRotation = Quaternion.Euler(0, -90, 0);
+        isOnSpinner = false;
+
         sfx.Teleport.Play();
         playerAvater.SetActive(true);
     }
