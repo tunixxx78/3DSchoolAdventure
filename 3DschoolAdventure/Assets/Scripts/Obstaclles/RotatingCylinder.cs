@@ -6,14 +6,13 @@ public class RotatingCylinder : MonoBehaviour
 {
     public bool rotating;
     public float rotatingSpeed = 1f;
-    public CharacterController player;
+    //public CharacterController player;
     public Vector3 playerPos;
     public bool rotateRight, rotateLeft;
 
-    // Start is called before the first frame update
     void Awake()
     {
-        GetComponent<TuroPlayerMovement>();
+        //GetComponent<TuroPlayerMovement>();
     }
 
     // Update is called once per frame
@@ -21,11 +20,11 @@ public class RotatingCylinder : MonoBehaviour
     {
         if (rotating && rotateLeft)
         {
-            transform.Rotate(0f, -1 * player.GetComponent<TuroPlayerMovement>().gravity * player.GetComponent<TuroPlayerMovement>().jumpForce/* * rotatingSpeed*/ * Time.deltaTime, 0f, Space.Self);
+            transform.Rotate(/*-1 * player.GetComponent<TuroPlayerMovement>().gravity * player.GetComponent<TuroPlayerMovement>().jumpForce * */rotatingSpeed * Time.deltaTime, 0f, 0f, Space.World);
         }
         if (rotating && rotateRight)
         {
-            transform.Rotate(0f, 1 * player.GetComponent<TuroPlayerMovement>().gravity * player.GetComponent<TuroPlayerMovement>().jumpForce/* * rotatingSpeed*/ * Time.deltaTime, 0f, Space.Self);
+            transform.Rotate(-1 /* * player.GetComponent<TuroPlayerMovement>().gravity * player.GetComponent<TuroPlayerMovement>().jumpForce*/ * rotatingSpeed * Time.deltaTime, 0f, 0f, Space.World);
         }
     }
 
@@ -34,7 +33,7 @@ public class RotatingCylinder : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             playerPos = other.gameObject.transform.position;
-            player = other.GetComponent<TuroPlayerMovement>().myCC;
+            //player = other.GetComponent<TuroPlayerMovement>().myCC;
             rotating = true;
         }
     }

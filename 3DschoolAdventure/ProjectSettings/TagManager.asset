@@ -20,6 +20,7 @@ TagManager:
   - Spinner
   - CylinderLeft
   - CylinderRight
+  - RotatingCylinder
   layers:
   - Default
   - TransparentFX
