@@ -4,27 +4,29 @@ using UnityEngine;
 
 public class RotatingCylinder : MonoBehaviour
 {
-    public bool rotating;
+    public bool canRotate = false;
     public float rotatingSpeed = 1f;
-    //public CharacterController player;
-    public Vector3 playerPos;
+    public GameObject player;
+    //public Vector3 playerPos;
     public bool rotateRight, rotateLeft;
 
     void Awake()
     {
-        //GetComponent<TuroPlayerMovement>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (rotating && rotateLeft)
+        if (canRotate && rotateLeft)
         {
-            transform.Rotate(/*-1 * player.GetComponent<TuroPlayerMovement>().gravity * player.GetComponent<TuroPlayerMovement>().jumpForce * */rotatingSpeed * Time.deltaTime, 0f, 0f, Space.World);
+            transform.Rotate(Vector3.down, /*-1 * player.GetComponent<TuroPlayerMovement>().gravity * player.GetComponent<TuroPlayerMovement>().jumpForce * */-1 * rotatingSpeed * Time.deltaTime);
+            player.GetComponent<TuroPlayerMovement>().myCC.enabled = true;
         }
-        if (rotating && rotateRight)
+        if (canRotate && rotateRight)
         {
-            transform.Rotate(-1 /* * player.GetComponent<TuroPlayerMovement>().gravity * player.GetComponent<TuroPlayerMovement>().jumpForce*/ * rotatingSpeed * Time.deltaTime, 0f, 0f, Space.World);
+            transform.Rotate(Vector3.down, /* * player.GetComponent<TuroPlayerMovement>().gravity * player.GetComponent<TuroPlayerMovement>().jumpForce*/rotatingSpeed * Time.deltaTime);
+            player.GetComponent<TuroPlayerMovement>().myCC.enabled = true;
         }
     }
 
@@ -32,14 +34,26 @@ public class RotatingCylinder : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            playerPos = other.gameObject.transform.position;
+            //playerPos = other.gameObject.transform.position;
             //player = other.GetComponent<TuroPlayerMovement>().myCC;
-            rotating = true;
+            canRotate = true;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        rotating = false;
+        if (other.gameObject.tag == "Player")
+        {
+            canRotate = false;
+            StartCoroutine(ResetTransform());
+        }
     }
+
+    IEnumerator ResetTransform()
+    {
+        yield return new WaitForSeconds(2);
+
+        transform.rotation = Quaternion.Euler(0, 0, 90);
+    }
+
 }
