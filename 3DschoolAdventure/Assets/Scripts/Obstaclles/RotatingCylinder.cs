@@ -21,16 +21,24 @@ public class RotatingCylinder : MonoBehaviour
         if (canRotate && rotateLeft)
         {
             transform.Rotate(Vector3.down, /*-1 * player.GetComponent<TuroPlayerMovement>().gravity * player.GetComponent<TuroPlayerMovement>().jumpForce * */-1 * rotatingSpeed * Time.deltaTime);
-            player.GetComponent<TuroPlayerMovement>().myCC.enabled = true;
         }
         if (canRotate && rotateRight)
         {
             transform.Rotate(Vector3.down, /* * player.GetComponent<TuroPlayerMovement>().gravity * player.GetComponent<TuroPlayerMovement>().jumpForce*/rotatingSpeed * Time.deltaTime);
+        }
+        if (transform.eulerAngles.x >= 60)
+        {
+            Debug.Log("CC off");
+            player.GetComponent<TuroPlayerMovement>().myCC.enabled = true;
+        }
+        if (transform.eulerAngles.x <= -60)
+        {
+            Debug.Log("CC off");
             player.GetComponent<TuroPlayerMovement>().myCC.enabled = true;
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
