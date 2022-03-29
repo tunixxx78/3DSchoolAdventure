@@ -20,7 +20,7 @@ public class TuroPlayerMovement : MonoBehaviour
 
     [SerializeField] Transform groundCheck, teleportSpawnPoint;
     [SerializeField] LayerMask groundMask;
-    bool isGrounded, walkingInWall = false, playerCanBoost = false, isOnSpinner = false, canrideWithBox = false;
+    bool isGrounded, walkingInWall = false, playerCanBoost = false, isOnSpinner = false, canrideWithBox = false, onObstacle = false;
     public Vector3 velocity, movement, turboMove;
     Rigidbody myRB;
     float playerBoosDuration;
@@ -256,16 +256,32 @@ public class TuroPlayerMovement : MonoBehaviour
             //For spinningPlatform functionality -> returning normalStage
             myCC.enabled = true;
             transform.SetParent(GameObject.Find("Players").transform);
-            this.transform.localRotation = Quaternion.Euler(0, -90, 0);
+            //this.transform.localRotation = Quaternion.Euler(0, -90, 0);
+            
+            Vector3 dir = Camera.main.transform.forward;
+            dir.y = 0;
+            if (onObstacle)
+            {
+                dir.x = 0;
+            }
+            dir.Normalize();
+            this.transform.localRotation = Quaternion.LookRotation(dir, transform.up * Time.deltaTime);
+            
+
+            //ResetPlayerRotations();
+
             isOnSpinner = false;
 
             sfx.Jump.Play();
             playerAnimator.SetTrigger("Jump");
             velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity / 2);
+
+            onObstacle = false;
         }
         
         if(Input.GetButtonDown("Fire1") && dashAmount != 0)
         {
+            
             playerBoosDuration = boostDuration;
             playerCanBoost = true;
             dashAmount -= 1;
@@ -279,6 +295,14 @@ public class TuroPlayerMovement : MonoBehaviour
         }        
     }
 
+    public void ResetPlayerRotations()
+    {
+        Vector3 dir = Camera.main.transform.forward;
+        dir.y = 0;
+        dir.x = 0;
+        dir.Normalize();
+        this.transform.localRotation = Quaternion.LookRotation(dir, transform.up * Time.deltaTime);
+    }
 
     public void MovePlayer()
     {
@@ -394,6 +418,7 @@ public class TuroPlayerMovement : MonoBehaviour
         {
             if (canrideWithBox)
             {
+                onObstacle = true;
                 canrideWithBox = false;
                 myCC.enabled = false;
                 transform.SetParent(collider.transform);
@@ -407,12 +432,20 @@ public class TuroPlayerMovement : MonoBehaviour
         if (collider.gameObject.tag == "Spinner")
         {
             // Spinning platform functonality -> enterin platform mode.
+            onObstacle = true;
             Debug.Log("OSAAAAAAAN LENTÄÄÄÄÄÄÄÄ!");
             myCC.enabled = false;
             transform.SetParent(collider.transform);
             isOnSpinner = true;
         }
-        
+
+        if(collider.gameObject.tag == "RotatingCylinder")
+        {
+            onObstacle = true;
+            Debug.Log("Capsulessa ollaan!");
+            myCC.enabled = false;
+            transform.SetParent(collider.transform);
+        }
     }
 
 
@@ -448,6 +481,7 @@ public class TuroPlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(playerBoosDuration);
 
+        myCC.enabled = true;
         playerCanBoost = false;
     }
     IEnumerator ToCheckPoint()
