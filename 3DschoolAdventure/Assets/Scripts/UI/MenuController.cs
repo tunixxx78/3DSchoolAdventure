@@ -12,9 +12,11 @@ public class MenuController : MonoBehaviour
     public GameObject settingsMenu, pauseMenu, gameOver;
     //public GameObject settingsFirstButton, pauseFirstButton, startMenuFirstButton;
     private MenuStates menuState;
-    public bool tryAgain = false, win = false, lose = false;
+    public bool tryAgain = false, win = false, lose = false, finalLevel = false;
     public TMP_Text resultText, finalPointsText;
-    public GameObject yesButton, noButton, quitButton, startOverButton;
+    public GameObject yesButton, noButton, quitButton, startOverButton, continueButton;
+    public string[] levels;
+    public int currentLevel;
 
     public MenuStates MenuState
     {
@@ -28,7 +30,10 @@ public class MenuController : MonoBehaviour
 
     private void Start()
     {
-        //EventSystem.current.SetSelectedGameObject(null);
+        for (int i = 0; i < levels.Length; i++)
+        {
+            currentLevel = i;
+        }
     }
 
     private void Update()
@@ -48,6 +53,11 @@ public class MenuController : MonoBehaviour
         if (win || lose)
         {
             MenuState = MenuStates.GAMEOVER;
+        }
+
+        if (levels[currentLevel] == levels[levels.Length])
+        {
+            finalLevel = true;
         }
     }
 
@@ -191,11 +201,24 @@ public class MenuController : MonoBehaviour
 
         if (win)
         {
-            resultText.text = "YOU HAVE REACHED THE FINISHLINE!";
-            yesButton.SetActive(false);
-            noButton.SetActive(false);
-            quitButton.SetActive(true);
-            startOverButton.SetActive(true);
+            if (!finalLevel)
+            {
+                resultText.text = "YOU HAVE REACHED THE END OF THIS LEVEL. CONTINUE TO THE NEXT LEVEL OR SAVE & QUIT?";
+                yesButton.SetActive(false);
+                noButton.SetActive(false);
+                quitButton.SetActive(true);
+                startOverButton.SetActive(false);
+                continueButton.SetActive(true);
+            }
+            else
+            {
+                resultText.text = "YOU HAVE REACHED THE FINISHLINE!";
+                yesButton.SetActive(false);
+                noButton.SetActive(false);
+                quitButton.SetActive(true);
+                startOverButton.SetActive(true);
+                continueButton.SetActive(false);
+            }
         }
         if (lose)
         {
@@ -204,6 +227,7 @@ public class MenuController : MonoBehaviour
             noButton.SetActive(true);
             quitButton.SetActive(false);
             startOverButton.SetActive(false);
+            continueButton.SetActive(false);
         }
 
         switch (transform.name)
@@ -221,6 +245,9 @@ public class MenuController : MonoBehaviour
                 break;
             case "Quit":
                 MenuState = MenuStates.STARTMENU;
+                break;
+            case "Continue":
+                MenuState = MenuStates.GAMEVIEW;
                 break;
         }
     }
