@@ -151,6 +151,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportParticle
       objectReference: {fileID: 0}
+    - target: {fileID: 5821968821575670887, guid: 862890162ced25e468c843b3e4e2a939, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 5057862917530381291, guid: e62c1378623af4a2a999de3561634d3c, type: 3}
+    - target: {fileID: 5821968821575670887, guid: 862890162ced25e468c843b3e4e2a939, type: 3}
+      propertyPath: m_RenderMode
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 862890162ced25e468c843b3e4e2a939, type: 3}
 --- !u!1001 &8951545387732625460
