@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5591121043059088558}
   - component: {fileID: 7670564470479874148}
   - component: {fileID: 4591387668925249005}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: InclineLedgeEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
