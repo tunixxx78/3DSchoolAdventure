@@ -18,7 +18,7 @@ TagManager:
   - Roller
   - RollerLeft
   - Spinner
-  - CapsuleRotator
+  - RotatingCylinder
   layers:
   - Default
   - TransparentFX
