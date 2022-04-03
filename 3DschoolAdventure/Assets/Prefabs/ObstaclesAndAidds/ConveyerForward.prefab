@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 47708139307647270}
   - component: {fileID: 3818478236785400257}
   m_Layer: 7
-  m_Name: FlowUp
+  m_Name: ConveyerForward
   m_TagString: Conveyer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_LocalPosition: {x: -50.68, y: 33.3, z: -91.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 141017453871854634}
+  - {fileID: 4796656519926381496}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
@@ -128,8 +128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conveyerSpeed: 10
-  movingForward: 0
-  movingBackWard: 1
+  movingForward: 1
+  movingBackWard: 0
 --- !u!65 &3818478236785400257
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -143,7 +143,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.0000005, y: 1.961571, z: 10.000002}
   m_Center: {x: 0.0000010728837, y: -0.9999286, z: -0.0005619527}
---- !u!1001 &5444339977552497533
+--- !u!1001 &642877084377875695
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -152,7 +152,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4270910703096618418, guid: a86b30cdf33dac544b8e6bbea9c92130, type: 3}
       propertyPath: m_Name
-      value: ConveyerUpParticle
+      value: ForwardFlowParticle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4270910703096618418, guid: a86b30cdf33dac544b8e6bbea9c92130, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5366831694019100503, guid: a86b30cdf33dac544b8e6bbea9c92130, type: 3}
       propertyPath: m_RootOrder
@@ -199,25 +203,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7810524715375675772, guid: a86b30cdf33dac544b8e6bbea9c92130, type: 3}
-      propertyPath: TrailModule.sizeAffectsWidth
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7810524715375675772, guid: a86b30cdf33dac544b8e6bbea9c92130, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7810524715375675772, guid: a86b30cdf33dac544b8e6bbea9c92130, type: 3}
-      propertyPath: TrailModule.inheritParticleColor
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7810524715375675772, guid: a86b30cdf33dac544b8e6bbea9c92130, type: 3}
-      propertyPath: TrailModule.widthOverTrail.scalar
-      value: 0.45
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a86b30cdf33dac544b8e6bbea9c92130, type: 3}
---- !u!4 &141017453871854634 stripped
+--- !u!4 &4796656519926381496 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5366831694019100503, guid: a86b30cdf33dac544b8e6bbea9c92130, type: 3}
-  m_PrefabInstance: {fileID: 5444339977552497533}
+  m_PrefabInstance: {fileID: 642877084377875695}
   m_PrefabAsset: {fileID: 0}
