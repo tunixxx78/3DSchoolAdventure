@@ -1548,12 +1548,16 @@ MonoBehaviour:
   tryAgain: 0
   win: 0
   lose: 0
+  finalLevel: 0
   resultText: {fileID: 8772356458339517496}
   finalPointsText: {fileID: 8772356459280542039}
   yesButton: {fileID: 8772356458881713479}
   noButton: {fileID: 8772356459691764214}
   quitButton: {fileID: 8205353239743213354}
   startOverButton: {fileID: 7588154097755198363}
+  continueButton: {fileID: 3138927189448944767}
+  currentLevel: 0
+  maxLevel: 4
 --- !u!1 &3138927189655340680
 GameObject:
   m_ObjectHideFlags: 0
@@ -2366,6 +2370,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3138927189470067186}
     m_Modifications:
+    - target: {fileID: 245209744, guid: 28aefb264b6057446a4ac8e7c3787c6d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3138927189470067187}
     - target: {fileID: 4686576974007393493, guid: 28aefb264b6057446a4ac8e7c3787c6d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2472,11 +2480,6 @@ PrefabInstance:
       objectReference: {fileID: 3138927189470067187}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28aefb264b6057446a4ac8e7c3787c6d, type: 3}
---- !u!1 &8772356459733546739 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5922829570015461379, guid: 28aefb264b6057446a4ac8e7c3787c6d, type: 3}
-  m_PrefabInstance: {fileID: 3138927189474866928}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8772356459733546748 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5922829570015461388, guid: 28aefb264b6057446a4ac8e7c3787c6d, type: 3}
@@ -2522,6 +2525,16 @@ GameObject:
 --- !u!1 &7588154097755198363 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4810192222742472043, guid: 28aefb264b6057446a4ac8e7c3787c6d, type: 3}
+  m_PrefabInstance: {fileID: 3138927189474866928}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3138927189448944767 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 245209743, guid: 28aefb264b6057446a4ac8e7c3787c6d, type: 3}
+  m_PrefabInstance: {fileID: 3138927189474866928}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8772356459733546739 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5922829570015461379, guid: 28aefb264b6057446a4ac8e7c3787c6d, type: 3}
   m_PrefabInstance: {fileID: 3138927189474866928}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5416898565262305961
@@ -2618,6 +2631,14 @@ PrefabInstance:
     - target: {fileID: 6963415144747553359, guid: 3c831ea046d64b64f9ef50835d97df6b, type: 3}
       propertyPath: m_Name
       value: Hourglass
+      objectReference: {fileID: 0}
+    - target: {fileID: 7323279856443215826, guid: 3c831ea046d64b64f9ef50835d97df6b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7323279856443215826, guid: 3c831ea046d64b64f9ef50835d97df6b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7323279857239694851, guid: 3c831ea046d64b64f9ef50835d97df6b, type: 3}
       propertyPath: timeText
