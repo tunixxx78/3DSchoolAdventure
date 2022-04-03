@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7810524715375675772}
   - component: {fileID: 1437855257435873284}
   m_Layer: 7
-  m_Name: ConveyerUpParticle
+  m_Name: ForwardFlowParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,7 +168,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
