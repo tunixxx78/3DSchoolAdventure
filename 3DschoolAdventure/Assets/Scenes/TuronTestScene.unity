@@ -18475,6 +18475,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5366971001229923345, guid: 2d8b0b7a42e524616b30c8b32b814ecf, type: 3}
+    - {fileID: 4068829696946604193, guid: 2d8b0b7a42e524616b30c8b32b814ecf, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2d8b0b7a42e524616b30c8b32b814ecf, type: 3}
 --- !u!1 &1480660274 stripped
 GameObject:
@@ -21093,7 +21094,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Teleport
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4068829696946604193, guid: 2d8b0b7a42e524616b30c8b32b814ecf, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2d8b0b7a42e524616b30c8b32b814ecf, type: 3}
 --- !u!4 &1749394369 stripped
 Transform:
