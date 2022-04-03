@@ -6,13 +6,21 @@ public class RotatingCylinder : MonoBehaviour
 {
     public bool canRotate = false;
     public float rotatingSpeed = 1f;
-    public GameObject player;
+    //public GameObject player;
     //public Vector3 playerPos;
     public bool rotateRight, rotateLeft;
 
+    public TuroPlayerMovement playerScript;
+    public int activePlayer;
+    public GameObject[] players;
+
     void Awake()
     {
-        
+        activePlayer = PlayerPrefs.GetInt("MyCharacter");
+        for (int i = 0; i < players.Length; i++)
+        {
+            playerScript = players[activePlayer].GetComponent<TuroPlayerMovement>();
+        }
     }
 
     // Update is called once per frame
@@ -20,21 +28,21 @@ public class RotatingCylinder : MonoBehaviour
     {
         if (canRotate && rotateLeft)
         {
-            transform.Rotate(Vector3.down, /*-1 * player.GetComponent<TuroPlayerMovement>().gravity * player.GetComponent<TuroPlayerMovement>().jumpForce * */-1 * rotatingSpeed * Time.deltaTime);
+            transform.Rotate(Vector3.back, /*-1 * player.GetComponent<TuroPlayerMovement>().gravity * player.GetComponent<TuroPlayerMovement>().jumpForce * */rotatingSpeed * Time.deltaTime);
         }
         if (canRotate && rotateRight)
         {
-            transform.Rotate(Vector3.down, /* * player.GetComponent<TuroPlayerMovement>().gravity * player.GetComponent<TuroPlayerMovement>().jumpForce*/rotatingSpeed * Time.deltaTime);
+            transform.Rotate(Vector3.forward, /* * player.GetComponent<TuroPlayerMovement>().gravity * player.GetComponent<TuroPlayerMovement>().jumpForce*/rotatingSpeed * Time.deltaTime);
         }
-        if (transform.eulerAngles.x >= 60)
+        if (transform.eulerAngles.z >= 60)
         {
             Debug.Log("CC off");
-            player.GetComponent<TuroPlayerMovement>().myCC.enabled = true;
+            playerScript.myCC.enabled = true;
         }
-        if (transform.eulerAngles.x <= -60)
+        if (transform.eulerAngles.z <= -60)
         {
             Debug.Log("CC off");
-            player.GetComponent<TuroPlayerMovement>().myCC.enabled = true;
+            playerScript.myCC.enabled = true;
         }
     }
 
@@ -61,7 +69,7 @@ public class RotatingCylinder : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
 
-        transform.rotation = Quaternion.Euler(0, 0, 90);
+        transform.rotation = Quaternion.Euler(0, 90, 0);
     }
 
 }
