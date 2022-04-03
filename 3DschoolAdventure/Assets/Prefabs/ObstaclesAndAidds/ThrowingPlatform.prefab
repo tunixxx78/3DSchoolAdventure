@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BounceForce: 400
+  jumpper: {fileID: 7766339735993696210}
 --- !u!64 &7121067747874967252
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -213,14 +214,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 196967793977424424, guid: cc9ebab2c3b43f743a6b76ac7230fc37, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 664251640932788319, guid: cc9ebab2c3b43f743a6b76ac7230fc37, type: 3}
       propertyPath: m_Name
       value: RingParticle
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651899765778964658, guid: cc9ebab2c3b43f743a6b76ac7230fc37, type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc9ebab2c3b43f743a6b76ac7230fc37, type: 3}
 --- !u!4 &7592108097957669594 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9227011183800096, guid: cc9ebab2c3b43f743a6b76ac7230fc37, type: 3}
+  m_PrefabInstance: {fileID: 7601040421666473466}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &7766339735993696210 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 196967793977424424, guid: cc9ebab2c3b43f743a6b76ac7230fc37, type: 3}
   m_PrefabInstance: {fileID: 7601040421666473466}
   m_PrefabAsset: {fileID: 0}

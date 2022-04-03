@@ -258,7 +258,7 @@ public class TuroPlayerMovement : MonoBehaviour
         velocity.y += gravity * 2.5f * Time.deltaTime;
         myCC.Move(velocity * Time.deltaTime);
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButton("Jump") && isGrounded)
         {
             //For spinningPlatform functionality -> returning normalStage
             myCC.enabled = true;
