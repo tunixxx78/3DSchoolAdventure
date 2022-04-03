@@ -56,3 +56,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: ParticleMist
+    uniqueID: 1907648583
+    locked: 0
+  - name: ParticleSparkle
+    uniqueID: 2728249807
+    locked: 0
