@@ -10,7 +10,8 @@ public class TuroPlayerMovement : MonoBehaviour
     [SerializeField] Animator playerAnimator;
     [SerializeField] Camera MyCam;
     public CharacterController myCC;
-    public float moveSpeed, dashMoveSpeed, gravity = -9.81f, groundDistance = 0.4f, jumpForce, rotationSpeed, startTime, wallforce, boostDuration, gameOverDelay, boxRideOffTime;
+    public float moveSpeed, dashMoveSpeed, gravity = -9.81f, gravityOffTime, groundDistance = 0.4f, jumpForce, rotationSpeed, startTime, wallforce, boostDuration, gameOverDelay, boxRideOffTime;
+    private float returnGravity;
 
     // For UI programmer use!
     public int currentPoints, dashAmount;
@@ -35,7 +36,8 @@ public class TuroPlayerMovement : MonoBehaviour
 
 
     public static Vector3 currentcheckPoint = Vector3.zero;
-
+    GameManager gameManager;
+    DashItemSpawner dash;
     
     private void Awake()
     {
@@ -43,12 +45,14 @@ public class TuroPlayerMovement : MonoBehaviour
         //Cursor.lockState = CursorLockMode.Locked;
         playerAnimator = GetComponentInChildren<Animator>();
         currentcheckPoint = Vector3.zero;
+        gameManager = FindObjectOfType<GameManager>();
+        dash = FindObjectOfType<DashItemSpawner>();
 
     }
 
     private void Start()
     {
-
+        startTime = gameManager.LevelStartTime;
         myRB = GetComponent<Rigidbody>();
         currentTime = startTime;
         currentPoints = 0;
@@ -57,6 +61,9 @@ public class TuroPlayerMovement : MonoBehaviour
         //Cursor.lockState = CursorLockMode.Locked;
         runCam.SetActive(true);
         canrideWithBox = true;
+        returnGravity = gravity;
+
+        dash.SpawnDashItems();
 
     }
 
@@ -334,6 +341,10 @@ public class TuroPlayerMovement : MonoBehaviour
         {
             sfx.Jump.Play();
             velocity.y = Mathf.Sqrt(collider.GetComponent<ThrowingPlatform>().BounceForce);
+            gravity = -9.81f;
+
+            StartCoroutine(GravityReset(gravityOffTime));
+
         }
         if(collider.gameObject.tag == "Collectible")
         {
@@ -375,6 +386,7 @@ public class TuroPlayerMovement : MonoBehaviour
         if(collider.gameObject.tag == "Teleport")
         {
             sfx.Teleport.Play();
+
             //transform.position = new Vector3(teleportSpawnPoint.position.x, teleportSpawnPoint.position.y, teleportSpawnPoint.position.z);
         }
         if(collider.gameObject.tag == "PlayerDestroyer")
@@ -382,6 +394,8 @@ public class TuroPlayerMovement : MonoBehaviour
             Debug.Log("TULEEKO MITÄÄN OSUMAA?");
             sfx.gameOver.Play();
             playerAvater.SetActive(false);
+
+            dash.ClearDashItemList();
 
             StartCoroutine(ToCheckPoint());
             /*
@@ -497,11 +511,18 @@ public class TuroPlayerMovement : MonoBehaviour
 
         sfx.Teleport.Play();
         playerAvater.SetActive(true);
+        dash.SpawnDashItems();
     }
     IEnumerator CanRideWithBoxAgain(float offTime)
     {
         yield return new WaitForSeconds(offTime);
 
         canrideWithBox = true;
+    }
+    IEnumerator GravityReset(float bounceTime)
+    {
+        yield return new WaitForSeconds(bounceTime);
+
+        gravity = returnGravity;
     }
 }

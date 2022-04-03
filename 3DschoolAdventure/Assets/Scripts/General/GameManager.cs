@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject resultPanel;
+    public float LevelStartTime;
     private float startDelay;
 
     private void Start()
