@@ -29,14 +29,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 47708139307647268}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -50.68, y: 33.3, z: -91.8}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 141017453871854634}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &47708139307647267
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -196,6 +196,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5366831694019100503, guid: a86b30cdf33dac544b8e6bbea9c92130, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7810524715375675772, guid: a86b30cdf33dac544b8e6bbea9c92130, type: 3}
+      propertyPath: ForceModule.z.scalar
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7810524715375675772, guid: a86b30cdf33dac544b8e6bbea9c92130, type: 3}
+      propertyPath: ShapeModule.m_Position.z
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7810524715375675772, guid: a86b30cdf33dac544b8e6bbea9c92130, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
