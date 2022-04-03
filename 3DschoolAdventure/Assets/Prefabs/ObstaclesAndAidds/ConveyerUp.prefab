@@ -198,6 +198,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7810524715375675772, guid: a86b30cdf33dac544b8e6bbea9c92130, type: 3}
+      propertyPath: TrailModule.sizeAffectsWidth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7810524715375675772, guid: a86b30cdf33dac544b8e6bbea9c92130, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7810524715375675772, guid: a86b30cdf33dac544b8e6bbea9c92130, type: 3}
+      propertyPath: TrailModule.inheritParticleColor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7810524715375675772, guid: a86b30cdf33dac544b8e6bbea9c92130, type: 3}
+      propertyPath: TrailModule.widthOverTrail.scalar
+      value: 0.45
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a86b30cdf33dac544b8e6bbea9c92130, type: 3}
 --- !u!4 &141017453871854634 stripped
