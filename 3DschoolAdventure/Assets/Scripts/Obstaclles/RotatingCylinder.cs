@@ -69,7 +69,7 @@ public class RotatingCylinder : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
 
-        transform.rotation = Quaternion.Euler(0, 90, 0);
+        transform.rotation = Quaternion.Euler(0, 0, 90);
     }
 
 }
