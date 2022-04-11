@@ -10,8 +10,10 @@ public class TuroPlayerMovement : MonoBehaviour
     [SerializeField] Animator playerAnimator;
     [SerializeField] Camera MyCam;
     public CharacterController myCC;
-    public float moveSpeed, dashMoveSpeed, gravity = -9.81f, gravityOffTime, groundDistance = 0.4f, jumpForce, rotationSpeed, startTime, wallforce, boostDuration, gameOverDelay, boxRideOffTime;
-    private float returnGravity;
+    public float moveSpeed, accelerationTime, dashMoveSpeed, gravity = -9.81f, gravityOffTime, groundDistance = 0.4f, jumpForce, rotationSpeed, startTime, wallforce, boostDuration, gameOverDelay, boxRideOffTime;
+    private float returnGravity, currentSpeed, minSpeed, maxSpeed, speedUpTime; //currenSpeed variable is for player speedUp.
+    public int pointsToNextLevel;
+
 
     // For UI programmer use!
     public int currentPoints, dashAmount;
@@ -49,14 +51,28 @@ public class TuroPlayerMovement : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         dash = FindObjectOfType<DashItemSpawner>();
 
+        
+        
+        
     }
 
     private void Start()
     {
+        if (gameManager.newGame == true)
+        {
+            Debug.Log("PISTEET PITÄISI NOLLAANTUA");
+            pointsToNextLevel = 0;
+            PlayerPrefs.SetInt("PointsToNextLevel", 0);
+        }
+        
+        if (gameManager.newGame == false)
+        { pointsToNextLevel = PlayerPrefs.GetInt("PointsToNextLevel"); Debug.Log("TALLENNETUT PISTEET KÄYTÖSSÄ"); }
+
+
         startTime = gameManager.LevelStartTime;
         myRB = GetComponent<Rigidbody>();
         currentTime = startTime;
-        currentPoints = 0;
+        currentPoints = pointsToNextLevel;
         gM = FindObjectOfType<GameManager>();
         menuController = FindObjectOfType<MenuController>();
         //Cursor.lockState = CursorLockMode.Locked;
@@ -65,6 +81,12 @@ public class TuroPlayerMovement : MonoBehaviour
         returnGravity = gravity;
 
         dash.SpawnDashItems();
+
+        // for Player speedup functionality
+
+        minSpeed = 0;
+        maxSpeed = moveSpeed;
+        speedUpTime = 0;
 
     }
 
@@ -82,6 +104,8 @@ public class TuroPlayerMovement : MonoBehaviour
 
         dashAmountText.text = dashAmount.ToString();
         points.text = currentPoints.ToString();
+
+        
 
         if(currentTime <= 0)
         {
@@ -130,6 +154,14 @@ public class TuroPlayerMovement : MonoBehaviour
             }
             else
             {
+                currentSpeed = Mathf.SmoothStep(minSpeed, maxSpeed, speedUpTime / accelerationTime);
+                speedUpTime += Time.deltaTime;
+                if(currentSpeed <= moveSpeed)
+                {
+                    currentSpeed++;
+                }
+                
+
                 playerAvater.transform.localRotation = Quaternion.Euler(0, 0, 0);
                 MovePlayer();
                 myCC.enabled = true;
@@ -147,9 +179,13 @@ public class TuroPlayerMovement : MonoBehaviour
             if (isOnSpinner)
             {
                 myCC.enabled = false;
+
+                
             }
-            
-            
+            currentSpeed = 0;
+            speedUpTime = 0;
+
+
         }
         
         if (Input.GetKey(KeyCode.S))
@@ -161,6 +197,13 @@ public class TuroPlayerMovement : MonoBehaviour
             }
             else
             {
+                currentSpeed = Mathf.SmoothStep(minSpeed, maxSpeed, speedUpTime / accelerationTime);
+                speedUpTime += Time.deltaTime;
+                if (currentSpeed <= moveSpeed)
+                {
+                    currentSpeed++;
+                }
+
                 playerAvater.transform.localRotation = Quaternion.Euler(0, 180, 0);
                 MovePlayer();
                 myCC.enabled = true;
@@ -176,7 +219,8 @@ public class TuroPlayerMovement : MonoBehaviour
             {
                 myCC.enabled = false;
             }
-
+            currentSpeed = 0;
+            speedUpTime = 0;
         }
         
         if (Input.GetKey(KeyCode.A))
@@ -188,6 +232,13 @@ public class TuroPlayerMovement : MonoBehaviour
             }
             else
             {
+                currentSpeed = Mathf.SmoothStep(minSpeed, maxSpeed, speedUpTime / accelerationTime);
+                speedUpTime += Time.deltaTime;
+                if (currentSpeed <= moveSpeed)
+                {
+                    currentSpeed++;
+                }
+
                 playerAvater.transform.localRotation = Quaternion.Euler(0, -90, 0);
 
                 MovePlayer();
@@ -206,6 +257,8 @@ public class TuroPlayerMovement : MonoBehaviour
             {
                 myCC.enabled = false;
             }
+            currentSpeed = 0;
+            speedUpTime = 0;
         }
 
         if (Input.GetKey(KeyCode.D))
@@ -217,6 +270,13 @@ public class TuroPlayerMovement : MonoBehaviour
             }
             else
             {
+                currentSpeed = Mathf.SmoothStep(minSpeed, maxSpeed, speedUpTime / accelerationTime);
+                speedUpTime += Time.deltaTime;
+                if (currentSpeed <= moveSpeed)
+                {
+                    currentSpeed++;
+                }
+
                 playerAvater.transform.localRotation = Quaternion.Euler(0, 90, 0);
                 MovePlayer();
                 myCC.enabled = true;
@@ -232,6 +292,8 @@ public class TuroPlayerMovement : MonoBehaviour
             {
                 myCC.enabled = false;
             }
+            currentSpeed = 0;
+            speedUpTime = 0;
         }
 
         if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
@@ -314,10 +376,13 @@ public class TuroPlayerMovement : MonoBehaviour
 
     public void MovePlayer()
     {
+
+
+
             if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A) ||
                 Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.A))
             {
-                myCC.Move(movement * (moveSpeed / 2) * Time.deltaTime);
+                myCC.Move(movement * (currentSpeed / 2) * Time.deltaTime);
 
                 if (isGrounded)
                 {
@@ -326,7 +391,7 @@ public class TuroPlayerMovement : MonoBehaviour
             }
             else
             {
-                myCC.Move(movement * moveSpeed * Time.deltaTime);
+                myCC.Move(movement * currentSpeed * Time.deltaTime);
 
                 if (isGrounded)
                 {
@@ -355,6 +420,8 @@ public class TuroPlayerMovement : MonoBehaviour
             currentTime = currentTime + addTime;
             currentPoints = currentPoints + addPoints;
 
+            //PlayerPrefs.SetInt("PointsToNextLevel", currentPoints);
+
             
 
             if(collider.GetComponent<Collectibles>().hasBoosAdOn == true)
@@ -377,6 +444,10 @@ public class TuroPlayerMovement : MonoBehaviour
             //gM.resultPanel.SetActive(true);
             //Time.timeScale = 0;
             menuController.win = true;
+
+            // saving player points
+
+            PlayerPrefs.SetInt("PointsToNextLevel", currentPoints);
         }
         if(collider.gameObject.tag == "WalkableWall")
         {
@@ -412,7 +483,12 @@ public class TuroPlayerMovement : MonoBehaviour
         {
             int addDash = collider.GetComponent<DashObeject>().dashIncreaseAmount;
 
-            dashAmount = dashAmount + addDash;
+            if (dashAmount < 3)
+            {
+                dashAmount = dashAmount + addDash;
+            }
+
+            
 
             if(collider.GetComponent<DashObeject>().hasDashBoostAddOn == true)
             {
@@ -478,10 +554,15 @@ public class TuroPlayerMovement : MonoBehaviour
         }
         if (collider.gameObject.tag == "Spinner")
         {
+            Debug.Log("PITÄISI OLLA IRTI COLLIDERISTA = " + collider);
+            
+            transform.SetParent(GameObject.Find("Players").transform);
             isOnSpinner = false;
             myCC.enabled = true;
         }
     }
+
+ 
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
@@ -490,6 +571,7 @@ public class TuroPlayerMovement : MonoBehaviour
             Debug.Log("VIHDOINKIN JOTAIN TOIMIVAA!");
         }
     }
+
 
 
     IEnumerator PlayerCanNotBoost()
