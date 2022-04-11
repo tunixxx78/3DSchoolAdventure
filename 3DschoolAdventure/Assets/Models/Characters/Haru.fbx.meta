@@ -111,7 +111,7 @@ ModelImporter:
       name: Jump
       takeName: Armature.001|Armature.001Action
       internalID: 0
-      firstFrame: 70
+      firstFrame: 65
       lastFrame: 100
       wrapMode: 0
       orientationOffsetY: 0
