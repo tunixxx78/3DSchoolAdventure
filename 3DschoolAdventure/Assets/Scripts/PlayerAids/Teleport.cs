@@ -12,7 +12,9 @@ public class Teleport : MonoBehaviour
         {
             Debug.Log("TELEPORTISSA");
             Debug.Log(collider);
+            collider.GetComponent<CharacterController>().enabled = false;
             collider.transform.position = new Vector3(teleportSpawnPoint.position.x, teleportSpawnPoint.position.y, teleportSpawnPoint.position.z);
+            collider.GetComponent<CharacterController>().enabled = true;
         }
     }
 }
