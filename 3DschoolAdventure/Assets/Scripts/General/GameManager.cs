@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public float LevelStartTime;
     private float startDelay;
 
+    public bool newGame;
+
     private void Start()
     {
         
@@ -19,6 +21,11 @@ public class GameManager : MonoBehaviour
         if (scene.buildIndex == 1)
         {
             startDelay = FindObjectOfType<CharacterMenuController>().StartGameDelay;
+        }
+
+        if(SaveSystem.savingInstance.continueGame == false)
+        {
+            newGame = true;
         }
         
     }
@@ -45,5 +52,16 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(startDelay);
 
         SceneManager.LoadScene(sceneNumber);
+    }
+
+    public void TurnFalseToTrue()
+    {
+        SaveSystem.savingInstance.continueGame = true;
+        SaveSystem.savingInstance.SaveData();
+    }
+    public void TurnTrueToFalce()
+    {
+        SaveSystem.savingInstance.continueGame = false;
+        SaveSystem.savingInstance.SaveData();
     }
 }
