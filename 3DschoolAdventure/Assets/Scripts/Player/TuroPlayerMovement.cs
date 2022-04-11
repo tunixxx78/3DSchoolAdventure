@@ -44,7 +44,8 @@ public class TuroPlayerMovement : MonoBehaviour
         sfx = FindObjectOfType<SoundFX>();
         //Cursor.lockState = CursorLockMode.Locked;
         playerAnimator = GetComponentInChildren<Animator>();
-        currentcheckPoint = Vector3.zero;
+        //currentcheckPoint = Vector3.zero;
+        currentcheckPoint = myCC.transform.position;
         gameManager = FindObjectOfType<GameManager>();
         dash = FindObjectOfType<DashItemSpawner>();
 
