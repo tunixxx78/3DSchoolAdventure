@@ -61,6 +61,8 @@ public class RotatingCylinder : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             canRotate = false;
+            //playerScript.transform.Rotate(new Vector3(playerScript.transform.rotation.x, playerScript.transform.rotation.y, 0));
+            playerScript.transform.rotation = Quaternion.identity;  //Resets player rotation
             StartCoroutine(ResetTransform());
         }
     }
