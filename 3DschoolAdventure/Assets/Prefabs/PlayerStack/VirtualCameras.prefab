@@ -798,7 +798,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3902788747945148080
 Transform:
   m_ObjectHideFlags: 0
@@ -872,7 +872,7 @@ MonoBehaviour:
   m_YAxisRecentering:
     m_enabled: 1
     m_WaitTime: 1
-    m_RecenteringTime: 2
+    m_RecenteringTime: 4
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
@@ -907,8 +907,8 @@ MonoBehaviour:
   m_SplineCurvature: 0
   m_Orbits:
   - m_Height: 4.5
-    m_Radius: 6.8
-  - m_Height: 2.5
+    m_Radius: 5
+  - m_Height: 4.5
     m_Radius: 8
   - m_Height: -0.11
     m_Radius: 5.09
@@ -941,7 +941,7 @@ MonoBehaviour:
   m_DistanceLimit: 0
   m_MinimumOcclusionTime: 0
   m_CameraRadius: 0.1
-  m_Strategy: 2
+  m_Strategy: 0
   m_MaximumEffort: 4
   m_SmoothingTime: 0
   m_Damping: 0
@@ -1564,7 +1564,7 @@ MonoBehaviour:
   m_YAxisRecentering:
     m_enabled: 1
     m_WaitTime: 1
-    m_RecenteringTime: 2
+    m_RecenteringTime: 4
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
@@ -1599,8 +1599,8 @@ MonoBehaviour:
   m_SplineCurvature: 0
   m_Orbits:
   - m_Height: 4.5
-    m_Radius: 6.8
-  - m_Height: 2.5
+    m_Radius: 5
+  - m_Height: 4.5
     m_Radius: 8
   - m_Height: -0.11
     m_Radius: 5.09
@@ -1633,7 +1633,7 @@ MonoBehaviour:
   m_DistanceLimit: 0
   m_MinimumOcclusionTime: 0
   m_CameraRadius: 0.1
-  m_Strategy: 2
+  m_Strategy: 0
   m_MaximumEffort: 4
   m_SmoothingTime: 0
   m_Damping: 0
@@ -1804,7 +1804,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3902788749043934181
 Transform:
   m_ObjectHideFlags: 0
@@ -1878,7 +1878,7 @@ MonoBehaviour:
   m_YAxisRecentering:
     m_enabled: 1
     m_WaitTime: 1
-    m_RecenteringTime: 2
+    m_RecenteringTime: 4
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
@@ -1913,8 +1913,8 @@ MonoBehaviour:
   m_SplineCurvature: 0
   m_Orbits:
   - m_Height: 4.5
-    m_Radius: 6.8
-  - m_Height: 2.5
+    m_Radius: 5
+  - m_Height: 4.5
     m_Radius: 8
   - m_Height: -0.11
     m_Radius: 5.09
@@ -1947,7 +1947,7 @@ MonoBehaviour:
   m_DistanceLimit: 0
   m_MinimumOcclusionTime: 0
   m_CameraRadius: 0.1
-  m_Strategy: 2
+  m_Strategy: 0
   m_MaximumEffort: 4
   m_SmoothingTime: 0
   m_Damping: 0
