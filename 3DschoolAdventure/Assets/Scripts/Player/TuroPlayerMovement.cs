@@ -367,7 +367,7 @@ public class TuroPlayerMovement : MonoBehaviour
             onObstacle = false;
         }
         
-        if(Input.GetButtonDown("Fire1") && dashAmount != 0)
+        if(Input.GetButtonDown("Fire1") && dashAmount != 0 && menuController.MenuState != MenuStates.PAUSE && menuController.MenuState != MenuStates.SETTINGS)
         {
             
             playerBoosDuration = boostDuration;
