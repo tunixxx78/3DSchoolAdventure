@@ -552,8 +552,8 @@ public class TuroPlayerMovement : MonoBehaviour
         {
             onObstacle = true;
             Debug.Log("Capsulessa ollaan!");
-            myCC.enabled = false;
-            transform.SetParent(collider.transform);
+            //myCC.enabled = false;
+            //transform.SetParent(collider.transform);
         }
     }
 
