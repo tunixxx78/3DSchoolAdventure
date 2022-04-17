@@ -12,7 +12,7 @@ public class TuroPlayerMovement : MonoBehaviour
     public CharacterController myCC;
     public float moveSpeed, accelerationTime, dashMoveSpeed, gravity = -9.81f, gravityOffTime, groundDistance = 0.4f, jumpForce, rotationSpeed, startTime, wallforce, boostDuration, gameOverDelay, boxRideOffTime;
     private float returnGravity, currentSpeed, minSpeed, maxSpeed, speedUpTime; //currenSpeed variable is for player speedUp.
-    public int pointsToNextLevel;
+    public int pointsToNextLevel, timeToPoints;
 
 
     // For UI programmer use!
@@ -455,6 +455,11 @@ public class TuroPlayerMovement : MonoBehaviour
         }
         if(collider.gameObject.tag == "EndLine")
         {
+            // Turning leftOver time to points
+            timeToPoints = (int) currentTime;
+            currentPoints = currentPoints + (timeToPoints * 100);
+
+
             Cursor.lockState = CursorLockMode.None;
             finalPointsText.text = currentPoints.ToString();
             //resultText.text = "YOU WIN!";
@@ -497,9 +502,24 @@ public class TuroPlayerMovement : MonoBehaviour
             */
         }
 
-        if(collider.gameObject.tag == "Dash")
+        if (collider.gameObject.tag == "Enemy")
+        {
+            Debug.Log("TULEEKO MITÄÄN OSUMAA?");
+            sfx.gameOver.Play();
+            playerAvater.SetActive(false);
+
+            dash.ClearDashItemList();
+
+            StartCoroutine(ToCheckPoint());
+            
+        }
+
+        if (collider.gameObject.tag == "Dash")
         {
             int addDash = collider.GetComponent<DashObeject>().dashIncreaseAmount;
+            int addpoints = collider.GetComponent<DashObeject>().pointsFromDashItem;
+
+            currentPoints = currentPoints + addpoints;
 
             if (dashAmount < 3)
             {
