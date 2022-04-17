@@ -109,5 +109,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeAmount: 10
-  pointAmount: 50
+  pointAmount: 100
   hasBoosAdOn: 0

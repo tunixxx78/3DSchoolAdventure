@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashIncreaseAmount: 1
+  pointsFromDashItem: 50
   hasDashBoostAddOn: 0
 --- !u!1 &6262132628540587295
 GameObject:

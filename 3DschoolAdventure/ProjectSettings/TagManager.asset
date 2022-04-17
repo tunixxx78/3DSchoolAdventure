@@ -19,6 +19,7 @@ TagManager:
   - RollerLeft
   - Spinner
   - RotatingCylinder
+  - Enemy
   layers:
   - Default
   - TransparentFX
