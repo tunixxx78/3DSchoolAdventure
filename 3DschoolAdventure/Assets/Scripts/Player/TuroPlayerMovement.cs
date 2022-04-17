@@ -23,7 +23,7 @@ public class TuroPlayerMovement : MonoBehaviour
 
     [SerializeField] Transform groundCheck, teleportSpawnPoint;
     [SerializeField] LayerMask groundMask;
-    bool isGrounded, walkingInWall = false, playerCanBoost = false, isOnSpinner = false, canrideWithBox = false, onObstacle = false;
+    bool isGrounded, walkingInWall = false, playerCanBoost = false, isOnSpinner = false, canrideWithBox = false, onObstacle = false, playerIsMoving = false;
     public Vector3 velocity, movement, turboMove;
     Rigidbody myRB;
     float playerBoosDuration;
@@ -154,13 +154,17 @@ public class TuroPlayerMovement : MonoBehaviour
             }
             else
             {
-                currentSpeed = Mathf.SmoothStep(minSpeed, maxSpeed, speedUpTime / accelerationTime);
-                speedUpTime += Time.deltaTime;
-                if(currentSpeed <= moveSpeed)
+                if (playerIsMoving == false)
                 {
-                    currentSpeed++;
+                    Debug.Log("KIIHTYY KIIHTYY");
+                    currentSpeed = Mathf.SmoothStep(minSpeed, maxSpeed, speedUpTime / accelerationTime);
+                    speedUpTime += Time.deltaTime;
+                    if (currentSpeed <= moveSpeed)
+                    {
+                        currentSpeed++;
+                    }
                 }
-                
+
 
                 playerAvater.transform.localRotation = Quaternion.Euler(0, 0, 0);
                 MovePlayer();
@@ -184,6 +188,7 @@ public class TuroPlayerMovement : MonoBehaviour
             }
             currentSpeed = 0;
             speedUpTime = 0;
+            playerIsMoving = false;
 
 
         }
@@ -197,12 +202,16 @@ public class TuroPlayerMovement : MonoBehaviour
             }
             else
             {
-                currentSpeed = Mathf.SmoothStep(minSpeed, maxSpeed, speedUpTime / accelerationTime);
-                speedUpTime += Time.deltaTime;
-                if (currentSpeed <= moveSpeed)
+                if(playerIsMoving == false)
                 {
-                    currentSpeed++;
+                    currentSpeed = Mathf.SmoothStep(minSpeed, maxSpeed, speedUpTime / accelerationTime);
+                    speedUpTime += Time.deltaTime;
+                    if (currentSpeed <= moveSpeed)
+                    {
+                        currentSpeed++;
+                    }
                 }
+                
 
                 playerAvater.transform.localRotation = Quaternion.Euler(0, 180, 0);
                 MovePlayer();
@@ -221,6 +230,7 @@ public class TuroPlayerMovement : MonoBehaviour
             }
             currentSpeed = 0;
             speedUpTime = 0;
+            playerIsMoving = false;
         }
         
         if (Input.GetKey(KeyCode.A))
@@ -232,11 +242,14 @@ public class TuroPlayerMovement : MonoBehaviour
             }
             else
             {
-                currentSpeed = Mathf.SmoothStep(minSpeed, maxSpeed, speedUpTime / accelerationTime);
-                speedUpTime += Time.deltaTime;
-                if (currentSpeed <= moveSpeed)
+                if (playerIsMoving == false)
                 {
-                    currentSpeed++;
+                    currentSpeed = Mathf.SmoothStep(minSpeed, maxSpeed, speedUpTime / accelerationTime);
+                    speedUpTime += Time.deltaTime;
+                    if (currentSpeed <= moveSpeed)
+                    {
+                        currentSpeed++;
+                    }
                 }
 
                 playerAvater.transform.localRotation = Quaternion.Euler(0, -90, 0);
@@ -259,6 +272,7 @@ public class TuroPlayerMovement : MonoBehaviour
             }
             currentSpeed = 0;
             speedUpTime = 0;
+            playerIsMoving = false;
         }
 
         if (Input.GetKey(KeyCode.D))
@@ -270,11 +284,14 @@ public class TuroPlayerMovement : MonoBehaviour
             }
             else
             {
-                currentSpeed = Mathf.SmoothStep(minSpeed, maxSpeed, speedUpTime / accelerationTime);
-                speedUpTime += Time.deltaTime;
-                if (currentSpeed <= moveSpeed)
+                if (playerIsMoving == false)
                 {
-                    currentSpeed++;
+                    currentSpeed = Mathf.SmoothStep(minSpeed, maxSpeed, speedUpTime / accelerationTime);
+                    speedUpTime += Time.deltaTime;
+                    if (currentSpeed <= moveSpeed)
+                    {
+                        currentSpeed++;
+                    }
                 }
 
                 playerAvater.transform.localRotation = Quaternion.Euler(0, 90, 0);
@@ -294,6 +311,7 @@ public class TuroPlayerMovement : MonoBehaviour
             }
             currentSpeed = 0;
             speedUpTime = 0;
+            playerIsMoving = false;
         }
 
         if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
@@ -349,7 +367,7 @@ public class TuroPlayerMovement : MonoBehaviour
             onObstacle = false;
         }
         
-        if(Input.GetButtonDown("Fire1") && dashAmount != 0)
+        if(Input.GetButtonDown("Fire1") && dashAmount != 0 && menuController.MenuState != MenuStates.PAUSE && menuController.MenuState != MenuStates.SETTINGS)
         {
             
             playerBoosDuration = boostDuration;
@@ -377,7 +395,7 @@ public class TuroPlayerMovement : MonoBehaviour
     public void MovePlayer()
     {
 
-
+        //playerIsMoving = true;
 
             if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A) ||
                 Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.A))
@@ -534,8 +552,8 @@ public class TuroPlayerMovement : MonoBehaviour
         {
             onObstacle = true;
             Debug.Log("Capsulessa ollaan!");
-            myCC.enabled = false;
-            transform.SetParent(collider.transform);
+            //myCC.enabled = false;
+            //transform.SetParent(collider.transform);
         }
     }
 
