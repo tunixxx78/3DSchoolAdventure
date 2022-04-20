@@ -1228,11 +1228,11 @@ AnimationClip:
       value: {fileID: 6648730371642643549, guid: 7add13f17869f7d4b833443577716a9f, type: 3}
     - time: 2.6666667
       value: {fileID: -1241468213247072981, guid: 7add13f17869f7d4b833443577716a9f, type: 3}
-    - time: 2.8666666
+    - time: 2.75
       value: {fileID: 940882260111003054, guid: 7add13f17869f7d4b833443577716a9f, type: 3}
-    - time: 3.0666666
+    - time: 2.8333333
       value: {fileID: -6385811657101354484, guid: 7add13f17869f7d4b833443577716a9f, type: 3}
-    - time: 3.25
+    - time: 2.9
       value: {fileID: 6648730371642643549, guid: 7add13f17869f7d4b833443577716a9f, type: 3}
     attribute: m_Sprite
     path: CharOneButton
@@ -1466,7 +1466,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 3.2666667
+    m_StopTime: 2.9166667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
