@@ -12,7 +12,8 @@ public class MenuController : MonoBehaviour
     public GameObject settingsMenu, pauseMenu, gameOver;
     private MenuStates menuState;
     public bool tryAgain = false, win = false, lose = false, finalLevel = false;
-    public TMP_Text resultText, finalPointsText;
+    public TMP_Text resultText, finalPointsText, gameOverText;
+    public string resultStringLose, resultStringWin, resultStringFinished, gameOverStringLose, gameOverStringWin, gameOverStringFinished;
     public GameObject yesButton, noButton, quitButton, startOverButton, continueButton;
     public int currentLevel;
     public int maxLevel;
@@ -203,7 +204,8 @@ public class MenuController : MonoBehaviour
         {
             if (currentLevel != maxLevel)
             {
-                resultText.text = "YOU HAVE REACHED THE END OF THIS LEVEL. CONTINUE TO THE NEXT LEVEL OR SAVE & QUIT?";
+                resultText.text = resultStringWin;
+                gameOverText.text = gameOverStringWin;
                 yesButton.SetActive(false);
                 noButton.SetActive(false);
                 quitButton.SetActive(true);
@@ -212,7 +214,8 @@ public class MenuController : MonoBehaviour
             }
             else
             {
-                resultText.text = "YOU HAVE REACHED THE FINISHLINE!";
+                resultText.text = resultStringFinished;
+                gameOverText.text = gameOverStringFinished;
                 yesButton.SetActive(false);
                 noButton.SetActive(false);
                 quitButton.SetActive(true);
@@ -222,7 +225,8 @@ public class MenuController : MonoBehaviour
         }
         if (lose)
         {
-            resultText.text = "YOU COULDN'T MAKE IT IN THIS LIFETIME. TRY AGAIN?";
+            resultText.text = resultStringLose;
+            gameOverText.text = gameOverStringLose;
             yesButton.SetActive(true);
             noButton.SetActive(true);
             quitButton.SetActive(false);
