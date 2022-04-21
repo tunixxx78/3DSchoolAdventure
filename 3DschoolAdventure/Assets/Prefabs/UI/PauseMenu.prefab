@@ -661,7 +661,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.0562, y: 0.14171}
+  m_AnchoredPosition: {x: 1.0562134, y: 0.14170837}
   m_SizeDelta: {x: 2.1125069, y: 0.28340244}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3347642940607619707
@@ -1123,6 +1123,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6099900314319731085, guid: e53fe79398df30d4e8dcbf700d1a16a8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ControlPauseMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 6702565804955822373, guid: e53fe79398df30d4e8dcbf700d1a16a8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1295,7 +1299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3977836895702204564, guid: 0ff55cfab3ec0654e9c4c845d4cfd59c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 3.7799988
+      value: 3.7799683
       objectReference: {fileID: 0}
     - target: {fileID: 3977836895702204564, guid: 0ff55cfab3ec0654e9c4c845d4cfd59c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
