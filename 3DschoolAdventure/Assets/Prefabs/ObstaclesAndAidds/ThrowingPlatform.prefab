@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BounceForce: 400
-  jumpper: {fileID: 0}
+  jumpper: {fileID: 1320937959262689312}
 --- !u!64 &7121067747874967252
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -537,5 +537,10 @@ PrefabInstance:
 --- !u!4 &3943285413320202162 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9227011183800096, guid: cc9ebab2c3b43f743a6b76ac7230fc37, type: 3}
+  m_PrefabInstance: {fileID: 3934346010966161554}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1320937959262689312 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2651899765778964658, guid: cc9ebab2c3b43f743a6b76ac7230fc37, type: 3}
   m_PrefabInstance: {fileID: 3934346010966161554}
   m_PrefabAsset: {fileID: 0}
