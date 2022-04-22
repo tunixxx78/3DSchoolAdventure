@@ -11,10 +11,12 @@ public class MenuController : MonoBehaviour
 {
     public GameObject settingsMenu, pauseMenu, gameOver;
     private MenuStates menuState;
-    public bool tryAgain = false, win = false, lose = false, finalLevel = false;
+    public bool tryAgain = false, win = false, lose = false, finalLevel = false, introSkipped = false;
     public TMP_Text resultText, finalPointsText, gameOverText;
     public string resultStringLose, resultStringWin, resultStringFinished, gameOverStringLose, gameOverStringWin, gameOverStringFinished;
-    public GameObject yesButton, noButton, quitButton, startOverButton, continueButton;
+    public GameObject yesButton, noButton, quitButton, startOverButton, continueButton, dialogue;
+    public GameObject[] dialoguePages;
+    public int currentPage = 0;
     public int currentLevel;
     public int maxLevel;
 
@@ -28,10 +30,14 @@ public class MenuController : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        introSkipped = PlayerPrefs.GetInt("IntroSkipped") == 1 ? true : false;
+    }
+
     private void Update()
     {
         currentLevel = SceneManager.GetActiveScene().buildIndex;
-
         //Pause activates from Esc and returns from pressing Esc again
         if (Input.GetKeyDown(KeyCode.Escape) && MenuState != MenuStates.PAUSE && MenuState != MenuStates.GAMEOVER)
         {
@@ -47,6 +53,26 @@ public class MenuController : MonoBehaviour
         if (win || lose)
         {
             MenuState = MenuStates.GAMEOVER;
+        }
+
+        if (introSkipped && currentLevel == 2)
+        {
+            dialogue.SetActive(true);
+            for (int i = 0; i < dialoguePages.Length; i++)
+            {
+                if (currentPage < dialoguePages.Length)
+                {
+                    dialoguePages[currentPage].SetActive(true);
+                    if (currentPage > 0)
+                    {
+                        dialoguePages[currentPage - 1].SetActive(false);
+                    }
+                }
+                else
+                {
+                    dialogue.SetActive(false);
+                }
+            }
         }
 
     }
@@ -115,6 +141,8 @@ public class MenuController : MonoBehaviour
         {
             case "Skip":
                 MenuState = MenuStates.CHARACTERSELECTION;
+                introSkipped = true;
+                PlayerPrefs.SetInt("IntroSkipped", introSkipped ? 1 : 0);
                 break;
         }
     }
@@ -129,12 +157,22 @@ public class MenuController : MonoBehaviour
 
     public void ControlGameView(Transform transform)
     {
-        SceneManager.LoadScene(currentLevel);
+        if (SceneManager.GetActiveScene() != SceneManager.GetSceneByBuildIndex(currentLevel))
+        {
+            SceneManager.LoadScene(currentLevel);
+        }
+        switch (transform.name)
+        {
+            case "Next":
+                currentPage++;
+                break;
+        }
         if (tryAgain)
         {
             SceneManager.LoadScene(currentLevel);
             Cursor.visible = false;
         }
+
     }
 
     public void ControlPauseMenu(Transform transform)
