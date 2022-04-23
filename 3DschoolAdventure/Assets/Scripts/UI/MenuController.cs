@@ -19,6 +19,7 @@ public class MenuController : MonoBehaviour
     //public int currentPage = 0;
     public int currentLevel;
     public int maxLevel;
+    private SoundFX sfx;
 
     public MenuStates MenuState
     {
@@ -33,6 +34,11 @@ public class MenuController : MonoBehaviour
     private void Start()
     {
         //introSkipped = PlayerPrefs.GetInt("IntroSkipped") == 1 ? true : false;
+    }
+
+    private void Awake()
+    {
+        sfx = FindObjectOfType<SoundFX>();
     }
 
     private void Update()
