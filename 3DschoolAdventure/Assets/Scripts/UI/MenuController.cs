@@ -295,4 +295,10 @@ public class MenuController : MonoBehaviour
                 break;
         }
     }
+
+    public IEnumerator WaitToChangeScene()
+    {
+        FindObjectOfType<SceneChange>().FadeIn();
+        yield return new WaitForSeconds(2f);
+    }
 }
