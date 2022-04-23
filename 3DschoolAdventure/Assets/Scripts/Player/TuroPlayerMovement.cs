@@ -88,6 +88,7 @@ public class TuroPlayerMovement : MonoBehaviour
         maxSpeed = moveSpeed;
         speedUpTime = 0;
 
+        
     }
 
 
@@ -339,11 +340,12 @@ public class TuroPlayerMovement : MonoBehaviour
         velocity.y += gravity * 2.5f * Time.deltaTime;
         myCC.Move(velocity * Time.deltaTime);
 
-        if (Input.GetButton("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
             //For spinningPlatform functionality -> returning normalStage
-            myCC.enabled = true;
-            transform.SetParent(GameObject.Find("Players").transform);
+            //myCC.enabled = true;
+            //transform.SetParent(GameObject.Find("Players").transform);
+
             //this.transform.localRotation = Quaternion.Euler(0, -90, 0);
             
             Vector3 dir = Camera.main.transform.forward;
@@ -358,13 +360,13 @@ public class TuroPlayerMovement : MonoBehaviour
 
             //ResetPlayerRotations();
 
-            isOnSpinner = false;
+            //isOnSpinner = false;
 
             sfx.Jump.Play();
             playerAnimator.SetTrigger("Jump");
             velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity / 2);
 
-            onObstacle = false;
+            //onObstacle = false;
         }
         
         if(Input.GetButtonDown("Fire1") && dashAmount != 0 && menuController.MenuState != MenuStates.PAUSE && menuController.MenuState != MenuStates.SETTINGS)
@@ -381,6 +383,18 @@ public class TuroPlayerMovement : MonoBehaviour
         {
             myCC.Move(turboMove * (moveSpeed * dashMoveSpeed) * Time.deltaTime);
         }        
+    }
+    private void LateUpdate()
+    {
+        if (Input.GetButton("Jump"))
+        {
+            //For spinningPlatform functionality -> returning normalStage
+
+            myCC.enabled = true;
+            isOnSpinner = false;
+            onObstacle = false;
+            transform.SetParent(GameObject.Find("Players").transform);
+        }
     }
 
     public void ResetPlayerRotations()
@@ -568,13 +582,16 @@ public class TuroPlayerMovement : MonoBehaviour
             isOnSpinner = true;
         }
 
-        if(collider.gameObject.tag == "RotatingCylinder")
+        if (collider.gameObject.tag == "RotatingCylinder")
         {
             onObstacle = true;
             Debug.Log("Capsulessa ollaan!");
             //myCC.enabled = false;
             //transform.SetParent(collider.transform);
+
+
         }
+        
     }
 
 
@@ -604,7 +621,7 @@ public class TuroPlayerMovement : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if(hit.gameObject.tag == ("Spinner"))
+        if(hit.gameObject.tag == "Spinner")
         {
             Debug.Log("VIHDOINKIN JOTAIN TOIMIVAA!");
         }

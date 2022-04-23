@@ -11,12 +11,15 @@ public class MenuController : MonoBehaviour
 {
     public GameObject settingsMenu, pauseMenu, gameOver;
     private MenuStates menuState;
-    public bool tryAgain = false, win = false, lose = false, finalLevel = false;
+    public bool tryAgain = false, win = false, lose = false, finalLevel = false, introSkipped = false;
     public TMP_Text resultText, finalPointsText, gameOverText;
     public string resultStringLose, resultStringWin, resultStringFinished, gameOverStringLose, gameOverStringWin, gameOverStringFinished;
-    public GameObject yesButton, noButton, quitButton, startOverButton, continueButton;
+    public GameObject yesButton, noButton, quitButton, startOverButton, continueButton/*, dialogue*/;
+    //public GameObject[] dialoguePages;
+    //public int currentPage = 0;
     public int currentLevel;
     public int maxLevel;
+    private SoundFX sfx;
 
     public MenuStates MenuState
     {
@@ -30,13 +33,17 @@ public class MenuController : MonoBehaviour
 
     private void Start()
     {
+        //introSkipped = PlayerPrefs.GetInt("IntroSkipped") == 1 ? true : false;
+    }
 
+    private void Awake()
+    {
+        sfx = FindObjectOfType<SoundFX>();
     }
 
     private void Update()
     {
         currentLevel = SceneManager.GetActiveScene().buildIndex;
-
         //Pause activates from Esc and returns from pressing Esc again
         if (Input.GetKeyDown(KeyCode.Escape) && MenuState != MenuStates.PAUSE && MenuState != MenuStates.GAMEOVER)
         {
@@ -54,10 +61,26 @@ public class MenuController : MonoBehaviour
             MenuState = MenuStates.GAMEOVER;
         }
 
-        //if (levels[currentLevel] == levels[levels.Length])
+        //if (introSkipped && currentLevel == 2)
         //{
-        //    finalLevel = true;
+        //    dialogue.SetActive(true);
+        //    for (int i = 0; i < dialoguePages.Length; i++)
+        //    {
+        //        if (currentPage < dialoguePages.Length)
+        //        {
+        //            dialoguePages[currentPage].SetActive(true);
+        //            if (currentPage > 0)
+        //            {
+        //                dialoguePages[currentPage - 1].SetActive(false);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            dialogue.SetActive(false);
+        //        }
+        //    }
         //}
+
     }
 
     //Calls a method when the menuState value changes
@@ -67,6 +90,9 @@ public class MenuController : MonoBehaviour
         {
             case MenuStates.STARTMENU:
                 ControlStartMenu(transform);
+                break;
+            case MenuStates.CUTSCENE:
+                ControlCutscene(transform);
                 break;
             case MenuStates.CHARACTERSELECTION:
                 ControlCharacterSelection();
@@ -94,21 +120,35 @@ public class MenuController : MonoBehaviour
         if(SceneManager.GetActiveScene() != SceneManager.GetSceneByName("StartMenu"))
         {
             SceneManager.LoadScene("StartMenu");
-            //EventSystem.current.SetSelectedGameObject(null);
-            //EventSystem.current.SetSelectedGameObject(startMenuFirstButton);
         }
 
         //What happens from buttons
         switch (transform.name)
         {
             case "Play":
-                MenuState = MenuStates.CHARACTERSELECTION;
+                MenuState = MenuStates.CUTSCENE;
                 break;
             case "Settings":
                 MenuState = MenuStates.SETTINGS;
                 break;
             case "Exit":
                 Application.Quit();
+                break;
+        }
+    }
+
+    public void ControlCutscene(Transform transform)
+    {
+        if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("IntroAnimation"))
+        {
+            SceneManager.LoadScene("IntroAnimation");
+        }
+        switch (transform.name)
+        {
+            case "Skip":
+                MenuState = MenuStates.CHARACTERSELECTION;
+                introSkipped = true;
+                PlayerPrefs.SetInt("IntroSkipped", introSkipped ? 1 : 0);
                 break;
         }
     }
@@ -123,18 +163,22 @@ public class MenuController : MonoBehaviour
 
     public void ControlGameView(Transform transform)
     {
-        //if(SceneManager.GetActiveScene().buildIndex != SceneManager.GetSceneByBuildIndex(currentLevel))
+        if (SceneManager.GetActiveScene() != SceneManager.GetSceneByBuildIndex(currentLevel))
+        {
+            SceneManager.LoadScene(currentLevel);
+        }
+        //switch (transform.name)
         //{
-        //    SceneManager.LoadScene(currentLevel);
-
-        //    Cursor.visible = false;
+        //    case "Next":
+        //        currentPage++;
+        //        break;
         //}
-        SceneManager.LoadScene(currentLevel);
         if (tryAgain)
         {
             SceneManager.LoadScene(currentLevel);
             Cursor.visible = false;
         }
+
     }
 
     public void ControlPauseMenu(Transform transform)
@@ -142,8 +186,6 @@ public class MenuController : MonoBehaviour
         settingsMenu.gameObject.SetActive(false);
         pauseMenu.SetActive(true);
         Cursor.visible = true;
-        //EventSystem.current.SetSelectedGameObject(null);
-        //EventSystem.current.SetSelectedGameObject(pauseFirstButton);
         Time.timeScale = 0;
 
         //What happens from buttons
@@ -170,8 +212,6 @@ public class MenuController : MonoBehaviour
         settingsMenu.gameObject.SetActive(true);
         pauseMenu.gameObject.SetActive(false);
         Cursor.visible = true;
-        //EventSystem.current.SetSelectedGameObject(null);
-        //EventSystem.current.SetSelectedGameObject(settingsFirstButton);
 
         //What happens from buttons
         switch (transform.name)
@@ -188,7 +228,6 @@ public class MenuController : MonoBehaviour
         if (pauseMenu.gameObject.activeSelf)
         {
             pauseMenu.gameObject.SetActive(false);
-            //EventSystem.current.SetSelectedGameObject(null);
             Time.timeScale = 1;
             Cursor.visible = false;
         }
@@ -255,5 +294,11 @@ public class MenuController : MonoBehaviour
                 MenuState = MenuStates.GAMEVIEW;
                 break;
         }
+    }
+
+    public IEnumerator WaitToChangeScene()
+    {
+        FindObjectOfType<SceneChange>().FadeIn();
+        yield return new WaitForSeconds(2f);
     }
 }
