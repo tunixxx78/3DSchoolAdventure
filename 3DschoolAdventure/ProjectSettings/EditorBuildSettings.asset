@@ -24,9 +24,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Level4.unity
     guid: 458f0ae7ad74545f2841cf01d65cf646
   - enabled: 1
+    path: Assets/Scenes/Level5.unity
+    guid: 3565c69e4907a4aa894fb70a1ef805e9
+  - enabled: 1
+    path: Assets/Scenes/Level6.unity
+    guid: dcee0418c79659d4ebe9c9b6a7f1cfcd
+  - enabled: 1
     path: Assets/Scenes/HighScoreScene.unity
     guid: 52d370f7cd83d487fb1aff4e86d2bddc
-  - enabled: 0
-    path: Assets/Scenes/TuronTestScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
