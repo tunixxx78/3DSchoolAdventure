@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HighscoreHandler : MonoBehaviour
 {
@@ -59,5 +60,13 @@ public class HighscoreHandler : MonoBehaviour
                 break;
             }
         }
+    }
+
+    //exiting back to main menu(temporary function)
+
+    public void BackToMainMenu()
+    {
+        PlayerPrefs.SetInt("PointsToNextLevel", 0);
+        SceneManager.LoadScene(0);
     }
 }
