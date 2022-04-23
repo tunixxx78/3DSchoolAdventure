@@ -1549,6 +1549,7 @@ MonoBehaviour:
   win: 0
   lose: 0
   finalLevel: 0
+  introSkipped: 0
   resultText: {fileID: 8772356458339517496}
   finalPointsText: {fileID: 8772356459280542039}
   gameOverText: {fileID: 8772356459099482765}
@@ -1563,8 +1564,11 @@ MonoBehaviour:
   quitButton: {fileID: 6063082784371201242}
   startOverButton: {fileID: 7588154097755198363}
   continueButton: {fileID: 3138927189448944767}
+  dialogue: {fileID: 0}
+  dialoguePages: []
+  currentPage: 0
   currentLevel: 0
-  maxLevel: 6
+  maxLevel: 8
 --- !u!1 &3138927189655340680
 GameObject:
   m_ObjectHideFlags: 0
