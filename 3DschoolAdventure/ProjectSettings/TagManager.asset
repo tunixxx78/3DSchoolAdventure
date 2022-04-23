@@ -20,6 +20,10 @@ TagManager:
   - Spinner
   - RotatingCylinder
   - Enemy
+  - CylinderLeft
+  - CylinderRight
+  - Ground
+  - '-'
   layers:
   - Default
   - TransparentFX
