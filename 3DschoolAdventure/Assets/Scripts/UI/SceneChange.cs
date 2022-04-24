@@ -12,6 +12,7 @@ public class SceneChange : MonoBehaviour
     {
         music = GameObject.Find("Music").GetComponent<AudioSource>();
         currentVolume = 0;
+        Time.timeScale = 1;
         
     }
 
