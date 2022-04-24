@@ -9,13 +9,12 @@ public class AudioSliders : MonoBehaviour
     public AudioMixer musicAudioMixer, effectsAudioMixer;
     public Slider musicSlider, effectsSlider;
     public bool muted;
-    public float musicV, sfxV;
+    public float musicV = 1f, sfxV = 1f;
 
-    // Start is called before the first frame update
     void Start()
     {
         musicSlider.value = PlayerPrefs.GetFloat("MusicVol", musicV);
-        effectsSlider.value = PlayerPrefs.GetFloat("EffectsVol", musicV);
+        effectsSlider.value = PlayerPrefs.GetFloat("EffectsVol", sfxV);
     }
 
     public void SetMusicLevel(float musicSlider)
@@ -36,8 +35,8 @@ public class AudioSliders : MonoBehaviour
     {
         if (muted)
         {
-            musicSlider.value = 1;
-            effectsSlider.value = 1;
+            musicSlider.value = 1f;
+            effectsSlider.value = 1f;
             muted = false;
         }
         else
