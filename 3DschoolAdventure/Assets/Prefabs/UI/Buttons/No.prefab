@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 21275497509983964}
   - component: {fileID: 7010922364706859646}
   - component: {fileID: 6593674503412721198}
+  - component: {fileID: 4501752242420679531}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -75,6 +76,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4501752242420679531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3402683171550839576}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &6696302489274824169
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,6 +178,7 @@ GameObject:
   - component: {fileID: 8014329387183778926}
   - component: {fileID: 8014329387183778925}
   - component: {fileID: 8014329387183778924}
+  - component: {fileID: 6524689561490857304}
   m_Layer: 5
   m_Name: No
   m_TagString: Untagged
@@ -285,6 +302,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!95 &6524689561490857304
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8014329387183778922}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 03735c762d5cdad43bbe8567c93a7953, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8926257147209591611
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,7 +395,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278210303
+    rgba: 4284255232
   m_fontColor: {r: 1, g: 0.30588236, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
