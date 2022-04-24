@@ -1127,6 +1127,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ControlPauseMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 6364413095939427068, guid: e53fe79398df30d4e8dcbf700d1a16a8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.2804575
+      objectReference: {fileID: 0}
     - target: {fileID: 6702565804955822373, guid: e53fe79398df30d4e8dcbf700d1a16a8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
