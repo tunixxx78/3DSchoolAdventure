@@ -11,6 +11,7 @@ public class Dialogue : MonoBehaviour
     void Awake()
     {
         dialogue.SetActive(true);
+        Cursor.visible = true;
         Time.timeScale = 0;
     }
 
@@ -30,6 +31,7 @@ public class Dialogue : MonoBehaviour
             {
                 dialogue.SetActive(false);
                 Time.timeScale = 1;
+                Cursor.visible = false;
             }
         }
     }
