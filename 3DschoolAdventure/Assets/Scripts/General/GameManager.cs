@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
         if(SaveSystem.savingInstance.continueGame == false)
         {
             newGame = true;
+            PlayerPrefs.SetInt("PointsToNextLevel", 0);
         }
         
     }
