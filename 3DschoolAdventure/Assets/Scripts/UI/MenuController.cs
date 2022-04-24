@@ -14,11 +14,12 @@ public class MenuController : MonoBehaviour
     public bool tryAgain = false, win = false, lose = false, finalLevel = false, introSkipped = false;
     public TMP_Text resultText, finalPointsText, gameOverText;
     public string resultStringLose, resultStringWin, resultStringFinished, gameOverStringLose, gameOverStringWin, gameOverStringFinished;
-    public GameObject yesButton, noButton, quitButton, startOverButton, continueButton, dialogue;
-    public GameObject[] dialoguePages;
-    public int currentPage = 0;
+    public GameObject yesButton, noButton, quitButton, startOverButton, continueButton/*, dialogue*/;
+    //public GameObject[] dialoguePages;
+    //public int currentPage = 0;
     public int currentLevel;
     public int maxLevel;
+    private SoundFX sfx;
 
     public MenuStates MenuState
     {
@@ -32,7 +33,12 @@ public class MenuController : MonoBehaviour
 
     private void Start()
     {
-        introSkipped = PlayerPrefs.GetInt("IntroSkipped") == 1 ? true : false;
+        //introSkipped = PlayerPrefs.GetInt("IntroSkipped") == 1 ? true : false;
+    }
+
+    private void Awake()
+    {
+        sfx = FindObjectOfType<SoundFX>();
     }
 
     private void Update()
@@ -55,25 +61,25 @@ public class MenuController : MonoBehaviour
             MenuState = MenuStates.GAMEOVER;
         }
 
-        if (introSkipped && currentLevel == 2)
-        {
-            dialogue.SetActive(true);
-            for (int i = 0; i < dialoguePages.Length; i++)
-            {
-                if (currentPage < dialoguePages.Length)
-                {
-                    dialoguePages[currentPage].SetActive(true);
-                    if (currentPage > 0)
-                    {
-                        dialoguePages[currentPage - 1].SetActive(false);
-                    }
-                }
-                else
-                {
-                    dialogue.SetActive(false);
-                }
-            }
-        }
+        //if (introSkipped && currentLevel == 2)
+        //{
+        //    dialogue.SetActive(true);
+        //    for (int i = 0; i < dialoguePages.Length; i++)
+        //    {
+        //        if (currentPage < dialoguePages.Length)
+        //        {
+        //            dialoguePages[currentPage].SetActive(true);
+        //            if (currentPage > 0)
+        //            {
+        //                dialoguePages[currentPage - 1].SetActive(false);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            dialogue.SetActive(false);
+        //        }
+        //    }
+        //}
 
     }
 
@@ -161,12 +167,12 @@ public class MenuController : MonoBehaviour
         {
             SceneManager.LoadScene(currentLevel);
         }
-        switch (transform.name)
-        {
-            case "Next":
-                currentPage++;
-                break;
-        }
+        //switch (transform.name)
+        //{
+        //    case "Next":
+        //        currentPage++;
+        //        break;
+        //}
         if (tryAgain)
         {
             SceneManager.LoadScene(currentLevel);
@@ -288,5 +294,11 @@ public class MenuController : MonoBehaviour
                 MenuState = MenuStates.GAMEVIEW;
                 break;
         }
+    }
+
+    public IEnumerator WaitToChangeScene()
+    {
+        FindObjectOfType<SceneChange>().FadeIn();
+        yield return new WaitForSeconds(2f);
     }
 }

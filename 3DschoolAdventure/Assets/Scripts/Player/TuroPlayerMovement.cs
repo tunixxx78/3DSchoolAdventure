@@ -88,6 +88,7 @@ public class TuroPlayerMovement : MonoBehaviour
         maxSpeed = moveSpeed;
         speedUpTime = 0;
 
+        
     }
 
 
