@@ -142,6 +142,7 @@ public class MenuController : MonoBehaviour
         if (SceneManager.GetActiveScene() != SceneManager.GetSceneByBuildIndex(currentLevel))
         {
             SceneManager.LoadScene(currentLevel);
+            //StartCoroutine(SceneChangeFade());
         }
         if (tryAgain)
         {
@@ -282,5 +283,14 @@ public class MenuController : MonoBehaviour
         //{
         //    currentLevel = currentLevel + 1;
         //}
+    }
+
+    private IEnumerator SceneChangeFade()
+    {
+        Time.timeScale = 1;
+        FindObjectOfType<SceneChange>().FadeIn();
+        yield return new WaitForSeconds(3f);
+
+        SceneManager.LoadScene(currentLevel + 1);
     }
 }

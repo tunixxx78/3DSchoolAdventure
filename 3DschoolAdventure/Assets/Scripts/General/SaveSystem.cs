@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using System;
+using UnityEngine.SceneManagement;
 
 public class SaveSystem : MonoBehaviour
 {
@@ -13,8 +14,13 @@ public class SaveSystem : MonoBehaviour
 
     private void Awake()
     {
-        
-        LoadData();
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.buildIndex == 0)
+        {
+            PlayerPrefs.SetInt("PointsToNextLevel", 0);
+        }
+
+            LoadData();
 
         if (savingInstance != null && savingInstance != this)
         {
