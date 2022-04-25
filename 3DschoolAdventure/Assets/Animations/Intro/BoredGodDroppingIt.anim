@@ -21,21 +21,21 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: 0bb29b56459cd9c49976c19f240dfed6, type: 3}
-    - time: 1
+    - time: 3
       value: {fileID: 21300000, guid: 1ceb3086e21b4c0409e491749d84d891, type: 3}
-    - time: 1.0833334
+    - time: 3.0833333
       value: {fileID: 21300000, guid: 66dc5e51483bc7041a024cb3230a1186, type: 3}
-    - time: 1.1666666
+    - time: 3.1666667
       value: {fileID: 21300000, guid: 28af3857de2e88347b5c09e7135094f4, type: 3}
-    - time: 1.25
+    - time: 3.25
       value: {fileID: 21300000, guid: 66dc5e51483bc7041a024cb3230a1186, type: 3}
-    - time: 1.3333334
+    - time: 3.3333333
       value: {fileID: 21300000, guid: 1ceb3086e21b4c0409e491749d84d891, type: 3}
-    - time: 1.4166666
+    - time: 3.4166667
       value: {fileID: 21300000, guid: 28af3857de2e88347b5c09e7135094f4, type: 3}
-    - time: 1.5
+    - time: 3.5
       value: {fileID: 21300000, guid: 1bd87c8283816e042a15a5f7881f625b, type: 3}
-    - time: 1.75
+    - time: 3.75
       value: {fileID: 21300000, guid: c720545e3622a48419a967d66b489a20, type: 3}
     attribute: m_Sprite
     path: BG/BoredGod
@@ -70,7 +70,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.7666667
+    m_StopTime: 3.7666667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
