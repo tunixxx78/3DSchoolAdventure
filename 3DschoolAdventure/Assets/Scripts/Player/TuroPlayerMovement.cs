@@ -253,6 +253,7 @@ public class TuroPlayerMovement : MonoBehaviour
                     }
                 }
 
+                
                 playerAvater.transform.localRotation = Quaternion.Euler(0, -90, 0);
 
                 MovePlayer();
@@ -342,12 +343,14 @@ public class TuroPlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
+            
             //For spinningPlatform functionality -> returning normalStage
             //myCC.enabled = true;
             //transform.SetParent(GameObject.Find("Players").transform);
-
-            //this.transform.localRotation = Quaternion.Euler(0, -90, 0);
+            //this.transform.rotation = Quaternion.Euler(0, 0, 0);
+            //playerAvater.transform.rotation = Quaternion.Euler(0, 0, 0);
             
+            /*
             Vector3 dir = Camera.main.transform.forward;
             dir.y = 0;
             if (onObstacle)
@@ -356,7 +359,7 @@ public class TuroPlayerMovement : MonoBehaviour
             }
             dir.Normalize();
             this.transform.localRotation = Quaternion.LookRotation(dir, transform.up * Time.deltaTime);
-            
+            */
 
             //ResetPlayerRotations();
 
@@ -373,6 +376,7 @@ public class TuroPlayerMovement : MonoBehaviour
         {
             
             playerBoosDuration = boostDuration;
+            myCC.enabled = false;
             playerCanBoost = true;
             dashAmount -= 1;
             sfx.Teleport.Play();
@@ -394,6 +398,24 @@ public class TuroPlayerMovement : MonoBehaviour
             isOnSpinner = false;
             onObstacle = false;
             transform.SetParent(GameObject.Find("Players").transform);
+
+            
+
+
+        }
+        if (Input.GetButtonDown("Jump"))
+        {
+            this.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+            Vector3 dir = Camera.main.transform.forward;
+            dir.y = 0;
+            if (onObstacle)
+            {
+                dir.x = 0;
+            }
+            dir.Normalize();
+
+            this.transform.localRotation = Quaternion.LookRotation(dir, transform.up * Time.deltaTime);
         }
     }
 

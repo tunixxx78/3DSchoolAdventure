@@ -68,5 +68,7 @@ public class HighscoreHandler : MonoBehaviour
     {
         PlayerPrefs.SetInt("PointsToNextLevel", 0);
         SceneManager.LoadScene(0);
+        SaveSystem.savingInstance.continueGame = false;
+        SaveSystem.savingInstance.SaveData();
     }
 }

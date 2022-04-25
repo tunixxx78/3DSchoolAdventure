@@ -11,12 +11,10 @@ public class MenuController : MonoBehaviour
 {
     public GameObject settingsMenu, pauseMenu, gameOver;
     private MenuStates menuState;
-    public bool tryAgain = false, win = false, lose = false, finalLevel = false, introSkipped = false;
+    public bool tryAgain = false, win = false, lose = false, finalLevel = false;
     public TMP_Text resultText, finalPointsText, gameOverText;
     public string resultStringLose, resultStringWin, resultStringFinished, gameOverStringLose, gameOverStringWin, gameOverStringFinished;
-    public GameObject yesButton, noButton, quitButton, startOverButton, continueButton/*, dialogue*/;
-    //public GameObject[] dialoguePages;
-    //public int currentPage = 0;
+    public GameObject yesButton, noButton, quitButton, startOverButton, continueButton;
     public int currentLevel;
     public int maxLevel;
     private SoundFX sfx;
@@ -31,10 +29,6 @@ public class MenuController : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        //introSkipped = PlayerPrefs.GetInt("IntroSkipped") == 1 ? true : false;
-    }
 
     private void Awake()
     {
@@ -60,27 +54,6 @@ public class MenuController : MonoBehaviour
         {
             MenuState = MenuStates.GAMEOVER;
         }
-
-        //if (introSkipped && currentLevel == 2)
-        //{
-        //    dialogue.SetActive(true);
-        //    for (int i = 0; i < dialoguePages.Length; i++)
-        //    {
-        //        if (currentPage < dialoguePages.Length)
-        //        {
-        //            dialoguePages[currentPage].SetActive(true);
-        //            if (currentPage > 0)
-        //            {
-        //                dialoguePages[currentPage - 1].SetActive(false);
-        //            }
-        //        }
-        //        else
-        //        {
-        //            dialogue.SetActive(false);
-        //        }
-        //    }
-        //}
-
     }
 
     //Calls a method when the menuState value changes
@@ -126,7 +99,8 @@ public class MenuController : MonoBehaviour
         switch (transform.name)
         {
             case "Play":
-                MenuState = MenuStates.CUTSCENE;
+                //MenuState = MenuStates.CUTSCENE;
+                StartCoroutine(WaitToChangeScene(MenuStates.CUTSCENE));
                 break;
             case "Settings":
                 MenuState = MenuStates.SETTINGS;
@@ -142,15 +116,16 @@ public class MenuController : MonoBehaviour
         if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("IntroAnimation"))
         {
             SceneManager.LoadScene("IntroAnimation");
+            StartCoroutine(WaitToChangeScene(MenuStates.CHARACTERSELECTION));
         }
         switch (transform.name)
         {
             case "Skip":
-                MenuState = MenuStates.CHARACTERSELECTION;
-                introSkipped = true;
-                PlayerPrefs.SetInt("IntroSkipped", introSkipped ? 1 : 0);
+                //MenuState = MenuStates.CHARACTERSELECTION;
+                StartCoroutine(WaitToChangeScene(MenuStates.CHARACTERSELECTION));
                 break;
         }
+
     }
 
     public void ControlCharacterSelection()
@@ -159,6 +134,7 @@ public class MenuController : MonoBehaviour
         {
             SceneManager.LoadScene("CharacterSelection");
         }
+        // LAITETTAVA CHARACTERSELECTIONIN NAPPIIN - > StartCoroutine(WaitToChangeScene(MenuStates.GAMEVIEW));
     }
 
     public void ControlGameView(Transform transform)
@@ -166,13 +142,8 @@ public class MenuController : MonoBehaviour
         if (SceneManager.GetActiveScene() != SceneManager.GetSceneByBuildIndex(currentLevel))
         {
             SceneManager.LoadScene(currentLevel);
+            //StartCoroutine(SceneChangeFade());
         }
-        //switch (transform.name)
-        //{
-        //    case "Next":
-        //        currentPage++;
-        //        break;
-        //}
         if (tryAgain)
         {
             SceneManager.LoadScene(currentLevel);
@@ -199,10 +170,12 @@ public class MenuController : MonoBehaviour
                 break;
             case "Try Again":
                 tryAgain = true;
-                MenuState = MenuStates.GAMEVIEW;
+                //MenuState = MenuStates.GAMEVIEW;
+                StartCoroutine(WaitToChangeScene(MenuStates.GAMEVIEW));
                 break;
             case "Quit":
-                MenuState = MenuStates.STARTMENU;
+                StartCoroutine(WaitToChangeScene(MenuStates.STARTMENU));
+                //MenuState = MenuStates.STARTMENU;
                 break;
         }
     }
@@ -280,25 +253,44 @@ public class MenuController : MonoBehaviour
                 MenuState = MenuStates.GAMEVIEW;
                 break;
             case "No":
-                MenuState = MenuStates.STARTMENU;
+                StartCoroutine(WaitToChangeScene(MenuStates.STARTMENU));
+                //MenuState = MenuStates.STARTMENU;
                 break;
             case "Start Over":
                 tryAgain = true;
                 MenuState = MenuStates.GAMEVIEW;
                 break;
             case "Quit":
+                //StartCoroutine(WaitToChangeScene(MenuStates.STARTMENU));
                 MenuState = MenuStates.STARTMENU;
                 break;
             case "Continue":
                 currentLevel = currentLevel + 1;
+                //StartCoroutine(WaitToChangeScene(MenuStates.GAMEVIEW));
                 MenuState = MenuStates.GAMEVIEW;
                 break;
         }
     }
 
-    public IEnumerator WaitToChangeScene()
+    public IEnumerator WaitToChangeScene(MenuStates state)
     {
+        //currentLevel = currentLevel + 1;
+        Time.timeScale = 1;
         FindObjectOfType<SceneChange>().FadeIn();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
+        MenuState = state;
+        //if (MenuState == MenuStates.GAMEVIEW)
+        //{
+        //    currentLevel = currentLevel + 1;
+        //}
+    }
+
+    private IEnumerator SceneChangeFade()
+    {
+        Time.timeScale = 1;
+        FindObjectOfType<SceneChange>().FadeIn();
+        yield return new WaitForSeconds(3f);
+
+        SceneManager.LoadScene(currentLevel + 1);
     }
 }
