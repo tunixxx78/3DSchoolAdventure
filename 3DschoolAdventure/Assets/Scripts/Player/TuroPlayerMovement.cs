@@ -376,6 +376,7 @@ public class TuroPlayerMovement : MonoBehaviour
         {
             
             playerBoosDuration = boostDuration;
+            myCC.enabled = false;
             playerCanBoost = true;
             dashAmount -= 1;
             sfx.Teleport.Play();

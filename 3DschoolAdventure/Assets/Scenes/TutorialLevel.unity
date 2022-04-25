@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 58468550557b8b749b73b730e80bce54, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.8783796, g: 0.8391021, b: 0.8298338, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4515,11 +4515,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3902788747678988577, guid: dd4d82946bfd7414883294b6e80cff38, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.067483515
+      value: -0.067483455
       objectReference: {fileID: 0}
     - target: {fileID: 3902788747678988577, guid: dd4d82946bfd7414883294b6e80cff38, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.017677428
+      value: 0.017677436
       objectReference: {fileID: 0}
     - target: {fileID: 3902788747864601526, guid: dd4d82946bfd7414883294b6e80cff38, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4627,15 +4627,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3902788748229877787, guid: dd4d82946bfd7414883294b6e80cff38, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.18183278
+      value: 0.18183282
       objectReference: {fileID: 0}
     - target: {fileID: 3902788748229877787, guid: dd4d82946bfd7414883294b6e80cff38, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.07371947
+      value: -0.0737195
       objectReference: {fileID: 0}
     - target: {fileID: 3902788748229877787, guid: dd4d82946bfd7414883294b6e80cff38, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.013671728
+      value: 0.013671735
       objectReference: {fileID: 0}
     - target: {fileID: 3902788748605638593, guid: dd4d82946bfd7414883294b6e80cff38, type: 3}
       propertyPath: m_Follow
@@ -4703,15 +4703,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3902788748816999108, guid: dd4d82946bfd7414883294b6e80cff38, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.252784
+      value: 0.25278404
       objectReference: {fileID: 0}
     - target: {fileID: 3902788748816999108, guid: dd4d82946bfd7414883294b6e80cff38, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.06747973
+      value: -0.06747974
       objectReference: {fileID: 0}
     - target: {fileID: 3902788748816999108, guid: dd4d82946bfd7414883294b6e80cff38, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.017676445
+      value: 0.017676447
       objectReference: {fileID: 0}
     - target: {fileID: 3902788748816999109, guid: dd4d82946bfd7414883294b6e80cff38, type: 3}
       propertyPath: m_LookAt
@@ -5655,6 +5655,10 @@ PrefabInstance:
       propertyPath: finalPointsText
       value: 
       objectReference: {fileID: 1890818080}
+    - target: {fileID: 6828920240438001309, guid: dfbdfe05f7bc0486d888791e39091546, type: 3}
+      propertyPath: m_CustomSkybox
+      value: 
+      objectReference: {fileID: 2100000, guid: 58468550557b8b749b73b730e80bce54, type: 2}
     - target: {fileID: 7298972636899116686, guid: dfbdfe05f7bc0486d888791e39091546, type: 3}
       propertyPath: m_Name
       value: Players
@@ -5731,8 +5735,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8806358516710346084, guid: dfbdfe05f7bc0486d888791e39091546, type: 3}
+      propertyPath: m_CustomSkybox
+      value: 
+      objectReference: {fileID: 2100000, guid: 58468550557b8b749b73b730e80bce54, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfbdfe05f7bc0486d888791e39091546, type: 3}
+--- !u!1 &1979931039 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6733829108221697065, guid: dfbdfe05f7bc0486d888791e39091546, type: 3}
+  m_PrefabInstance: {fileID: 1979931038}
+  m_PrefabAsset: {fileID: 0}
+--- !u!45 &1979931040
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979931039}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 58468550557b8b749b73b730e80bce54, type: 2}
 --- !u!1 &1993070998 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5518652876591059555, guid: ea0d860188279e84a87525da249f78f5, type: 3}
