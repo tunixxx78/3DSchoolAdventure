@@ -1549,7 +1549,6 @@ MonoBehaviour:
   win: 0
   lose: 0
   finalLevel: 0
-  introSkipped: 0
   resultText: {fileID: 8772356458339517496}
   finalPointsText: {fileID: 8772356459280542039}
   gameOverText: {fileID: 8772356459099482765}
@@ -2330,9 +2329,17 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3138927189470067187}
+    - target: {fileID: 1510922508074362990, guid: 28aefb264b6057446a4ac8e7c3787c6d, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278210303
+      objectReference: {fileID: 0}
     - target: {fileID: 5922829570015461379, guid: 28aefb264b6057446a4ac8e7c3787c6d, type: 3}
       propertyPath: m_Name
       value: GameOver
+      objectReference: {fileID: 0}
+    - target: {fileID: 5922829570015461379, guid: 28aefb264b6057446a4ac8e7c3787c6d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5922829570015461388, guid: 28aefb264b6057446a4ac8e7c3787c6d, type: 3}
       propertyPath: m_Pivot.x
@@ -2422,10 +2429,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3138927189470067187}
+    - target: {fileID: 5922829570778668806, guid: 28aefb264b6057446a4ac8e7c3787c6d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5922829570778668807, guid: 28aefb264b6057446a4ac8e7c3787c6d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5922829570778668807, guid: 28aefb264b6057446a4ac8e7c3787c6d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 5.8099976
+      objectReference: {fileID: 0}
     - target: {fileID: 5922829571036115889, guid: 28aefb264b6057446a4ac8e7c3787c6d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3138927189470067187}
+    - target: {fileID: 5922829571036115895, guid: 28aefb264b6057446a4ac8e7c3787c6d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6102352552883343306, guid: 28aefb264b6057446a4ac8e7c3787c6d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
