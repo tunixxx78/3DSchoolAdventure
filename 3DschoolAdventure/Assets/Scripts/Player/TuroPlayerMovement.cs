@@ -212,9 +212,19 @@ public class TuroPlayerMovement : MonoBehaviour
                         currentSpeed++;
                     }
                 }
-                
 
-                playerAvater.transform.localRotation = Quaternion.Euler(0, 180, 0);
+                if (MyCam.transform.localEulerAngles.y < 260 && MyCam.transform.localEulerAngles.y > 100)
+                {
+                    Debug.Log("PITÄISI REVERSATA PELAAJAN");
+                    playerAvater.transform.localRotation = Quaternion.Euler(0, 0, 0);
+                }
+                else
+                {
+                    Debug.Log("NORMILLA MENNÄÄN");
+                    playerAvater.transform.localRotation = Quaternion.Euler(0, 180, 0);
+                }
+
+                //playerAvater.transform.localRotation = Quaternion.Euler(0, 180, 0);
                 MovePlayer();
                 myCC.enabled = true;
             }
@@ -253,8 +263,17 @@ public class TuroPlayerMovement : MonoBehaviour
                     }
                 }
 
+                if(MyCam.transform.localEulerAngles.y < 260 && MyCam.transform.localEulerAngles.y > 110)
+                {
+                    Debug.Log("PITÄISI REVERSATA PELAAJAN");
+                    playerAvater.transform.localRotation = Quaternion.Euler(0, 90, 0);
+                }
+                else
+                {
+                    Debug.Log("NORMILLA MENNÄÄN");
+                    playerAvater.transform.localRotation = Quaternion.Euler(0, -90, 0);
+                }
                 
-                playerAvater.transform.localRotation = Quaternion.Euler(0, -90, 0);
 
                 MovePlayer();
                 myCC.enabled = true;
@@ -296,7 +315,18 @@ public class TuroPlayerMovement : MonoBehaviour
                     }
                 }
 
-                playerAvater.transform.localRotation = Quaternion.Euler(0, 90, 0);
+                if (MyCam.transform.localEulerAngles.y < 260 && MyCam.transform.localEulerAngles.y > 110)
+                {
+                    Debug.Log("PITÄISI REVERSATA PELAAJAN");
+                    playerAvater.transform.localRotation = Quaternion.Euler(0, -90, 0);
+                }
+                else
+                {
+                    Debug.Log("NORMILLA MENNÄÄN");
+                    playerAvater.transform.localRotation = Quaternion.Euler(0, 90, 0);
+                }
+
+                //playerAvater.transform.localRotation = Quaternion.Euler(0, 90, 0);
                 MovePlayer();
                 myCC.enabled = true;
             }

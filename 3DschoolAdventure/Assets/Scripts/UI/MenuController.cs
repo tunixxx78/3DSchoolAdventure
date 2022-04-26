@@ -139,17 +139,22 @@ public class MenuController : MonoBehaviour
 
     public void ControlGameView(Transform transform)
     {
+        Debug.Log("OLLAAAAAAAAAANNNNNNNN");
+        Debug.Log(currentLevel);
+        /*
         if (SceneManager.GetActiveScene() != SceneManager.GetSceneByBuildIndex(currentLevel))
         {
+            
             SceneManager.LoadScene(currentLevel);
-            //StartCoroutine(SceneChangeFade());
+            //StartCoroutine(SceneChangeFade(MenuStates.GAMEVIEW));
         }
+        */
         if (tryAgain)
         {
             SceneManager.LoadScene(currentLevel);
             Cursor.visible = false;
         }
-
+        else { SceneManager.LoadScene(currentLevel + 1); }
     }
 
     public void ControlPauseMenu(Transform transform)
@@ -210,7 +215,7 @@ public class MenuController : MonoBehaviour
     {
         gameOver.SetActive(true);
         Cursor.visible = true;
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
 
         if (win)
         {
@@ -266,8 +271,9 @@ public class MenuController : MonoBehaviour
                 break;
             case "Continue":
                 currentLevel = currentLevel + 1;
-                //StartCoroutine(WaitToChangeScene(MenuStates.GAMEVIEW));
-                MenuState = MenuStates.GAMEVIEW;
+                StartCoroutine(WaitToChangeScene(MenuStates.GAMEVIEW));
+                Debug.Log(currentLevel);
+                //MenuState = MenuStates.GAMEVIEW;
                 break;
         }
     }
@@ -279,18 +285,20 @@ public class MenuController : MonoBehaviour
         FindObjectOfType<SceneChange>().FadeIn();
         yield return new WaitForSeconds(3f);
         MenuState = state;
+        Debug.Log(state);
         //if (MenuState == MenuStates.GAMEVIEW)
         //{
         //    currentLevel = currentLevel + 1;
         //}
     }
 
-    private IEnumerator SceneChangeFade()
+    private IEnumerator SceneChangeFade(MenuStates state)
     {
         Time.timeScale = 1;
         FindObjectOfType<SceneChange>().FadeIn();
         yield return new WaitForSeconds(3f);
 
+        //MenuState = state;
         SceneManager.LoadScene(currentLevel + 1);
     }
 }
