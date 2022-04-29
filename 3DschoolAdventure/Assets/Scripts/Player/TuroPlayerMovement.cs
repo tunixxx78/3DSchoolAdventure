@@ -213,10 +213,18 @@ public class TuroPlayerMovement : MonoBehaviour
                     }
                 }
 
-                if (MyCam.transform.localEulerAngles.y < 260 && MyCam.transform.localEulerAngles.y > 100)
+                if (MyCam.transform.localEulerAngles.y < 225 && MyCam.transform.localEulerAngles.y > 135)
                 {
                     Debug.Log("PITÄISI REVERSATA PELAAJAN");
                     playerAvater.transform.localRotation = Quaternion.Euler(0, 0, 0);
+                }
+                else if (MyCam.transform.localEulerAngles.y < 135 && MyCam.transform.localEulerAngles.y > 45)
+                {
+                    playerAvater.transform.localRotation = Quaternion.Euler(0, 270, 0);
+                }
+                else if (MyCam.transform.localEulerAngles.y < 315 && MyCam.transform.localEulerAngles.y > 225)
+                {
+                    playerAvater.transform.localRotation = Quaternion.Euler(0, 90, 0);
                 }
                 else
                 {
@@ -263,11 +271,21 @@ public class TuroPlayerMovement : MonoBehaviour
                     }
                 }
 
-                if(MyCam.transform.localEulerAngles.y < 260 && MyCam.transform.localEulerAngles.y > 110)
+                if(MyCam.transform.localEulerAngles.y < 225 && MyCam.transform.localEulerAngles.y > 135)
                 {
                     Debug.Log("PITÄISI REVERSATA PELAAJAN");
                     playerAvater.transform.localRotation = Quaternion.Euler(0, 90, 0);
                 }
+                
+                else if (MyCam.transform.localEulerAngles.y < 135 && MyCam.transform.localEulerAngles.y > 45)
+                {
+                    playerAvater.transform.localRotation = Quaternion.Euler(0, 0, 0);
+                }
+                else if (MyCam.transform.localEulerAngles.y < 315 && MyCam.transform.localEulerAngles.y > 225)
+                {
+                    playerAvater.transform.localRotation = Quaternion.Euler(0, 180, 0);
+                }
+
                 else
                 {
                     Debug.Log("NORMILLA MENNÄÄN");
@@ -315,10 +333,18 @@ public class TuroPlayerMovement : MonoBehaviour
                     }
                 }
 
-                if (MyCam.transform.localEulerAngles.y < 260 && MyCam.transform.localEulerAngles.y > 110)
+                if (MyCam.transform.localEulerAngles.y < 225 && MyCam.transform.localEulerAngles.y > 135)
                 {
                     Debug.Log("PITÄISI REVERSATA PELAAJAN");
                     playerAvater.transform.localRotation = Quaternion.Euler(0, -90, 0);
+                }
+                else if (MyCam.transform.localEulerAngles.y < 135 && MyCam.transform.localEulerAngles.y > 45)
+                {
+                    playerAvater.transform.localRotation = Quaternion.Euler(0, 180, 0);
+                }
+                else if (MyCam.transform.localEulerAngles.y < 315 && MyCam.transform.localEulerAngles.y > 225)
+                {
+                    playerAvater.transform.localRotation = Quaternion.Euler(0, 0, 0);
                 }
                 else
                 {
