@@ -6,7 +6,7 @@ using TMPro;
 public class PathOpener : MonoBehaviour
 {
     [SerializeField] GameObject path, pathTimerObject;
-    [SerializeField] float timer, timeToShowPath;
+    public float timer, timeToShowPath;
     [SerializeField] TMP_Text pathTimer;
 
     bool pathIsOn = false;

@@ -24,6 +24,7 @@ TagManager:
   - CylinderRight
   - Ground
   - '-'
+  - FinalEndLine
   layers:
   - Default
   - TransparentFX

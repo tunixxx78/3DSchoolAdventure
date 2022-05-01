@@ -7,7 +7,7 @@ using TMPro;
 
 public class TuroPlayerMovement : MonoBehaviour
 {
-    [SerializeField] Animator playerAnimator;
+    public Animator playerAnimator;
     [SerializeField] Camera MyCam;
     public CharacterController myCC;
     public float moveSpeed, accelerationTime, dashMoveSpeed, gravity = -9.81f, gravityOffTime, groundDistance = 0.4f, jumpForce, rotationSpeed, startTime, wallforce, boostDuration, gameOverDelay, boxRideOffTime;

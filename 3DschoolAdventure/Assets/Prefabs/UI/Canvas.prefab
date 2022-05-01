@@ -1564,7 +1564,7 @@ MonoBehaviour:
   startOverButton: {fileID: 7588154097755198363}
   continueButton: {fileID: 3138927189448944767}
   currentLevel: 0
-  maxLevel: 9
+  maxLevel: 10
 --- !u!1 &3138927189655340680
 GameObject:
   m_ObjectHideFlags: 0
