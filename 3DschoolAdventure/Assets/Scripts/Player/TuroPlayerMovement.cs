@@ -683,7 +683,9 @@ public class TuroPlayerMovement : MonoBehaviour
         }
         if (collider.gameObject.tag == "Roller")
         {
+            transform.SetParent(GameObject.Find("Players").transform);
             myCC.slopeLimit = 45;
+            myCC.enabled = true;
         }
         if (collider.gameObject.tag == "Spinner")
         {
