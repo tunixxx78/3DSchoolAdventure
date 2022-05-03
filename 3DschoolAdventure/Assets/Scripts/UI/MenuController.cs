@@ -93,6 +93,7 @@ public class MenuController : MonoBehaviour
         if(SceneManager.GetActiveScene() != SceneManager.GetSceneByName("StartMenu"))
         {
             SceneManager.LoadScene("StartMenu");
+            Cursor.visible = true;
         }
 
         //What happens from buttons

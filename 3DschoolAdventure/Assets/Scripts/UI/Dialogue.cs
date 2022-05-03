@@ -8,11 +8,18 @@ public class Dialogue : MonoBehaviour
     public GameObject[] dialoguePages;
     public int currentPage = 0;
 
+    //for turon intronCamRun
+    IntroCamRun intro;
+
     void Awake()
     {
         dialogue.SetActive(true);
         Cursor.visible = true;
         Time.timeScale = 0;
+
+        //for turon introcamrun
+
+        intro = FindObjectOfType<IntroCamRun>();
     }
 
     private void Update()
@@ -29,9 +36,12 @@ public class Dialogue : MonoBehaviour
             }
             else
             {
+                
                 dialogue.SetActive(false);
                 Time.timeScale = 1;
                 Cursor.visible = false;
+
+                intro.StartCamRunAnimation();
             }
         }
     }
