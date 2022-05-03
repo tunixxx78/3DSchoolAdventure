@@ -21,8 +21,24 @@ public class IntroCamRun : MonoBehaviour
 
     private void Start()
     {
-        playerMovement.enabled = false;
-        playerCC.enabled = false;
+        if(SaveSystem.savingInstance.introIsSkipped == false)
+        {
+            playerMovement.enabled = false;
+            playerCC.enabled = false;
+        }
+        if (SaveSystem.savingInstance.introIsSkipped == true)
+        {
+            points.SetActive(true);
+            dash.SetActive(true);
+            time.SetActive(true);
+            timeIcon.SetActive(true);
+
+            playerMovement.enabled = true;
+            playerCC.enabled = true;
+
+            introCam.SetActive(false);
+        }
+        
     }
 
     public void StartCamRunAnimation()

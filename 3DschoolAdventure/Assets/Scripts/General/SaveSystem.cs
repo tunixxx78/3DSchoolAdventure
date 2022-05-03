@@ -10,7 +10,7 @@ public class SaveSystem : MonoBehaviour
 {
     public static SaveSystem savingInstance;
 
-    public bool continueGame = false;
+    public bool continueGame = false, introIsSkipped = false;
 
     private void Awake()
     {
@@ -63,5 +63,5 @@ public class SaveSystem : MonoBehaviour
 
 class GameData
 {
-    public bool continueGame;
+    public bool continueGame, introIsSkipped;
 }
