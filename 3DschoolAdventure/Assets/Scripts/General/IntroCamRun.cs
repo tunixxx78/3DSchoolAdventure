@@ -26,8 +26,10 @@ public class IntroCamRun : MonoBehaviour
             playerMovement.enabled = false;
             playerCC.enabled = false;
         }
-        if (SaveSystem.savingInstance.introIsSkipped == true)
+        if (SaveSystem.savingInstance.introIsSkipped == true && SaveSystem.savingInstance.notFirstTimeToPlay == true)
         {
+            StartCamRunAnimation();
+            /*
             points.SetActive(true);
             dash.SetActive(true);
             time.SetActive(true);
@@ -37,9 +39,11 @@ public class IntroCamRun : MonoBehaviour
             playerCC.enabled = true;
 
             introCam.SetActive(false);
+            */
         }
         
     }
+
 
     public void StartCamRunAnimation()
     {
@@ -57,6 +61,9 @@ public class IntroCamRun : MonoBehaviour
         playerCC.enabled = true;
 
         introCam.SetActive(false);
+
+        SaveSystem.savingInstance.notFirstTimeToPlay = true;
+        SaveSystem.savingInstance.SaveData();
         
     }
 }

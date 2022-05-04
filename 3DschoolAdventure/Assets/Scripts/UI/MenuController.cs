@@ -122,6 +122,9 @@ public class MenuController : MonoBehaviour
         switch (transform.name)
         {
             case "Skip":
+                //Turo added for skip howtoplay functionality
+                SaveSystem.savingInstance.introIsSkipped = true;
+
                 //MenuState = MenuStates.CHARACTERSELECTION;
                 StartCoroutine(WaitToChangeScene(MenuStates.CHARACTERSELECTION));
                 break;
@@ -180,6 +183,10 @@ public class MenuController : MonoBehaviour
                 StartCoroutine(WaitToChangeScene(MenuStates.GAMEVIEW));
                 break;
             case "Quit":
+
+                //Turo added for skip howtoplay functionality
+                SaveSystem.savingInstance.introIsSkipped = false;
+
                 StartCoroutine(WaitToChangeScene(MenuStates.STARTMENU));
                 //MenuState = MenuStates.STARTMENU;
                 break;
@@ -267,6 +274,10 @@ public class MenuController : MonoBehaviour
                 MenuState = MenuStates.GAMEVIEW;
                 break;
             case "Quit":
+
+                //Turo added for skip howtoplay functionality
+                SaveSystem.savingInstance.introIsSkipped = false;
+
                 //StartCoroutine(WaitToChangeScene(MenuStates.STARTMENU));
                 MenuState = MenuStates.STARTMENU;
                 break;
