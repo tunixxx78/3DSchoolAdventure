@@ -13,7 +13,18 @@ public class Dialogue : MonoBehaviour
 
     void Awake()
     {
-        if(SaveSystem.savingInstance.introIsSkipped == false)
+        if(SaveSystem.savingInstance.notFirstTimeToPlay == false)
+        {
+            dialogue.SetActive(true);
+            Cursor.visible = true;
+            Time.timeScale = 0;
+
+            //for turon introcamrun
+
+            intro = FindObjectOfType<IntroCamRun>();
+        }
+
+        else if(SaveSystem.savingInstance.introIsSkipped == false && SaveSystem.savingInstance.notFirstTimeToPlay == true)
         {
             dialogue.SetActive(true);
             Cursor.visible = true;
