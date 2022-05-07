@@ -131,8 +131,8 @@ public class MenuController : MonoBehaviour
                 //Turo added for skip howtoplay functionality
                 SaveSystem.savingInstance.introIsSkipped = true;
 
-                //MenuState = MenuStates.CHARACTERSELECTION;
-                StartCoroutine(WaitToChangeScene(MenuStates.CHARACTERSELECTION));
+                MenuState = MenuStates.CHARACTERSELECTION;
+                //StartCoroutine(WaitToChangeScene(MenuStates.CHARACTERSELECTION));
                 break;
         }
 
