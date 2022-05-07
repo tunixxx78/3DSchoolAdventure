@@ -233,7 +233,7 @@ public class MenuController : MonoBehaviour
 
         if (win)
         {
-            if (currentLevel != maxLevel)
+            if (currentLevel != maxLevel - 1)
             {
                 resultText.text = resultStringWin;
                 gameOverText.text = gameOverStringWin;
