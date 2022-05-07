@@ -14,7 +14,7 @@ public class MenuController : MonoBehaviour
     public bool tryAgain = false, win = false, lose = false, finalLevel = false;
     public TMP_Text resultText, finalPointsText, gameOverText;
     public string resultStringLose, resultStringWin, resultStringFinished, gameOverStringLose, gameOverStringWin, gameOverStringFinished;
-    public GameObject yesButton, noButton, quitButton, startOverButton, continueButton;
+    public GameObject yesButton, noButton, quitButton, startOverButton, continueButton, credits;
     public int currentLevel;
     public int maxLevel;
     private SoundFX sfx;
@@ -105,6 +105,12 @@ public class MenuController : MonoBehaviour
                 break;
             case "Settings":
                 MenuState = MenuStates.SETTINGS;
+                break;
+            case "Credits":
+                credits.SetActive(true);
+                break;
+            case "Continue":
+                credits.SetActive(false);
                 break;
             case "Exit":
                 Application.Quit();
