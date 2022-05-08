@@ -7038,7 +7038,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8181864731448196758, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -2.4999542
+      value: -2.4999466
       objectReference: {fileID: 0}
     - target: {fileID: 8205353239743213354, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
       propertyPath: m_IsActive
@@ -8338,6 +8338,10 @@ PrefabInstance:
       propertyPath: dashAmountText
       value: 
       objectReference: {fileID: 1890372122}
+    - target: {fileID: 4949869078183388595, guid: dfbdfe05f7bc0486d888791e39091546, type: 3}
+      propertyPath: gravityOffTime
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4949869078183388595, guid: dfbdfe05f7bc0486d888791e39091546, type: 3}
       propertyPath: finalPointsText
       value: 
