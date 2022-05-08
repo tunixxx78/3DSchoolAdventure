@@ -130,6 +130,8 @@ public class MenuController : MonoBehaviour
             case "Skip":
                 //Turo added for skip howtoplay functionality
                 SaveSystem.savingInstance.introIsSkipped = true;
+                //For showing outFade if intro is skipped
+                FindObjectOfType<IntroOutLogic>().ShowOutAnimation();
 
                 //MenuState = MenuStates.CHARACTERSELECTION;
                 StartCoroutine(WaitToChangeScene(MenuStates.CHARACTERSELECTION));

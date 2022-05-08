@@ -21,7 +21,10 @@ public class IntroCamRun : MonoBehaviour
 
     private void Start()
     {
-        if(SaveSystem.savingInstance.introIsSkipped == false)
+        playerMovement.enabled = false;
+        playerCC.enabled = false;
+
+        if (SaveSystem.savingInstance.introIsSkipped == false)
         {
             playerMovement.enabled = false;
             playerCC.enabled = false;

@@ -23,7 +23,7 @@ public class TuroPlayerMovement : MonoBehaviour
 
     [SerializeField] Transform groundCheck, teleportSpawnPoint;
     [SerializeField] LayerMask groundMask;
-    bool isGrounded, walkingInWall = false, playerCanBoost = false, isOnSpinner = false, canrideWithBox = false, onObstacle = false, playerIsMoving = false;
+    bool isGrounded, walkingInWall = false, playerCanBoost = false, isOnSpinner = false, canrideWithBox = false, onObstacle = false, playerIsMoving = false, dashItemsSpawned = false;
     public Vector3 velocity, movement, turboMove;
     Rigidbody myRB;
     float playerBoosDuration;
@@ -80,7 +80,12 @@ public class TuroPlayerMovement : MonoBehaviour
         canrideWithBox = true;
         returnGravity = gravity;
 
-        dash.SpawnDashItems();
+        if (dashItemsSpawned == false)
+        {
+            dash.SpawnDashItems();
+            dashItemsSpawned = true;
+            StartCoroutine(TurnSpawnedDashToFalse());
+        }
 
         // for Player speedup functionality
 
@@ -634,6 +639,8 @@ public class TuroPlayerMovement : MonoBehaviour
         if(collider.gameObject.tag == "CheckPoint")
         {
             currentcheckPoint = collider.transform.position;
+            currentcheckPoint = currentcheckPoint + new Vector3(0, 2, 0);
+            
         }
         if (collider.gameObject.tag == "Roller")
         {
@@ -729,7 +736,13 @@ public class TuroPlayerMovement : MonoBehaviour
 
         sfx.Teleport.Play();
         playerAvater.SetActive(true);
-        dash.SpawnDashItems();
+        if (dashItemsSpawned == false)
+        {
+            dash.SpawnDashItems();
+            dashItemsSpawned = true;
+            StartCoroutine(TurnSpawnedDashToFalse());
+        }
+        
     }
     IEnumerator CanRideWithBoxAgain(float offTime)
     {
@@ -742,5 +755,10 @@ public class TuroPlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(bounceTime);
 
         gravity = returnGravity;
+    }
+    IEnumerator TurnSpawnedDashToFalse()
+    {
+        yield return new WaitForSeconds(1);
+        dashItemsSpawned = false;
     }
 }
