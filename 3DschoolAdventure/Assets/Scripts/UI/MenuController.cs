@@ -274,7 +274,8 @@ public class MenuController : MonoBehaviour
                 MenuState = MenuStates.GAMEVIEW;
                 break;
             case "No":
-                StartCoroutine(WaitToChangeScene(MenuStates.STARTMENU));
+                SceneManager.LoadScene("HighScoreScene");
+                //StartCoroutine(WaitToChangeScene(MenuStates.STARTMENU));
                 //MenuState = MenuStates.STARTMENU;
                 break;
             case "Start Over":
