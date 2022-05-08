@@ -133,8 +133,8 @@ public class MenuController : MonoBehaviour
                 //For showing outFade if intro is skipped
                 FindObjectOfType<IntroOutLogic>().ShowOutAnimation();
 
-                MenuState = MenuStates.CHARACTERSELECTION;
-                //StartCoroutine(WaitToChangeScene(MenuStates.CHARACTERSELECTION));
+                //MenuState = MenuStates.CHARACTERSELECTION;
+                StartCoroutine(WaitToChangeScene(MenuStates.CHARACTERSELECTION));
                 break;
         }
 
