@@ -5783,9 +5783,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'wow that''s one
+  m_text: 'Wow! That''s one
 
-    good looking board!'
+    good looking game board!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 473df1a46e10047eca483ff6dd1d0103, type: 2}
   m_sharedMaterial: {fileID: 6811983302704319863, guid: 473df1a46e10047eca483ff6dd1d0103, type: 2}
