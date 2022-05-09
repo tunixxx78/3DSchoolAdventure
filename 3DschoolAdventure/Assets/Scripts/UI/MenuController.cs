@@ -14,7 +14,7 @@ public class MenuController : MonoBehaviour
     public bool tryAgain = false, win = false, lose = false, finalLevel = false;
     public TMP_Text resultText, finalPointsText, gameOverText;
     public string resultStringLose, resultStringWin, resultStringFinished, gameOverStringLose, gameOverStringWin, gameOverStringFinished;
-    public GameObject yesButton, noButton, quitButton, startOverButton, continueButton, credits;
+    public GameObject yesButton, noButton, quitButton, startOverButton, continueButton, quitFinalButton, startOverFinalButton, credits;
     public int currentLevel;
     public int maxLevel;
     private SoundFX sfx;
@@ -84,6 +84,9 @@ public class MenuController : MonoBehaviour
                 break;
             case MenuStates.GAMEOVER:
                 ControlGameOver(transform);
+                break;
+            case MenuStates.HIGHSCORE:
+                ControlHighScore();
                 break;
         }
     }
@@ -242,7 +245,9 @@ public class MenuController : MonoBehaviour
                 yesButton.SetActive(false);
                 noButton.SetActive(false);
                 quitButton.SetActive(true);
+                quitFinalButton.SetActive(false);
                 startOverButton.SetActive(false);
+                startOverFinalButton.SetActive(false);
                 continueButton.SetActive(true);
             }
             else
@@ -251,8 +256,10 @@ public class MenuController : MonoBehaviour
                 gameOverText.text = gameOverStringFinished;
                 yesButton.SetActive(false);
                 noButton.SetActive(false);
-                quitButton.SetActive(true);
-                startOverButton.SetActive(true);
+                quitButton.SetActive(false);
+                quitFinalButton.SetActive(true);
+                startOverButton.SetActive(false);
+                startOverFinalButton.SetActive(true);
                 continueButton.SetActive(false);
             }
         }
@@ -263,7 +270,9 @@ public class MenuController : MonoBehaviour
             yesButton.SetActive(true);
             noButton.SetActive(true);
             quitButton.SetActive(false);
+            quitFinalButton.SetActive(false);
             startOverButton.SetActive(false);
+            startOverFinalButton.SetActive(false);
             continueButton.SetActive(false);
         }
 
@@ -274,7 +283,8 @@ public class MenuController : MonoBehaviour
                 MenuState = MenuStates.GAMEVIEW;
                 break;
             case "No":
-                StartCoroutine(WaitToChangeScene(MenuStates.STARTMENU));
+                StartCoroutine(WaitToChangeScene(MenuStates.HIGHSCORE));
+                //StartCoroutine(WaitToChangeScene(MenuStates.STARTMENU));
                 //MenuState = MenuStates.STARTMENU;
                 break;
             case "Start Over":
@@ -289,6 +299,14 @@ public class MenuController : MonoBehaviour
                 //StartCoroutine(WaitToChangeScene(MenuStates.STARTMENU));
                 MenuState = MenuStates.STARTMENU;
                 break;
+            case "StartOverFinal":
+                tryAgain = true;
+                currentLevel = 3;
+                MenuState = MenuStates.GAMEVIEW;
+                break;
+            case "QuitFinal":
+                StartCoroutine(WaitToChangeScene(MenuStates.HIGHSCORE));
+                break;
             case "Continue":
                 currentLevel = currentLevel + 1;
                 StartCoroutine(WaitToChangeScene(MenuStates.GAMEVIEW));
@@ -296,6 +314,11 @@ public class MenuController : MonoBehaviour
                 //MenuState = MenuStates.GAMEVIEW;
                 break;
         }
+    }
+
+    public void ControlHighScore()
+    {
+        SceneManager.LoadScene("HighScoreScene");
     }
 
     public IEnumerator WaitToChangeScene(MenuStates state)
