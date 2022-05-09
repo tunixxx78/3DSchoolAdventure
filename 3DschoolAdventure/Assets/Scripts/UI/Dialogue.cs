@@ -10,6 +10,7 @@ public class Dialogue : MonoBehaviour
 
     //for turon intronCamRun
     IntroCamRun intro;
+    
 
     void Awake()
     {
@@ -50,8 +51,7 @@ public class Dialogue : MonoBehaviour
                 }
             }
             else
-            {
-                
+            {   
                 dialogue.SetActive(false);
                 Time.timeScale = 1;
                 Cursor.visible = false;

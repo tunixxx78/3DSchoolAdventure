@@ -23,18 +23,6 @@ public class SceneChange : MonoBehaviour
         StartCoroutine(FadeMusicOn());
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            FadeIn();
-        }
-        if (Input.GetKey(KeyCode.O))
-        {
-            FadeOut();
-        }
-    }
-
     public void FadeIn()
     {
         inAnimator.SetTrigger("In");

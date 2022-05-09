@@ -23,7 +23,7 @@ public class TuroPlayerMovement : MonoBehaviour
 
     [SerializeField] Transform groundCheck, teleportSpawnPoint;
     [SerializeField] LayerMask groundMask;
-    bool isGrounded, walkingInWall = false, playerCanBoost = false, isOnSpinner = false, canrideWithBox = false, onObstacle = false, playerIsMoving = false;
+    bool isGrounded, walkingInWall = false, playerCanBoost = false, isOnSpinner = false, canrideWithBox = false, onObstacle = false, playerIsMoving = false, dashItemsSpawned = false, canNotCollectDash = false;
     public Vector3 velocity, movement, turboMove;
     Rigidbody myRB;
     float playerBoosDuration;
@@ -80,7 +80,12 @@ public class TuroPlayerMovement : MonoBehaviour
         canrideWithBox = true;
         returnGravity = gravity;
 
-        dash.SpawnDashItems();
+        if (dashItemsSpawned == false)
+        {
+            dash.SpawnDashItems();
+            dashItemsSpawned = true;
+            StartCoroutine(TurnSpawnedDashToFalse());
+        }
 
         // for Player speedup functionality
 
@@ -432,7 +437,8 @@ public class TuroPlayerMovement : MonoBehaviour
         {
             
             playerBoosDuration = boostDuration;
-            myCC.enabled = false;
+            //myCC.enabled = false;
+            gravity = -12;
             playerCanBoost = true;
             dashAmount -= 1;
             sfx.Teleport.Play();
@@ -442,6 +448,7 @@ public class TuroPlayerMovement : MonoBehaviour
         if(playerCanBoost == true)
         {
             myCC.Move(turboMove * (moveSpeed * dashMoveSpeed) * Time.deltaTime);
+            //myCC.Move(Vector3.forward * (moveSpeed * dashMoveSpeed) * Time.deltaTime);
         }        
     }
     private void LateUpdate()
@@ -461,9 +468,11 @@ public class TuroPlayerMovement : MonoBehaviour
         }
         if (Input.GetButtonDown("Jump"))
         {
-            this.transform.rotation = Quaternion.Euler(0, 0, 0);
+            //this.transform.rotation = Quaternion.Euler(0, 0, 0);
 
             Vector3 dir = Camera.main.transform.forward;
+            this.transform.rotation = Quaternion.Euler(dir);
+
             dir.y = 0;
             if (onObstacle)
             {
@@ -613,9 +622,12 @@ public class TuroPlayerMovement : MonoBehaviour
 
             currentPoints = currentPoints + addpoints;
 
-            if (dashAmount < 3)
+            if (dashAmount < 3 && canNotCollectDash == false)
             {
+                canNotCollectDash = true;
                 dashAmount = dashAmount + addDash;
+
+                StartCoroutine(turnCollectingDashBackToFalse());
             }
 
             
@@ -634,6 +646,8 @@ public class TuroPlayerMovement : MonoBehaviour
         if(collider.gameObject.tag == "CheckPoint")
         {
             currentcheckPoint = collider.transform.position;
+            currentcheckPoint = currentcheckPoint + new Vector3(0, 2, 0);
+            
         }
         if (collider.gameObject.tag == "Roller")
         {
@@ -713,7 +727,8 @@ public class TuroPlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(playerBoosDuration);
 
-        myCC.enabled = true;
+        //myCC.enabled = true;
+        gravity = returnGravity;
         playerCanBoost = false;
     }
     IEnumerator ToCheckPoint()
@@ -729,7 +744,13 @@ public class TuroPlayerMovement : MonoBehaviour
 
         sfx.Teleport.Play();
         playerAvater.SetActive(true);
-        dash.SpawnDashItems();
+        if (dashItemsSpawned == false)
+        {
+            dash.SpawnDashItems();
+            dashItemsSpawned = true;
+            StartCoroutine(TurnSpawnedDashToFalse());
+        }
+        
     }
     IEnumerator CanRideWithBoxAgain(float offTime)
     {
@@ -742,5 +763,17 @@ public class TuroPlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(bounceTime);
 
         gravity = returnGravity;
+    }
+    IEnumerator TurnSpawnedDashToFalse()
+    {
+        yield return new WaitForSeconds(1);
+        dashItemsSpawned = false;
+    }
+
+    IEnumerator turnCollectingDashBackToFalse()
+    {
+        yield return new WaitForSeconds(.5f);
+
+        canNotCollectDash = false;
     }
 }

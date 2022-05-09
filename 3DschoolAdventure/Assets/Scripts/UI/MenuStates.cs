@@ -8,5 +8,6 @@ public enum MenuStates
     PAUSE,
     SETTINGS,
     RETURN,
-    GAMEOVER
+    GAMEOVER,
+    HIGHSCORE
 }
