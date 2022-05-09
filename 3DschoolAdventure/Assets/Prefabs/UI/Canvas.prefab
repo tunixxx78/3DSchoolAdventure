@@ -2285,6 +2285,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 5784157524186668111, guid: e70ffff55a96aa4419fdf65a9a68abf0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5784157524497960860, guid: e70ffff55a96aa4419fdf65a9a68abf0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2297,7 +2301,8 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3138927189470067187}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5576145873919920390, guid: e70ffff55a96aa4419fdf65a9a68abf0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e70ffff55a96aa4419fdf65a9a68abf0, type: 3}
 --- !u!1 &8920154469990550056 stripped
 GameObject:
