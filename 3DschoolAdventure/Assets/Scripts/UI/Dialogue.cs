@@ -28,6 +28,7 @@ public class Dialogue : MonoBehaviour
         else if(SaveSystem.savingInstance.introIsSkipped == false && SaveSystem.savingInstance.notFirstTimeToPlay == true)
         {
             dialogue.SetActive(true);
+            FindObjectOfType<MenuController>().dialogueActive = true;
             Cursor.visible = true;
             Time.timeScale = 0;
 
@@ -57,6 +58,7 @@ public class Dialogue : MonoBehaviour
                 Cursor.visible = false;
 
                 intro.StartCamRunAnimation();
+                FindObjectOfType<MenuController>().dialogueActive = false;
             }
         }
     }
