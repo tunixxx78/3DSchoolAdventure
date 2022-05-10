@@ -54,11 +54,11 @@ public class Dialogue : MonoBehaviour
             else
             {   
                 dialogue.SetActive(false);
-                Time.timeScale = 1;
-                Cursor.visible = false;
 
                 intro.StartCamRunAnimation();
                 FindObjectOfType<MenuController>().dialogueActive = false;
+                Cursor.visible = false;
+                Time.timeScale = 1;
             }
         }
     }
