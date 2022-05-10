@@ -11,10 +11,10 @@ public class MenuController : MonoBehaviour
 {
     public GameObject settingsMenu, pauseMenu, gameOver;
     private MenuStates menuState;
-    public bool tryAgain = false, win = false, lose = false, finalLevel = false;
+    public bool tryAgain = false, win = false, lose = false, finalLevel = false, dialogueActive = false;
     public TMP_Text resultText, finalPointsText, gameOverText;
     public string resultStringLose, resultStringWin, resultStringFinished, gameOverStringLose, gameOverStringWin, gameOverStringFinished;
-    public GameObject yesButton, noButton, quitButton, startOverButton, continueButton, quitFinalButton,/* startOverFinalButton,*/ credits;
+    public GameObject yesButton, noButton, quitButton,/* startOverButton,*/ continueButton, quitFinalButton,/* startOverFinalButton,*/ credits;
     public int currentLevel;
     public int maxLevel;
     private SoundFX sfx;
@@ -39,7 +39,7 @@ public class MenuController : MonoBehaviour
     {
         currentLevel = SceneManager.GetActiveScene().buildIndex;
         //Pause activates from Esc and returns from pressing Esc again
-        if (Input.GetKeyDown(KeyCode.Escape) && MenuState != MenuStates.PAUSE && MenuState != MenuStates.GAMEOVER)
+        if (Input.GetKeyDown(KeyCode.Escape) && MenuState != MenuStates.PAUSE && MenuState != MenuStates.GAMEOVER && dialogueActive == false)
         {
             Debug.Log("Escape pressed");
             MenuState = MenuStates.PAUSE;
@@ -247,7 +247,7 @@ public class MenuController : MonoBehaviour
                 noButton.SetActive(false);
                 quitButton.SetActive(true);
                 quitFinalButton.SetActive(false);
-                startOverButton.SetActive(false);
+                //startOverButton.SetActive(false);
                 //startOverFinalButton.SetActive(false);
                 continueButton.SetActive(true);
             }
@@ -259,7 +259,7 @@ public class MenuController : MonoBehaviour
                 noButton.SetActive(false);
                 quitButton.SetActive(false);
                 quitFinalButton.SetActive(true);
-                startOverButton.SetActive(false);
+                //startOverButton.SetActive(false);
                 //startOverFinalButton.SetActive(true);
                 continueButton.SetActive(false);
             }
@@ -272,7 +272,7 @@ public class MenuController : MonoBehaviour
             noButton.SetActive(true);
             quitButton.SetActive(false);
             quitFinalButton.SetActive(false);
-            startOverButton.SetActive(false);
+            //startOverButton.SetActive(false);
             //startOverFinalButton.SetActive(false);
             continueButton.SetActive(false);
         }
