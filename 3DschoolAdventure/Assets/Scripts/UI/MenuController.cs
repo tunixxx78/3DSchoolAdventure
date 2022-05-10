@@ -14,7 +14,7 @@ public class MenuController : MonoBehaviour
     public bool tryAgain = false, win = false, lose = false, finalLevel = false;
     public TMP_Text resultText, finalPointsText, gameOverText;
     public string resultStringLose, resultStringWin, resultStringFinished, gameOverStringLose, gameOverStringWin, gameOverStringFinished;
-    public GameObject yesButton, noButton, quitButton, startOverButton, continueButton, quitFinalButton, startOverFinalButton, credits;
+    public GameObject yesButton, noButton, quitButton, startOverButton, continueButton, quitFinalButton,/* startOverFinalButton,*/ credits;
     public int currentLevel;
     public int maxLevel;
     private SoundFX sfx;
@@ -44,11 +44,12 @@ public class MenuController : MonoBehaviour
             Debug.Log("Escape pressed");
             MenuState = MenuStates.PAUSE;
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && MenuState == MenuStates.PAUSE)
-        {
-            Debug.Log("Escape pressed");
-            MenuState = MenuStates.RETURN;
-        }
+        //else if (Input.GetKeyDown(KeyCode.Escape) && MenuState == MenuStates.PAUSE)
+        //{
+        //    Debug.Log("Escape pressed");
+        //    Cursor.visible = false;
+        //    MenuState = MenuStates.RETURN;
+        //}
 
         if (win || lose)
         {
@@ -169,7 +170,7 @@ public class MenuController : MonoBehaviour
             SceneManager.LoadScene(currentLevel);
             Cursor.visible = false;
         }
-        else { SceneManager.LoadScene(currentLevel + 1); }
+        else { SceneManager.LoadScene(currentLevel + 1); Cursor.visible = false; }
     }
 
     public void ControlPauseMenu(Transform transform)
@@ -224,16 +225,16 @@ public class MenuController : MonoBehaviour
     {
         if (pauseMenu.gameObject.activeSelf)
         {
-            pauseMenu.gameObject.SetActive(false);
-            Time.timeScale = 1;
             Cursor.visible = false;
+            Time.timeScale = 1;
+            pauseMenu.gameObject.SetActive(false);
         }
     }
 
     public void ControlGameOver(Transform transform)
     {
-        gameOver.SetActive(true);
         Cursor.visible = true;
+        gameOver.SetActive(true);
         //Time.timeScale = 0;
 
         if (win)
@@ -247,7 +248,7 @@ public class MenuController : MonoBehaviour
                 quitButton.SetActive(true);
                 quitFinalButton.SetActive(false);
                 startOverButton.SetActive(false);
-                startOverFinalButton.SetActive(false);
+                //startOverFinalButton.SetActive(false);
                 continueButton.SetActive(true);
             }
             else
@@ -259,7 +260,7 @@ public class MenuController : MonoBehaviour
                 quitButton.SetActive(false);
                 quitFinalButton.SetActive(true);
                 startOverButton.SetActive(false);
-                startOverFinalButton.SetActive(true);
+                //startOverFinalButton.SetActive(true);
                 continueButton.SetActive(false);
             }
         }
@@ -272,7 +273,7 @@ public class MenuController : MonoBehaviour
             quitButton.SetActive(false);
             quitFinalButton.SetActive(false);
             startOverButton.SetActive(false);
-            startOverFinalButton.SetActive(false);
+            //startOverFinalButton.SetActive(false);
             continueButton.SetActive(false);
         }
 
@@ -296,14 +297,14 @@ public class MenuController : MonoBehaviour
                 //Turo added for skip howtoplay functionality
                 SaveSystem.savingInstance.introIsSkipped = false;
 
-                //StartCoroutine(WaitToChangeScene(MenuStates.STARTMENU));
-                MenuState = MenuStates.STARTMENU;
+                StartCoroutine(WaitToChangeScene(MenuStates.STARTMENU));
+                //MenuState = MenuStates.STARTMENU;
                 break;
-            case "StartOverFinal":
-                tryAgain = true;
-                currentLevel = 3;
-                MenuState = MenuStates.GAMEVIEW;
-                break;
+            //case "StartOverFinal":
+            //    tryAgain = true;
+            //    currentLevel = 3;
+            //    MenuState = MenuStates.GAMEVIEW;
+            //    break;
             case "QuitFinal":
                 StartCoroutine(WaitToChangeScene(MenuStates.HIGHSCORE));
                 break;
