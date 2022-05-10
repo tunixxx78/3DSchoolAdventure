@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -519,7 +519,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &132387325
@@ -914,7 +914,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -220, y: -110}
-  m_SizeDelta: {x: -1311, y: -1309}
+  m_SizeDelta: {x: -1310, y: -1309}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &302519229
 MonoBehaviour:
@@ -936,7 +936,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6423d1f13b62e4f4b82b256d01864864, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2a77a7369b68c914490f709b82c6cb63, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1048,7 +1048,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 374217673}
-  m_LocalRotation: {x: 0, y: 0, z: 0.64906967, w: 0.76072896}
+  m_LocalRotation: {x: 0, y: -0, z: 0.3873548, w: -0.9219307}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1057,7 +1057,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -14, y: -501}
+  m_AnchoredPosition: {x: -75, y: -239}
   m_SizeDelta: {x: -3685, y: -1974}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &374217675
@@ -1668,7 +1668,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -700, y: -272}
+  m_AnchoredPosition: {x: -2493, y: -272}
   m_SizeDelta: {x: -2133.3335, y: -453.33337}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &570850586
@@ -1691,7 +1691,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1b1a67be2028d2f43b51e017b9527b42, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 85e6ad4779c184045afbecd227c93bf8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2377,7 +2377,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 28a3b5c7e9db5bf4a989733581025aef, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c711dafe60f720448be15629cb174077, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3688,7 +3688,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1781aff2201980a409bfc08bf4c2a3af, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aae3b5a01fac9e64ba9a0e97ca0b047d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5087,7 +5087,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1656299341}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.64878416, w: 0.7609725}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -5096,7 +5096,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 80.9}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -172, y: -323}
+  m_AnchoredPosition: {x: -704, y: 280}
   m_SizeDelta: {x: -1310, y: -1308}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1656299343
@@ -5119,7 +5119,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d290ca2097306984ab2d3e863c4c1d37, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4a45735a13edb324ea8372381929c611, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5437,7 +5437,7 @@ RectTransform:
   m_GameObject: {fileID: 1808835445}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 570850585}
   - {fileID: 1237384711}
@@ -5450,7 +5450,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 190, y: -62}
+  m_AnchoredPosition: {x: -959.9999, y: -527}
   m_SizeDelta: {x: 1919.9998, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1808835447
@@ -6563,7 +6563,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 02d98d8ed0ed34ddbac6db74a98cb25b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.35
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -6659,7 +6659,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d1e43bfb67c5d482686450f16c7f9732, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.35
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -6755,7 +6755,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 95e8b76aeff5f4e59b4d79ace2eac175, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.35
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -6849,9 +6849,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 4a2d83cc613668143aeb6e3fcdadbbf5, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 5552d6e978cf44037ae66d7b992bdc11, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9047ad38ad96b46ee9776253b03c16ea, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -6947,7 +6947,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 4a2d83cc613668143aeb6e3fcdadbbf5, type: 2}
   m_audioClip: {fileID: 8300000, guid: 764bfbadd22df4fbd97a3a0934e72b7e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -7047,7 +7047,7 @@ MonoBehaviour:
   voice2: {fileID: 2106791040}
   voice3: {fileID: 2106791039}
   glass: {fileID: 2106791043}
-  rotating: {fileID: 2106791042}
+  wush: {fileID: 2106791042}
 --- !u!1 &2134807608
 GameObject:
   m_ObjectHideFlags: 0

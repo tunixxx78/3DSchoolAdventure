@@ -6,7 +6,7 @@ using UnityEngine.Audio;
 public class IntroSFX : MonoBehaviour
 {
     [SerializeField] AudioSource voice1, voice2, voice3;
-    [SerializeField] AudioSource glass, rotating;
+    [SerializeField] AudioSource glass, wush;
 
     public void TalkingOne()
     {
@@ -30,6 +30,6 @@ public class IntroSFX : MonoBehaviour
 
     public void Rotating()
     {
-        rotating.Play();
+        wush.Play();
     }
 }
