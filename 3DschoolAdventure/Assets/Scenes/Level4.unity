@@ -15,15 +15,15 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.43810073, g: 0.5188679, b: 0.5013431, a: 1}
+  m_FogColor: {r: 0.6792453, g: 0.46457815, b: 0.5075116, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.01
-  m_LinearFogStart: 0
-  m_LinearFogEnd: 50
+  m_LinearFogStart: 28.1
+  m_LinearFogEnd: 53.2
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 0.92
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: df4a8ed235ed9f24ca9feb83aff4b392, type: 2}
@@ -37,8 +37,8 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.94895214, g: 0.758753, b: 0.7512697, a: 1}
+  m_Sun: {fileID: 1358403560}
+  m_IndirectSpecularColor: {r: 0.8877801, g: 0.53626126, b: 0.52450186, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8133,8 +8133,8 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.9056604, g: 0.8159487, b: 0.86145836, a: 1}
+  m_Intensity: 0.73
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -10041,6 +10041,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3450282182209807592, guid: 4f8e0503e7b95478285d2c4deaa39756, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9113457f351ef594da08043756a08b66, type: 2}
     - target: {fileID: 3810363238832801085, guid: 4f8e0503e7b95478285d2c4deaa39756, type: 3}
       propertyPath: m_Name
       value: CloudTrap
@@ -10275,6 +10279,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 555704175923835528, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 1600420492239355147, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
       propertyPath: players.Array.size
       value: 3
@@ -10466,6 +10474,10 @@ PrefabInstance:
     - target: {fileID: 4435963650782466539, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -9.0000305
+      objectReference: {fileID: 0}
+    - target: {fileID: 5625642171406639172, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5728162765094212053, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

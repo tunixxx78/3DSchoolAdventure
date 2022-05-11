@@ -15,17 +15,17 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.43810073, g: 0.5188679, b: 0.5013431, a: 1}
+  m_FogColor: {r: 0.93333334, g: 0.8235294, b: 0.79607844, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.01
-  m_LinearFogStart: 0
-  m_LinearFogEnd: 50
+  m_LinearFogStart: 28.1
+  m_LinearFogEnd: 53.2
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 0.92
   m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SubtractiveShadowColor: {r: 0.52156866, g: 0.5921569, b: 0.7647059, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 58468550557b8b749b73b730e80bce54, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -37,8 +37,8 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.8784512, g: 0.8391004, b: 0.82976913, a: 1}
+  m_Sun: {fileID: 1358403560}
+  m_IndirectSpecularColor: {r: 0.74544233, g: 0.67223525, b: 0.65552026, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4440,7 +4440,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.73
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -6272,6 +6272,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3450282182209807592, guid: 4f8e0503e7b95478285d2c4deaa39756, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 85fe400f4ddbd9548bea770b9c5b7f75, type: 2}
     - target: {fileID: 3810363238832801085, guid: 4f8e0503e7b95478285d2c4deaa39756, type: 3}
       propertyPath: m_Name
       value: CloudTrap

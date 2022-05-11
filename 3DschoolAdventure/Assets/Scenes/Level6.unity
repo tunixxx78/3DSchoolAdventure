@@ -15,15 +15,15 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.43810073, g: 0.5188679, b: 0.5013431, a: 1}
+  m_FogColor: {r: 0.3776307, g: 0.31826273, b: 0.4528302, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.01
-  m_LinearFogStart: 0
-  m_LinearFogEnd: 50
+  m_LinearFogStart: 28.1
+  m_LinearFogEnd: 53.2
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 0.92
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 25f9cb88a14951c4893cf2575d6e2655, type: 2}
@@ -37,8 +37,8 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.8119865, g: 0.66112125, b: 0.7387542, a: 1}
+  m_Sun: {fileID: 1358403560}
+  m_IndirectSpecularColor: {r: 0.6147546, g: 0.38835996, b: 0.49724483, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5312,8 +5312,8 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.6226415, g: 0.29076183, b: 0.61012876, a: 1}
+  m_Intensity: 0.73
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -6649,6 +6649,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 555704175923835528, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 1600420492239355147, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
       propertyPath: players.Array.size
       value: 3
@@ -6856,6 +6860,10 @@ PrefabInstance:
     - target: {fileID: 4128354009509458453, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5625642171406639172, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5728162765094212053, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
