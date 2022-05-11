@@ -14,7 +14,7 @@ public class SaveSystem : MonoBehaviour
 
     private void Awake()
     {
-        
+        Screen.SetResolution(1920, 1080, true);
 
         Scene scene = SceneManager.GetActiveScene();
         if (scene.buildIndex == 0)
