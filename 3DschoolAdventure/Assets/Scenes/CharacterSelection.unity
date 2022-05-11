@@ -731,7 +731,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7558999817025524597, guid: 8188eb915859367489b93f416a718d94, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4286177026
+      value: 24764162
       objectReference: {fileID: 0}
     - target: {fileID: 7558999817075604038, guid: 8188eb915859367489b93f416a718d94, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1863,7 +1863,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294638330
+    rgba: 1375402746
   m_fontColor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -2572,7 +2572,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 510, y: -110.90568}
+  m_AnchoredPosition: {x: 510, y: -110.9057}
   m_SizeDelta: {x: 512, y: 512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2051246588
