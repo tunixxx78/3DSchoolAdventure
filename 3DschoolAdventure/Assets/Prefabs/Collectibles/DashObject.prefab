@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 4569370496564413969}
   - component: {fileID: 2492489678826912959}
   - component: {fileID: 5370439500019043018}
+  - component: {fileID: 4513747273373411653}
   m_Layer: 0
-  m_Name: 21325_Lightning_Bolt_v1
+  m_Name: DashObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,6 +83,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &4513747273373411653
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823306624932135332}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ad916fa2f417b0b49a75b6a2fc22832c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5349281846569220185
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,7 +131,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6715767853029749217}
+  m_Father: {fileID: 1600888953153543022}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &5651607852655416322
@@ -4914,7 +4934,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1600888953153543022}
-  - {fileID: 2266721652790300542}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5140,7 +5159,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.60045624, b: 0, a: 0.23529412}
+      maxColor: {r: 1, g: 0.60045624, b: 0, a: 0.30588236}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -5202,7 +5221,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 3.69
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -9734,7 +9753,6 @@ GameObject:
   - component: {fileID: 6317226688701891081}
   - component: {fileID: 2570460903934032034}
   - component: {fileID: 5567371057522222097}
-  - component: {fileID: 8465141346786921293}
   m_Layer: 0
   m_Name: DashObject
   m_TagString: Dash
@@ -9754,6 +9772,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4569370496564413969}
+  - {fileID: 2266721652790300542}
   m_Father: {fileID: 6715767853029749217}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9801,22 +9820,3 @@ MonoBehaviour:
   dashIncreaseAmount: 1
   pointsFromDashItem: 50
   hasDashBoostAddOn: 0
---- !u!95 &8465141346786921293
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7330284587966451928}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ad916fa2f417b0b49a75b6a2fc22832c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0

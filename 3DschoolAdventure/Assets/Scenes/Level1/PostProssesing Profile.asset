@@ -15,7 +15,7 @@ MonoBehaviour:
   active: 1
   m_AdvancedMode: 0
   shadows:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: {x: 0.14147902, y: 0, z: 1, w: -1}
   midtones:
     m_OverrideState: 0
