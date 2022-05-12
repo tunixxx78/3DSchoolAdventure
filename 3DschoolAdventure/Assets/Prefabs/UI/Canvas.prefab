@@ -1557,10 +1557,11 @@ MonoBehaviour:
   gameOverText: {fileID: 8772356459099482765}
   resultStringLose: Try again?
   resultStringWin: 
-  resultStringFinished: You've made the gods proud.
-  gameOverStringLose: You died...
-  gameOverStringWin: Level completed
-  gameOverStringFinished: You made it!
+  resultStringFinished: You have reached the end of the board. Will you get your
+    life back now, you ask? Who knows! At least you made the gods proud!
+  gameOverStringLose: Your time is up
+  gameOverStringWin: Level completed!
+  gameOverStringFinished: You survived!
   yesButton: {fileID: 8772356458881713479}
   noButton: {fileID: 8772356459691764214}
   quitButton: {fileID: 6063082784371201242}
@@ -1935,7 +1936,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 555704175461199391, guid: ed578bb80d3514b59aac5db5196aa439, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5050781591787955888, guid: ed578bb80d3514b59aac5db5196aa439, type: 3}
       propertyPath: m_Controller
@@ -2597,10 +2598,6 @@ PrefabInstance:
     - target: {fileID: 5922829570015461379, guid: 28aefb264b6057446a4ac8e7c3787c6d, type: 3}
       propertyPath: m_Name
       value: GameOver
-      objectReference: {fileID: 0}
-    - target: {fileID: 5922829570015461379, guid: 28aefb264b6057446a4ac8e7c3787c6d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5922829570015461388, guid: 28aefb264b6057446a4ac8e7c3787c6d, type: 3}
       propertyPath: m_Pivot.x
