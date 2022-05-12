@@ -14884,7 +14884,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 555704175923835529, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1600420492239355147, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
       propertyPath: players.Array.size
@@ -15221,14 +15221,6 @@ PrefabInstance:
     - target: {fileID: 8309811612295346111, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 3.750061
-      objectReference: {fileID: 0}
-    - target: {fileID: 8772356458881713472, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 224
-      objectReference: {fileID: 0}
-    - target: {fileID: 8772356458881713472, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -157
       objectReference: {fileID: 0}
     - target: {fileID: 8772356459280542039, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
       propertyPath: m_text
