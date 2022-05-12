@@ -191,6 +191,7 @@ public class MenuController : MonoBehaviour
                 break;
             case "Try Again":
                 tryAgain = true;
+                Time.timeScale = 1;
                 //MenuState = MenuStates.GAMEVIEW;
                 StartCoroutine(WaitToChangeScene(MenuStates.GAMEVIEW));
                 break;
@@ -198,7 +199,7 @@ public class MenuController : MonoBehaviour
 
                 //Turo added for skip howtoplay functionality
                 SaveSystem.savingInstance.introIsSkipped = false;
-
+                Time.timeScale = 1;
                 StartCoroutine(WaitToChangeScene(MenuStates.STARTMENU));
                 //MenuState = MenuStates.STARTMENU;
                 break;
@@ -304,7 +305,7 @@ public class MenuController : MonoBehaviour
 
                 //Turo added for skip howtoplay functionality
                 SaveSystem.savingInstance.introIsSkipped = false;
-
+                Time.timeScale = 1;
                 StartCoroutine(WaitToChangeScene(MenuStates.STARTMENU));
                 //MenuState = MenuStates.STARTMENU;
                 break;
@@ -333,7 +334,7 @@ public class MenuController : MonoBehaviour
     public IEnumerator WaitToChangeScene(MenuStates state)
     {
         //currentLevel = currentLevel + 1;
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         FindObjectOfType<SceneChange>().FadeIn();
         yield return new WaitForSeconds(3f);
         MenuState = state;

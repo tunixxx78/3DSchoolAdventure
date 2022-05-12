@@ -51,16 +51,25 @@ public class Dialogue : MonoBehaviour
                     dialoguePages[currentPage - 1].SetActive(false);
                 }
             }
-            else
+            else if (currentPage == dialoguePages.Length)
             {   
                 dialogue.SetActive(false);
 
                 intro.StartCamRunAnimation();
                 FindObjectOfType<MenuController>().dialogueActive = false;
-                Cursor.visible = false;
-                Time.timeScale = 1;
+                //Time.timeScale = 1;
+                if (!dialogue.activeSelf && (FindObjectOfType<MenuController>().MenuState == MenuStates.GAMEOVER || FindObjectOfType<MenuController>().MenuState == MenuStates.PAUSE || FindObjectOfType<MenuController>().MenuState == MenuStates.SETTINGS))
+                {
+                    Cursor.visible = true;
+                }
+                else if (!dialogue.activeSelf && (FindObjectOfType<MenuController>().MenuState != MenuStates.GAMEOVER || FindObjectOfType<MenuController>().MenuState != MenuStates.PAUSE || FindObjectOfType<MenuController>().MenuState != MenuStates.SETTINGS))
+                {
+                    Cursor.visible = false;
+                }
             }
+
         }
+
     }
 
     public void NextButtonPressed()
