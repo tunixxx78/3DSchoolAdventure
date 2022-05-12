@@ -233,12 +233,13 @@ public class MenuController : MonoBehaviour
 
     public void ControlGameOver(Transform transform)
     {
-        Cursor.visible = true;
+        //Cursor.visible = true;
         gameOver.SetActive(true);
         //Time.timeScale = 0;
 
         if (win)
         {
+            Cursor.visible = true;
             if (currentLevel != maxLevel - 1)
             {
                 resultText.text = resultStringWin;
@@ -266,6 +267,7 @@ public class MenuController : MonoBehaviour
         }
         if (lose)
         {
+            Cursor.visible = true;
             resultText.text = resultStringLose;
             gameOverText.text = gameOverStringLose;
             yesButton.SetActive(true);
