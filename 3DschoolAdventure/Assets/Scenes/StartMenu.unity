@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -816,6 +816,7 @@ MonoBehaviour:
   continueButton: {fileID: 0}
   quitFinalButton: {fileID: 0}
   credits: {fileID: 4636922721979101150}
+  scoreText: {fileID: 0}
   currentLevel: 0
   maxLevel: 0
 --- !u!114 &1635359129
@@ -2133,7 +2134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3823598500543360010, guid: 1e05fc8854bc14946b7e67d34aa295a3, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3823598500543360010, guid: 1e05fc8854bc14946b7e67d34aa295a3, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2281,7 +2282,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5756763696365724240, guid: 1e05fc8854bc14946b7e67d34aa295a3, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5756763696365724240, guid: 1e05fc8854bc14946b7e67d34aa295a3, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
