@@ -140,19 +140,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Programmer, Audio
+  m_text: 'Programmer
 
     Programmer
 
     3D/2D Artist, Art lead
 
+    3D/2D Artist
+
     3D/2D
-    Artist
-
-    3D/2D Artist, Project lead
-
-
-    Artlist.io'
+    Artist, Project lead'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e0ee80fbcd1a6d049a07811be430229d, type: 2}
   m_sharedMaterial: {fileID: 6811983302704319863, guid: e0ee80fbcd1a6d049a07811be430229d, type: 2}
@@ -370,10 +367,7 @@ MonoBehaviour:
 
     Camilla
 
-    Vilma
-
-
-    Music/SFX'
+    Vilma'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e0ee80fbcd1a6d049a07811be430229d, type: 2}
   m_sharedMaterial: {fileID: 6811983302704319863, guid: e0ee80fbcd1a6d049a07811be430229d, type: 2}

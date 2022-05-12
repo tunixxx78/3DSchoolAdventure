@@ -14,7 +14,7 @@ public class MenuController : MonoBehaviour
     public bool tryAgain = false, win = false, lose = false, finalLevel = false, dialogueActive = false;
     public TMP_Text resultText, finalPointsText, gameOverText;
     public string resultStringLose, resultStringWin, resultStringFinished, gameOverStringLose, gameOverStringWin, gameOverStringFinished;
-    public GameObject yesButton, noButton, quitButton,/* startOverButton,*/ continueButton, quitFinalButton,/* startOverFinalButton,*/ credits, scoreText;
+    public GameObject yesButton, noButton, quitButton,/* startOverButton,*/ continueButton, quitFinalButton,/* startOverFinalButton,*/ credits;
     public int currentLevel;
     public int maxLevel;
     private SoundFX sfx;
@@ -234,18 +234,12 @@ public class MenuController : MonoBehaviour
 
     public void ControlGameOver(Transform transform)
     {
-        //Cursor.visible = true;
+        Cursor.visible = true;
         gameOver.SetActive(true);
-        //Time.timeScale = 0; 
-
-        //if (gameOver.activeSelf && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("TutorialScene"))
-        //{
-        //    Cursor.visible = true;
-        //}
+        //Time.timeScale = 0;
 
         if (win)
         {
-            Cursor.visible = true;
             if (currentLevel != maxLevel - 1)
             {
                 resultText.text = resultStringWin;
@@ -269,12 +263,10 @@ public class MenuController : MonoBehaviour
                 //startOverButton.SetActive(false);
                 //startOverFinalButton.SetActive(true);
                 continueButton.SetActive(false);
-                scoreText.SetActive(false);
             }
         }
         if (lose)
         {
-            Cursor.visible = true;
             resultText.text = resultStringLose;
             gameOverText.text = gameOverStringLose;
             yesButton.SetActive(true);
