@@ -6558,7 +6558,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 555704175923835528, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 555704175923835529, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1600420492239355147, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
       propertyPath: players.Array.size
@@ -6720,6 +6724,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3354395233027237243, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3354395233873032362, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
       propertyPath: players.Array.size
       value: 3
@@ -6770,7 +6778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5625642171406639172, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5728162765094212053, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
