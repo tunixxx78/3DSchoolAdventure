@@ -604,9 +604,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 3
   m_MinValue: 0
-  m_MaxValue: 240
+  m_MaxValue: 60
   m_WholeNumbers: 0
-  m_Value: 2
+  m_Value: 60
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
