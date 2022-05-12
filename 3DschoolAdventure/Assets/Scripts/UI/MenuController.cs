@@ -216,6 +216,7 @@ public class MenuController : MonoBehaviour
         switch (transform.name)
         {
             case "Continue":
+                Time.timeScale = 1;
                 MenuState = MenuStates.PAUSE;
                 break;
         }
@@ -334,7 +335,7 @@ public class MenuController : MonoBehaviour
     public IEnumerator WaitToChangeScene(MenuStates state)
     {
         //currentLevel = currentLevel + 1;
-        //Time.timeScale = 1;
+        Time.timeScale = 1;
         FindObjectOfType<SceneChange>().FadeIn();
         yield return new WaitForSeconds(3f);
         MenuState = state;
