@@ -58,6 +58,7 @@ public class TuroPlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        myCC.enabled = true;
         if (gameManager.newGame == true)
         {
             Debug.Log("PISTEET PITÄISI NOLLAANTUA");
@@ -557,10 +558,12 @@ public class TuroPlayerMovement : MonoBehaviour
         }
         if(collider.gameObject.tag == "EndLine")
         {
+            
+            
+
             // Turning leftOver time to points
             timeToPoints = (int) currentTime;
             currentPoints = currentPoints + (timeToPoints * 100);
-
 
             Cursor.lockState = CursorLockMode.None;
             finalPointsText.text = currentPoints.ToString();
@@ -573,6 +576,12 @@ public class TuroPlayerMovement : MonoBehaviour
             // saving player points
 
             PlayerPrefs.SetInt("PointsToNextLevel", currentPoints);
+
+            //Stops this player movement
+            playerAnimator.SetBool("Run", false);
+            this.enabled = false;
+            myCC.enabled = false;
+
         }
         if(collider.gameObject.tag == "WalkableWall")
         {
