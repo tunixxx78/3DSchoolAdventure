@@ -56,6 +56,7 @@ public class PathOpener : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player")
         {
+            GetComponent<CapsuleCollider>().enabled = false;
             soundFX.secretPathOpen.Play();
             Destroy(this.gameObject, timeToShowPath);
             pathIsOn = true;
