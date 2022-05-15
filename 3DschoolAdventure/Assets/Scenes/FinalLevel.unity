@@ -888,6 +888,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 47708139307647269, guid: 8bd58c333ee25f44285e0b644957ead1, type: 3}
   m_PrefabInstance: {fileID: 1011432143}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &250914819 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3138927188977521282, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
+  m_PrefabInstance: {fileID: 1771551646}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &256196170 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7459172124325607154, guid: ea0d860188279e84a87525da249f78f5, type: 3}
@@ -1789,6 +1794,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7205598001560235057, guid: 78a32afeacf84704792a97d15752e65c, type: 3}
+--- !u!1 &459741337 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3138927188268071142, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
+  m_PrefabInstance: {fileID: 1771551646}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &466703956 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2441691632725659470, guid: ea0d860188279e84a87525da249f78f5, type: 3}
@@ -7077,6 +7087,11 @@ MeshCollider:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8680709571758480039, guid: 35aecd269162f431a8cbab18423d9887, type: 3}
   m_PrefabInstance: {fileID: 2093521781}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &676867076 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3138927188575357926, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
+  m_PrefabInstance: {fileID: 1771551646}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &684024496 stripped
 GameObject:
@@ -13323,6 +13338,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a6b85dca9a2b461f9b6a123181e78b8, type: 3}
+--- !u!1 &1129111162 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3138927187935296871, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
+  m_PrefabInstance: {fileID: 1771551646}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1145260607
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13489,6 +13509,10 @@ MonoBehaviour:
   - {fileID: 129101925}
   - {fileID: 147089728}
   - {fileID: 990228723}
+  timeItem: {fileID: 250914819}
+  scoreItem: {fileID: 1129111162}
+  hourglass: {fileID: 459741337}
+  dashSlider: {fileID: 676867076}
 --- !u!1 &1197710898 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3902788747945148082, guid: dd4d82946bfd7414883294b6e80cff38, type: 3}
@@ -15713,7 +15737,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2555526209468334325, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.15779114
+      value: -0.15778351
       objectReference: {fileID: 0}
     - target: {fileID: 3138927188518745816, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -15873,7 +15897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5106513243863449981, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -7.5000305
+      value: -7.500061
       objectReference: {fileID: 0}
     - target: {fileID: 5274764012323863736, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -15933,7 +15957,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8772356459691764215, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 5.8101196
+      value: 5.8101807
       objectReference: {fileID: 0}
     - target: {fileID: 8772356459733546739, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
       propertyPath: m_IsActive
@@ -16476,7 +16500,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3138927188977521284, guid: e137b067ea5037648b508dab8e7e1a75, type: 3}
   m_PrefabInstance: {fileID: 1771551646}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 250914819}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}

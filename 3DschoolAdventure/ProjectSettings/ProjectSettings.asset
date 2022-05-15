@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: 3DschoolAdventure
+  productName: LifeTimeGame
   defaultCursor: {fileID: 2800000, guid: cebe14fe0a0cb4a35b4fcc1a35120851, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0, g: 0, b: 0, a: 1}

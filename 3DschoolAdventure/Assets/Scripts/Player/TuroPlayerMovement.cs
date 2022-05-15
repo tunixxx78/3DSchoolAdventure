@@ -23,7 +23,7 @@ public class TuroPlayerMovement : MonoBehaviour
 
     [SerializeField] Transform groundCheck, teleportSpawnPoint;
     [SerializeField] LayerMask groundMask;
-    bool isGrounded, walkingInWall = false, playerCanBoost = false, isOnSpinner = false, canrideWithBox = false, onObstacle = false, playerIsMoving = false, dashItemsSpawned = false, canNotCollectDash = false;
+    bool isGrounded, walkingInWall = false, playerCanBoost = false, isOnSpinner = false, canrideWithBox = false, onObstacle = false, playerIsMoving = false, dashItemsSpawned = false, canNotCollectDash = false, timeHasRunOut = false, goalHasBeenReached = false, playerIsDeath = false;
     public Vector3 velocity, movement, turboMove;
     Rigidbody myRB;
     float playerBoosDuration;
@@ -48,8 +48,10 @@ public class TuroPlayerMovement : MonoBehaviour
         playerAnimator = GetComponentInChildren<Animator>();
         //currentcheckPoint = Vector3.zero;
         currentcheckPoint = myCC.transform.position;
+        //SaveSystem.savingInstance.checkPoint = currentcheckPoint;
         gameManager = FindObjectOfType<GameManager>();
         dash = FindObjectOfType<DashItemSpawner>();
+        myRB = GetComponent<Rigidbody>();
 
         
         
@@ -94,7 +96,11 @@ public class TuroPlayerMovement : MonoBehaviour
         maxSpeed = moveSpeed;
         speedUpTime = 0;
 
-        
+        timeHasRunOut = false;
+        goalHasBeenReached = false;
+        playerIsDeath = false;
+
+       
         
     }
 
@@ -102,8 +108,12 @@ public class TuroPlayerMovement : MonoBehaviour
     private void Update()
     {
         
-        // creates timer
-        currentTime -= 1 * Time.deltaTime;
+        // creates timer and checks if it is needed
+        if(goalHasBeenReached == false)
+        {
+            currentTime -= 1 * Time.deltaTime;
+        }
+        
 
         //string tempTimer = string.Format("{0:00}", currentTime);
         //time.text = tempTimer;
@@ -123,7 +133,13 @@ public class TuroPlayerMovement : MonoBehaviour
             //gM.resultPanel.SetActive(true);
             //Time.timeScale = 0;
             menuController.lose = true;
-            sfx.gameOver.Play();
+
+            if (timeHasRunOut == false)
+            {
+                timeHasRunOut = true;
+                sfx.gameOver.Play();
+            }
+            
         }
 
         
@@ -443,7 +459,7 @@ public class TuroPlayerMovement : MonoBehaviour
             gravity = -12;
             playerCanBoost = true;
             dashAmount -= 1;
-            sfx.Teleport.Play();
+            sfx.dashFX.Play();
             StartCoroutine(PlayerCanNotBoost());
         }
         
@@ -526,7 +542,7 @@ public class TuroPlayerMovement : MonoBehaviour
     {
         if (collider.gameObject.tag == "Bouncer")
         {
-            sfx.Jump.Play();
+            sfx.jumpPad.Play();
             velocity.y = Mathf.Sqrt(collider.GetComponent<ThrowingPlatform>().BounceForce);
             gravity = -9.81f;
 
@@ -582,6 +598,9 @@ public class TuroPlayerMovement : MonoBehaviour
             this.enabled = false;
             myCC.enabled = false;
 
+            currentTime = 1;
+            goalHasBeenReached = true;
+
         }
         if(collider.gameObject.tag == "WalkableWall")
         {
@@ -595,8 +614,10 @@ public class TuroPlayerMovement : MonoBehaviour
 
             //transform.position = new Vector3(teleportSpawnPoint.position.x, teleportSpawnPoint.position.y, teleportSpawnPoint.position.z);
         }
-        if(collider.gameObject.tag == "PlayerDestroyer")
+        if(collider.gameObject.tag == "PlayerDestroyer" && playerIsDeath == false)
         {
+            playerIsDeath = true;
+            this.myCC.enabled = false;
             Debug.Log("TULEEKO MITÄÄN OSUMAA?");
             sfx.gameOver.Play();
             playerAvater.SetActive(false);
@@ -696,7 +717,6 @@ public class TuroPlayerMovement : MonoBehaviour
         
     }
 
-
     private void OnTriggerExit(Collider collider)
     {
         if (collider.gameObject.tag == "WalkableWall")
@@ -719,6 +739,20 @@ public class TuroPlayerMovement : MonoBehaviour
             isOnSpinner = false;
             myCC.enabled = true;
         }
+        /*
+        if(collider.gameObject.tag == "PlayerDestroyer" && playerIsDeath == false)
+        {
+            playerIsDeath = true;
+            this.myCC.enabled = false;
+            Debug.Log("TULEEKO MITÄÄN OSUMAA, EXITISTÄ?");
+            sfx.gameOver.Play();
+            playerAvater.SetActive(false);
+
+            dash.ClearDashItemList();
+
+            StartCoroutine(ToCheckPoint());
+        }
+        */
     }
 
  
@@ -745,21 +779,22 @@ public class TuroPlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(gameOverDelay);
 
-        transform.position = currentcheckPoint == Vector3.zero ? transform.position : currentcheckPoint;
+        //this.transform.position = currentcheckPoint == Vector3.zero ? transform.position : currentcheckPoint;
 
-        myCC.enabled = true;
-        transform.SetParent(GameObject.Find("Players").transform);
-        this.transform.localRotation = Quaternion.Euler(0, -90, 0);
-        isOnSpinner = false;
+        this.transform.position = currentcheckPoint;
+
+        this.myCC.enabled = true;
 
         sfx.Teleport.Play();
         playerAvater.SetActive(true);
+
         if (dashItemsSpawned == false)
         {
             dash.SpawnDashItems();
             dashItemsSpawned = true;
             StartCoroutine(TurnSpawnedDashToFalse());
         }
+        playerIsDeath = false;
         
     }
     IEnumerator CanRideWithBoxAgain(float offTime)

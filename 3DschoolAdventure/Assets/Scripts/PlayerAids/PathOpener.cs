@@ -11,6 +11,13 @@ public class PathOpener : MonoBehaviour
 
     bool pathIsOn = false;
 
+    SoundFX soundFX;
+
+    private void Awake()
+    {
+        soundFX = FindObjectOfType<SoundFX>();
+    }
+
     private void Start()
     {
         timer = timeToShowPath;
@@ -37,6 +44,7 @@ public class PathOpener : MonoBehaviour
 
         if(timer <= 0)
         {
+            soundFX.secretPathClose.Play();
             pathIsOn = false;
             timer = timeToShowPath;
             pathTimerObject.SetActive(false);
@@ -48,6 +56,8 @@ public class PathOpener : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player")
         {
+            GetComponent<CapsuleCollider>().enabled = false;
+            soundFX.secretPathOpen.Play();
             Destroy(this.gameObject, timeToShowPath);
             pathIsOn = true;
         }
