@@ -763,7 +763,9 @@ public class TuroPlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(gameOverDelay);
 
-        transform.position = currentcheckPoint == Vector3.zero ? transform.position : currentcheckPoint;
+        //this.transform.position = currentcheckPoint == Vector3.zero ? transform.position : currentcheckPoint;
+
+        this.transform.position = currentcheckPoint;
 
         myCC.enabled = true;
 
