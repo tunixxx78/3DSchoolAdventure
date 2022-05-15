@@ -14,7 +14,7 @@ public class MenuController : MonoBehaviour
     public bool tryAgain = false, win = false, lose = false, finalLevel = false, dialogueActive = false;
     public TMP_Text resultText, finalPointsText, gameOverText;
     public string resultStringLose, resultStringWin, resultStringFinished, gameOverStringLose, gameOverStringWin, gameOverStringFinished;
-    public GameObject yesButton, noButton, quitButton,/* startOverButton,*/ continueButton, quitFinalButton,/* startOverFinalButton,*/ credits, scoreText;
+    public GameObject yesButton, noButton, quitButton, continueButton, quitFinalButton, credits, scoreText, scoreOnGameView, dashText, hourGlass, dashSlider, timeOnGameView;
     public int currentLevel;
     public int maxLevel;
     private SoundFX sfx;
@@ -37,24 +37,21 @@ public class MenuController : MonoBehaviour
 
     private void Update()
     {
+        //currentLevel is the same as the activescene's buildIndex
         currentLevel = SceneManager.GetActiveScene().buildIndex;
-        //Pause activates from Esc and returns from pressing Esc again
+        //Pause activates from Esc
         if (Input.GetKeyDown(KeyCode.Escape) && MenuState != MenuStates.PAUSE && MenuState != MenuStates.GAMEOVER && dialogueActive == false)
         {
             Debug.Log("Escape pressed");
             MenuState = MenuStates.PAUSE;
         }
-        //else if (Input.GetKeyDown(KeyCode.Escape) && MenuState == MenuStates.PAUSE)
-        //{
-        //    Debug.Log("Escape pressed");
-        //    Cursor.visible = false;
-        //    MenuState = MenuStates.RETURN;
-        //}
 
+        //Win or lose -> GameOver state activates
         if (win || lose)
         {
             MenuState = MenuStates.GAMEOVER;
         }
+
     }
 
     //Calls a method when the menuState value changes
@@ -104,7 +101,6 @@ public class MenuController : MonoBehaviour
         switch (transform.name)
         {
             case "Play":
-                //MenuState = MenuStates.CUTSCENE;
                 StartCoroutine(WaitToChangeScene(MenuStates.CUTSCENE));
                 break;
             case "Settings":
@@ -137,7 +133,6 @@ public class MenuController : MonoBehaviour
                 //For showing outFade if intro is skipped
                 FindObjectOfType<IntroOutLogic>().ShowOutAnimation();
 
-                //MenuState = MenuStates.CHARACTERSELECTION;
                 StartCoroutine(WaitToChangeScene(MenuStates.CHARACTERSELECTION));
                 break;
         }
@@ -155,7 +150,6 @@ public class MenuController : MonoBehaviour
 
     public void ControlGameView(Transform transform)
     {
-        Debug.Log("OLLAAAAAAAAAANNNNNNNN");
         Debug.Log(currentLevel);
         /*
         if (SceneManager.GetActiveScene() != SceneManager.GetSceneByBuildIndex(currentLevel))
@@ -171,6 +165,13 @@ public class MenuController : MonoBehaviour
             Cursor.visible = false;
         }
         else { SceneManager.LoadScene(currentLevel + 1); Cursor.visible = false; }
+        
+        //GUI elements are active on GameView
+        scoreOnGameView.SetActive(true);
+        dashText.SetActive(true);
+        dashSlider.SetActive(true);
+        timeOnGameView.SetActive(true);
+        hourGlass.SetActive(true);
     }
 
     public void ControlPauseMenu(Transform transform)
@@ -192,7 +193,6 @@ public class MenuController : MonoBehaviour
             case "Try Again":
                 tryAgain = true;
                 Time.timeScale = 1;
-                //MenuState = MenuStates.GAMEVIEW;
                 StartCoroutine(WaitToChangeScene(MenuStates.GAMEVIEW));
                 break;
             case "Quit":
@@ -201,7 +201,6 @@ public class MenuController : MonoBehaviour
                 SaveSystem.savingInstance.introIsSkipped = false;
                 Time.timeScale = 1;
                 StartCoroutine(WaitToChangeScene(MenuStates.STARTMENU));
-                //MenuState = MenuStates.STARTMENU;
                 break;
         }
     }
@@ -235,19 +234,18 @@ public class MenuController : MonoBehaviour
 
     public void ControlGameOver(Transform transform)
     {
-        //Cursor.visible = true;
         gameOver.SetActive(true);
-        //Time.timeScale = 0; 
-
-        //if (gameOver.activeSelf && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("TutorialScene"))
-        //{
-        //    Cursor.visible = true;
-        //}
+        //GUI elements not visible during GameOver
+        scoreOnGameView.SetActive(false);
+        dashText.SetActive(false);
+        dashSlider.SetActive(false);
+        timeOnGameView.SetActive(false);
+        hourGlass.SetActive(false);
 
         if (win)
         {
             Cursor.visible = true;
-            if (currentLevel != maxLevel - 1)
+            if (currentLevel != maxLevel - 1)   //Level finished is not the finalLevel
             {
                 resultText.text = resultStringWin;
                 gameOverText.text = gameOverStringWin;
@@ -255,11 +253,9 @@ public class MenuController : MonoBehaviour
                 noButton.SetActive(false);
                 quitButton.SetActive(true);
                 quitFinalButton.SetActive(false);
-                //startOverButton.SetActive(false);
-                //startOverFinalButton.SetActive(false);
                 continueButton.SetActive(true);
             }
-            else
+            else //FinalLevel
             {
                 resultText.text = resultStringFinished;
                 gameOverText.text = gameOverStringFinished;
@@ -267,13 +263,11 @@ public class MenuController : MonoBehaviour
                 noButton.SetActive(false);
                 quitButton.SetActive(false);
                 quitFinalButton.SetActive(true);
-                //startOverButton.SetActive(false);
-                //startOverFinalButton.SetActive(true);
                 continueButton.SetActive(false);
                 scoreText.SetActive(false);
             }
         }
-        if (lose)
+        if (lose)   //Time has run out
         {
             Cursor.visible = true;
             resultText.text = resultStringLose;
@@ -282,8 +276,6 @@ public class MenuController : MonoBehaviour
             noButton.SetActive(true);
             quitButton.SetActive(false);
             quitFinalButton.SetActive(false);
-            //startOverButton.SetActive(false);
-            //startOverFinalButton.SetActive(false);
             continueButton.SetActive(false);
         }
 
@@ -295,26 +287,17 @@ public class MenuController : MonoBehaviour
                 break;
             case "No":
                 StartCoroutine(WaitToChangeScene(MenuStates.HIGHSCORE));
-                //StartCoroutine(WaitToChangeScene(MenuStates.STARTMENU));
-                //MenuState = MenuStates.STARTMENU;
                 break;
             case "Start Over":
                 tryAgain = true;
                 MenuState = MenuStates.GAMEVIEW;
                 break;
             case "Quit":
-
                 //Turo added for skip howtoplay functionality
                 SaveSystem.savingInstance.introIsSkipped = false;
                 Time.timeScale = 1;
                 StartCoroutine(WaitToChangeScene(MenuStates.STARTMENU));
-                //MenuState = MenuStates.STARTMENU;
                 break;
-            //case "StartOverFinal":
-            //    tryAgain = true;
-            //    currentLevel = 3;
-            //    MenuState = MenuStates.GAMEVIEW;
-            //    break;
             case "QuitFinal":
                 StartCoroutine(WaitToChangeScene(MenuStates.HIGHSCORE));
                 break;
@@ -322,7 +305,6 @@ public class MenuController : MonoBehaviour
                 currentLevel = currentLevel + 1;
                 StartCoroutine(WaitToChangeScene(MenuStates.GAMEVIEW));
                 Debug.Log(currentLevel);
-                //MenuState = MenuStates.GAMEVIEW;
                 break;
         }
     }
@@ -332,18 +314,13 @@ public class MenuController : MonoBehaviour
         SceneManager.LoadScene("HighScoreScene");
     }
 
-    public IEnumerator WaitToChangeScene(MenuStates state)
+    public IEnumerator WaitToChangeScene(MenuStates state)  //Transition between scenes
     {
-        //currentLevel = currentLevel + 1;
         Time.timeScale = 1;
         FindObjectOfType<SceneChange>().FadeIn();
         yield return new WaitForSeconds(3f);
         MenuState = state;
         Debug.Log(state);
-        //if (MenuState == MenuStates.GAMEVIEW)
-        //{
-        //    currentLevel = currentLevel + 1;
-        //}
     }
 
     private IEnumerator SceneChangeFade(MenuStates state)
@@ -352,7 +329,6 @@ public class MenuController : MonoBehaviour
         FindObjectOfType<SceneChange>().FadeIn();
         yield return new WaitForSeconds(3f);
 
-        //MenuState = state;
         SceneManager.LoadScene(currentLevel + 1);
     }
 }
