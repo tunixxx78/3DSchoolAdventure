@@ -23,7 +23,7 @@ public class TuroPlayerMovement : MonoBehaviour
 
     [SerializeField] Transform groundCheck, teleportSpawnPoint;
     [SerializeField] LayerMask groundMask;
-    bool isGrounded, walkingInWall = false, playerCanBoost = false, isOnSpinner = false, canrideWithBox = false, onObstacle = false, playerIsMoving = false, dashItemsSpawned = false, canNotCollectDash = false;
+    bool isGrounded, walkingInWall = false, playerCanBoost = false, isOnSpinner = false, canrideWithBox = false, onObstacle = false, playerIsMoving = false, dashItemsSpawned = false, canNotCollectDash = false, timeHasRunOut = false, goalHasBeenReached = false;
     public Vector3 velocity, movement, turboMove;
     Rigidbody myRB;
     float playerBoosDuration;
@@ -94,7 +94,8 @@ public class TuroPlayerMovement : MonoBehaviour
         maxSpeed = moveSpeed;
         speedUpTime = 0;
 
-        
+        timeHasRunOut = false;
+        goalHasBeenReached = false;
         
     }
 
@@ -102,8 +103,12 @@ public class TuroPlayerMovement : MonoBehaviour
     private void Update()
     {
         
-        // creates timer
-        currentTime -= 1 * Time.deltaTime;
+        // creates timer and checks if it is needed
+        if(goalHasBeenReached == false)
+        {
+            currentTime -= 1 * Time.deltaTime;
+        }
+        
 
         //string tempTimer = string.Format("{0:00}", currentTime);
         //time.text = tempTimer;
@@ -123,7 +128,13 @@ public class TuroPlayerMovement : MonoBehaviour
             //gM.resultPanel.SetActive(true);
             //Time.timeScale = 0;
             menuController.lose = true;
-            sfx.gameOver.Play();
+
+            if (timeHasRunOut == false)
+            {
+                timeHasRunOut = true;
+                sfx.gameOver.Play();
+            }
+            
         }
 
         
@@ -443,7 +454,7 @@ public class TuroPlayerMovement : MonoBehaviour
             gravity = -12;
             playerCanBoost = true;
             dashAmount -= 1;
-            sfx.Teleport.Play();
+            sfx.dashFX.Play();
             StartCoroutine(PlayerCanNotBoost());
         }
         
@@ -526,7 +537,7 @@ public class TuroPlayerMovement : MonoBehaviour
     {
         if (collider.gameObject.tag == "Bouncer")
         {
-            sfx.Jump.Play();
+            sfx.jumpPad.Play();
             velocity.y = Mathf.Sqrt(collider.GetComponent<ThrowingPlatform>().BounceForce);
             gravity = -9.81f;
 
@@ -581,6 +592,9 @@ public class TuroPlayerMovement : MonoBehaviour
             playerAnimator.SetBool("Run", false);
             this.enabled = false;
             myCC.enabled = false;
+
+            currentTime = 1;
+            goalHasBeenReached = true;
 
         }
         if(collider.gameObject.tag == "WalkableWall")
