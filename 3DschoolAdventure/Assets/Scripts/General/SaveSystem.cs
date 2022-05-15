@@ -11,9 +11,12 @@ public class SaveSystem : MonoBehaviour
     public static SaveSystem savingInstance;
 
     public bool continueGame = false, introIsSkipped = false, notFirstTimeToPlay = false;
+    public float cX, cY, cZ;
 
     private void Awake()
     {
+        LoadData();
+
         Screen.SetResolution(1920, 1080, true);
 
         Scene scene = SceneManager.GetActiveScene();
@@ -22,7 +25,7 @@ public class SaveSystem : MonoBehaviour
             PlayerPrefs.SetInt("PointsToNextLevel", 0);
         }
 
-            LoadData();
+        
 
         if (savingInstance != null && savingInstance != this)
         {
@@ -46,11 +49,14 @@ public class SaveSystem : MonoBehaviour
     public void SaveData()
     {
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/gamedata.dat");
+        FileStream file = File.Create(Application.persistentDataPath + "/gamedataa.dat");
         GameData data = new GameData();
 
         data.continueGame = continueGame;
         data.notFirstTimeToPlay = notFirstTimeToPlay;
+        data.cX = cX;
+        data.cY = cY;
+        data.cZ = cZ;
 
         bf.Serialize(file, data);
         file.Close();
@@ -58,14 +64,18 @@ public class SaveSystem : MonoBehaviour
 
     public void LoadData()
     {
-        if(File.Exists(Application.persistentDataPath + "/gamedata.dat"))
+        if(File.Exists(Application.persistentDataPath + "/gamedataa.dat"))
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/gamedata.dat", FileMode.Open);
+            FileStream file = File.Open(Application.persistentDataPath + "/gamedataa.dat", FileMode.Open);
             GameData data = (GameData)bf.Deserialize(file);
 
             continueGame = data.continueGame;
             notFirstTimeToPlay = data.notFirstTimeToPlay;
+
+            cX = data.cX;
+            cY = data.cY;
+            cZ = data.cZ;
 
 
         }
@@ -77,4 +87,5 @@ public class SaveSystem : MonoBehaviour
 class GameData
 {
     public bool continueGame, introIsSkipped, notFirstTimeToPlay;
+    public float cX, cY, cZ;
 }

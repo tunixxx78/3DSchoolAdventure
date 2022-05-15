@@ -48,8 +48,10 @@ public class TuroPlayerMovement : MonoBehaviour
         playerAnimator = GetComponentInChildren<Animator>();
         //currentcheckPoint = Vector3.zero;
         currentcheckPoint = myCC.transform.position;
+        //SaveSystem.savingInstance.checkPoint = currentcheckPoint;
         gameManager = FindObjectOfType<GameManager>();
         dash = FindObjectOfType<DashItemSpawner>();
+        myRB = GetComponent<Rigidbody>();
 
         
         
@@ -615,7 +617,7 @@ public class TuroPlayerMovement : MonoBehaviour
         if(collider.gameObject.tag == "PlayerDestroyer" && playerIsDeath == false)
         {
             playerIsDeath = true;
-            myCC.enabled = false;
+            this.myCC.enabled = false;
             Debug.Log("TULEEKO MITÄÄN OSUMAA?");
             sfx.gameOver.Play();
             playerAvater.SetActive(false);
@@ -737,6 +739,20 @@ public class TuroPlayerMovement : MonoBehaviour
             isOnSpinner = false;
             myCC.enabled = true;
         }
+        /*
+        if(collider.gameObject.tag == "PlayerDestroyer" && playerIsDeath == false)
+        {
+            playerIsDeath = true;
+            this.myCC.enabled = false;
+            Debug.Log("TULEEKO MITÄÄN OSUMAA, EXITISTÄ?");
+            sfx.gameOver.Play();
+            playerAvater.SetActive(false);
+
+            dash.ClearDashItemList();
+
+            StartCoroutine(ToCheckPoint());
+        }
+        */
     }
 
  
@@ -767,7 +783,7 @@ public class TuroPlayerMovement : MonoBehaviour
 
         this.transform.position = currentcheckPoint;
 
-        myCC.enabled = true;
+        this.myCC.enabled = true;
 
         sfx.Teleport.Play();
         playerAvater.SetActive(true);
