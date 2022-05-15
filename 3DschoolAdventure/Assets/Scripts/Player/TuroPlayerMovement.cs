@@ -615,6 +615,7 @@ public class TuroPlayerMovement : MonoBehaviour
         if(collider.gameObject.tag == "PlayerDestroyer" && playerIsDeath == false)
         {
             playerIsDeath = true;
+            myCC.enabled = false;
             Debug.Log("TULEEKO MITÄÄN OSUMAA?");
             sfx.gameOver.Play();
             playerAvater.SetActive(false);
@@ -714,21 +715,6 @@ public class TuroPlayerMovement : MonoBehaviour
         
     }
 
-    private void OnTriggerStay(Collider collider)
-    {
-        if(collider.gameObject.tag == "PlayerDestroyer" && playerIsDeath == false)
-        {
-            playerIsDeath = true;
-            Debug.Log("TULEEKO MITÄÄN OSUMAA?");
-            sfx.gameOver.Play();
-            playerAvater.SetActive(false);
-
-            dash.ClearDashItemList();
-
-            StartCoroutine(ToCheckPoint());
-        }
-    }
-
     private void OnTriggerExit(Collider collider)
     {
         if (collider.gameObject.tag == "WalkableWall")
@@ -780,12 +766,10 @@ public class TuroPlayerMovement : MonoBehaviour
         transform.position = currentcheckPoint == Vector3.zero ? transform.position : currentcheckPoint;
 
         myCC.enabled = true;
-        transform.SetParent(GameObject.Find("Players").transform);
-        this.transform.localRotation = Quaternion.Euler(0, -90, 0);
-        isOnSpinner = false;
 
         sfx.Teleport.Play();
         playerAvater.SetActive(true);
+
         if (dashItemsSpawned == false)
         {
             dash.SpawnDashItems();
