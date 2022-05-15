@@ -8,6 +8,10 @@ public class OutroLauncher : MonoBehaviour
     PathOpener pathOpener;
     [SerializeField] GameObject[] playeer;
 
+    //hiding UI objects
+
+    [SerializeField] GameObject timeItem, scoreItem, hourglass, dashSlider;
+
     private void Awake()
     {
         pathOpener = FindObjectOfType<PathOpener>();
@@ -21,6 +25,11 @@ public class OutroLauncher : MonoBehaviour
             var player = playeer[activePlayer].GetComponent<TuroPlayerMovement>();
 
             player.playerAnimator.SetBool("Run", false);
+
+            timeItem.SetActive(false);
+            scoreItem.SetActive(false);
+            hourglass.SetActive(false);
+            dashSlider.SetActive(false);
 
             Debug.Log(collider + "OSUI collideriin!");
             collider.GetComponent<TuroPlayerMovement>().enabled = false;
