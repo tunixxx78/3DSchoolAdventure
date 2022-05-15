@@ -23,7 +23,7 @@ public class TuroPlayerMovement : MonoBehaviour
 
     [SerializeField] Transform groundCheck, teleportSpawnPoint;
     [SerializeField] LayerMask groundMask;
-    bool isGrounded, walkingInWall = false, playerCanBoost = false, isOnSpinner = false, canrideWithBox = false, onObstacle = false, playerIsMoving = false, dashItemsSpawned = false, canNotCollectDash = false, timeHasRunOut = false, goalHasBeenReached = false;
+    bool isGrounded, walkingInWall = false, playerCanBoost = false, isOnSpinner = false, canrideWithBox = false, onObstacle = false, playerIsMoving = false, dashItemsSpawned = false, canNotCollectDash = false, timeHasRunOut = false, goalHasBeenReached = false, playerIsDeath = false;
     public Vector3 velocity, movement, turboMove;
     Rigidbody myRB;
     float playerBoosDuration;
@@ -96,6 +96,9 @@ public class TuroPlayerMovement : MonoBehaviour
 
         timeHasRunOut = false;
         goalHasBeenReached = false;
+        playerIsDeath = false;
+
+       
         
     }
 
@@ -609,8 +612,9 @@ public class TuroPlayerMovement : MonoBehaviour
 
             //transform.position = new Vector3(teleportSpawnPoint.position.x, teleportSpawnPoint.position.y, teleportSpawnPoint.position.z);
         }
-        if(collider.gameObject.tag == "PlayerDestroyer")
+        if(collider.gameObject.tag == "PlayerDestroyer" && playerIsDeath == false)
         {
+            playerIsDeath = true;
             Debug.Log("TULEEKO MITÄÄN OSUMAA?");
             sfx.gameOver.Play();
             playerAvater.SetActive(false);
@@ -710,6 +714,20 @@ public class TuroPlayerMovement : MonoBehaviour
         
     }
 
+    private void OnTriggerStay(Collider collider)
+    {
+        if(collider.gameObject.tag == "PlayerDestroyer" && playerIsDeath == false)
+        {
+            playerIsDeath = true;
+            Debug.Log("TULEEKO MITÄÄN OSUMAA?");
+            sfx.gameOver.Play();
+            playerAvater.SetActive(false);
+
+            dash.ClearDashItemList();
+
+            StartCoroutine(ToCheckPoint());
+        }
+    }
 
     private void OnTriggerExit(Collider collider)
     {
@@ -774,6 +792,7 @@ public class TuroPlayerMovement : MonoBehaviour
             dashItemsSpawned = true;
             StartCoroutine(TurnSpawnedDashToFalse());
         }
+        playerIsDeath = false;
         
     }
     IEnumerator CanRideWithBoxAgain(float offTime)
