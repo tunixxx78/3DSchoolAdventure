@@ -33,6 +33,7 @@ public class MenuController : MonoBehaviour
     private void Awake()
     {
         sfx = FindObjectOfType<SoundFX>();
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     private void Update()
@@ -95,6 +96,7 @@ public class MenuController : MonoBehaviour
         {
             SceneManager.LoadScene("StartMenu");
             Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
         }
 
         //What happens from buttons
@@ -163,8 +165,9 @@ public class MenuController : MonoBehaviour
         {
             SceneManager.LoadScene(currentLevel);
             Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Confined;
         }
-        else { SceneManager.LoadScene(currentLevel + 1); Cursor.visible = false; }
+        else { SceneManager.LoadScene(currentLevel + 1); Cursor.visible = false; Cursor.lockState = CursorLockMode.Confined; }
         
         //GUI elements are active on GameView
         scoreOnGameView.SetActive(true);
@@ -179,6 +182,7 @@ public class MenuController : MonoBehaviour
         settingsMenu.gameObject.SetActive(false);
         pauseMenu.SetActive(true);
         Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
         Time.timeScale = 0;
 
         //What happens from buttons
@@ -210,6 +214,7 @@ public class MenuController : MonoBehaviour
         settingsMenu.gameObject.SetActive(true);
         pauseMenu.gameObject.SetActive(false);
         Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
 
         //What happens from buttons
         switch (transform.name)
@@ -235,6 +240,7 @@ public class MenuController : MonoBehaviour
     public void ControlGameOver(Transform transform)
     {
         gameOver.SetActive(true);
+        Cursor.lockState = CursorLockMode.Confined;
         //GUI elements not visible during GameOver
         scoreOnGameView.SetActive(false);
         dashText.SetActive(false);
@@ -312,6 +318,7 @@ public class MenuController : MonoBehaviour
     public void ControlHighScore()
     {
         SceneManager.LoadScene("HighScoreScene");
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     public IEnumerator WaitToChangeScene(MenuStates state)  //Transition between scenes
