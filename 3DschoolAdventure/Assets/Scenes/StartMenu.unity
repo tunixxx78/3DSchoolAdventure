@@ -420,8 +420,8 @@ MonoBehaviour:
   musicSlider: {fileID: 1710465216}
   effectsSlider: {fileID: 749618150}
   muted: 0
-  musicV: 0
-  sfxV: 0
+  musicV: 1
+  sfxV: 1
 --- !u!1 &1171407591
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,6 +588,9 @@ MonoBehaviour:
   continueGame: 0
   introIsSkipped: 0
   notFirstTimeToPlay: 0
+  cX: 0
+  cY: 0
+  cZ: 0
 --- !u!4 &1262154507
 Transform:
   m_ObjectHideFlags: 0
@@ -624,8 +627,8 @@ MonoBehaviour:
   musicSlider: {fileID: 1710465216}
   effectsSlider: {fileID: 749618150}
   muted: 0
-  musicV: 0
-  sfxV: 0
+  musicV: 1
+  sfxV: 1
 --- !u!1 &1497522263
 GameObject:
   m_ObjectHideFlags: 0
@@ -817,6 +820,11 @@ MonoBehaviour:
   quitFinalButton: {fileID: 0}
   credits: {fileID: 4636922721979101150}
   scoreText: {fileID: 0}
+  scoreOnGameView: {fileID: 0}
+  dashText: {fileID: 0}
+  hourGlass: {fileID: 0}
+  dashSlider: {fileID: 0}
+  timeOnGameView: {fileID: 0}
   currentLevel: 0
   maxLevel: 0
 --- !u!114 &1635359129
