@@ -289,14 +289,14 @@ public class MenuController : MonoBehaviour
         {
             case "Yes":
                 tryAgain = true;
-                MenuState = MenuStates.GAMEVIEW;
+                StartCoroutine(WaitToChangeScene(MenuStates.GAMEVIEW));
                 break;
             case "No":
                 StartCoroutine(WaitToChangeScene(MenuStates.HIGHSCORE));
                 break;
             case "Start Over":
                 tryAgain = true;
-                MenuState = MenuStates.GAMEVIEW;
+                StartCoroutine(WaitToChangeScene(MenuStates.GAMEVIEW));
                 break;
             case "Quit":
                 //Turo added for skip howtoplay functionality
