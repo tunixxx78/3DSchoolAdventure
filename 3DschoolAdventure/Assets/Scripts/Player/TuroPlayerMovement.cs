@@ -176,7 +176,7 @@ public class TuroPlayerMovement : MonoBehaviour
                 playerAvater.transform.localRotation = Quaternion.Euler(0, 180, 0);
                 playerAnimator.SetBool("Run", false);
             }
-            else
+            else 
             {
                 if (playerIsMoving == false)
                 {
@@ -193,7 +193,7 @@ public class TuroPlayerMovement : MonoBehaviour
                 playerAvater.transform.localRotation = Quaternion.Euler(0, 0, 0);
                 MovePlayer();
                 myCC.enabled = true;
-                
+  
             }
             
 
@@ -259,6 +259,8 @@ public class TuroPlayerMovement : MonoBehaviour
                 MovePlayer();
                 myCC.enabled = true;
             }
+
+           
             
             
         }
@@ -319,6 +321,8 @@ public class TuroPlayerMovement : MonoBehaviour
                 MovePlayer();
                 myCC.enabled = true;
             }
+
+            
             
 
             
@@ -344,7 +348,7 @@ public class TuroPlayerMovement : MonoBehaviour
                 playerAvater.transform.localRotation = Quaternion.Euler(0, -90, 0);
                 playerAnimator.SetBool("Run", false);
             }
-            else
+            else 
             {
                 if (playerIsMoving == false)
                 {
@@ -379,6 +383,8 @@ public class TuroPlayerMovement : MonoBehaviour
                 MovePlayer();
                 myCC.enabled = true;
             }
+
+            
             
             
         }
