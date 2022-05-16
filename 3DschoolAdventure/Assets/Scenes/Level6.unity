@@ -12343,6 +12343,10 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 147089729}
+    - target: {fileID: 3902788749043934180, guid: dd4d82946bfd7414883294b6e80cff38, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3902788749043934181, guid: dd4d82946bfd7414883294b6e80cff38, type: 3}
       propertyPath: m_LocalPosition.x
       value: 72.1105
