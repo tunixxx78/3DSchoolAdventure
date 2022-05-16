@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 47708139307647264}
   - component: {fileID: 47708139307647270}
   - component: {fileID: 3818478236785400257}
+  - component: {fileID: 6795651635221031180}
+  - component: {fileID: 5431398717562314894}
   m_Layer: 7
   m_Name: ConveyerForward
   m_TagString: Conveyer
@@ -127,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adf965f8f51b34fe9a61c56a57a8a08e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  conveyerSpeed: 10
+  conveyerSpeed: 6
   movingForward: 1
   movingBackWard: 0
 --- !u!65 &3818478236785400257
@@ -143,6 +145,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.0000005, y: 1.961571, z: 7.7283363}
   m_Center: {x: 0.0000011920929, y: -0.9999286, z: -0.022539496}
+--- !u!65 &6795651635221031180
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47708139307647268}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6758197, y: 1.251614, z: 7.6728764}
+  m_Center: {x: -2.8548987, y: 0.031995595, z: -0.03999996}
+--- !u!65 &5431398717562314894
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47708139307647268}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.72149545, y: 1.234692, z: 7.6728764}
+  m_Center: {x: 2.8320627, y: 0.023534596, z: -0.0034835339}
 --- !u!1001 &642877084377875695
 PrefabInstance:
   m_ObjectHideFlags: 0
