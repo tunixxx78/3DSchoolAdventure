@@ -8,13 +8,16 @@ public class AudioSliders : MonoBehaviour
 {
     public AudioMixer musicAudioMixer, effectsAudioMixer;
     public Slider musicSlider, effectsSlider;
-    public bool muted;
+    public bool muted = false;
     public float musicV = 1f, sfxV = 1f;
 
     void Start()
     {
-        if (musicSlider.value == 0)
+        muted = PlayerPrefs.GetInt("muted") == 1 ? true : false;
+        if (musicSlider.value == 0.0001f && muted == false)
         {
+            musicV = 1f;
+            sfxV = 1f;
             musicSlider.value = musicV;
             effectsSlider.value = sfxV;
         }
@@ -43,12 +46,14 @@ public class AudioSliders : MonoBehaviour
             musicSlider.value = 1f;
             effectsSlider.value = 1f;
             muted = false;
+            PlayerPrefs.SetInt("muted", muted ? 1 : 0);
         }
         else
         {
             musicSlider.value = 0.0001f;
             effectsSlider.value = 0.0001f;
             muted = true;
+            PlayerPrefs.SetInt("muted", muted ? 1 : 0);
         }
     }
 }
