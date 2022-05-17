@@ -164,6 +164,7 @@ public class MenuController : MonoBehaviour
         if (tryAgain)
         {
             SceneManager.LoadScene(currentLevel);
+            Cursor.lockState = CursorLockMode.None;
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Confined;
         }
@@ -197,6 +198,7 @@ public class MenuController : MonoBehaviour
             case "Try Again":
                 tryAgain = true;
                 Time.timeScale = 1;
+                Cursor.lockState = CursorLockMode.Locked;
                 StartCoroutine(WaitToChangeScene(MenuStates.GAMEVIEW));
                 break;
             case "Quit":
