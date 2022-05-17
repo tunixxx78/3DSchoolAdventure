@@ -7,4 +7,6 @@ public class Collectibles : MonoBehaviour
     public float timeAmount;
     public int pointAmount;
     public bool hasBoosAdOn = false;
+
+    
 }
