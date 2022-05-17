@@ -13,6 +13,11 @@ public class AudioSliders : MonoBehaviour
 
     void Start()
     {
+        if (musicSlider.value == 0)
+        {
+            musicSlider.value = musicV;
+            effectsSlider.value = sfxV;
+        }
         musicSlider.value = PlayerPrefs.GetFloat("MusicVol", musicV);
         effectsSlider.value = PlayerPrefs.GetFloat("EffectsVol", sfxV);
     }
