@@ -1243,7 +1243,7 @@ GameObject:
   - component: {fileID: 1313474922694801333}
   - component: {fileID: 3881699573957886847}
   - component: {fileID: 3377256902691136171}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: PillarShort (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2201,7 +2201,7 @@ GameObject:
   - component: {fileID: 5889978244234382869}
   - component: {fileID: 8528022502537853663}
   - component: {fileID: 7879438117023898379}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: PillarShort
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2779,6 +2779,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PillarTall (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 8623749453052311538, guid: ce066f6b2ade04ca8af15e37335423b8, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8999993894252227912, guid: ce066f6b2ade04ca8af15e37335423b8, type: 3}
       propertyPath: m_RootOrder
       value: 31
@@ -2844,6 +2848,10 @@ PrefabInstance:
     - target: {fileID: 8623749453052311538, guid: ce066f6b2ade04ca8af15e37335423b8, type: 3}
       propertyPath: m_Name
       value: PillarTall (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623749453052311538, guid: ce066f6b2ade04ca8af15e37335423b8, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8999993894252227912, guid: ce066f6b2ade04ca8af15e37335423b8, type: 3}
       propertyPath: m_RootOrder
@@ -2911,6 +2919,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PillarTall (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 8623749453052311538, guid: ce066f6b2ade04ca8af15e37335423b8, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8999993894252227912, guid: ce066f6b2ade04ca8af15e37335423b8, type: 3}
       propertyPath: m_RootOrder
       value: 27
@@ -2976,6 +2988,10 @@ PrefabInstance:
     - target: {fileID: 8623749453052311538, guid: ce066f6b2ade04ca8af15e37335423b8, type: 3}
       propertyPath: m_Name
       value: PillarTall (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623749453052311538, guid: ce066f6b2ade04ca8af15e37335423b8, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8999993894252227912, guid: ce066f6b2ade04ca8af15e37335423b8, type: 3}
       propertyPath: m_RootOrder
@@ -3043,6 +3059,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PillarTall (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 8623749453052311538, guid: ce066f6b2ade04ca8af15e37335423b8, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8999993894252227912, guid: ce066f6b2ade04ca8af15e37335423b8, type: 3}
       propertyPath: m_RootOrder
       value: 24
@@ -3108,6 +3128,10 @@ PrefabInstance:
     - target: {fileID: 8623749453052311538, guid: ce066f6b2ade04ca8af15e37335423b8, type: 3}
       propertyPath: m_Name
       value: PillarTall (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623749453052311538, guid: ce066f6b2ade04ca8af15e37335423b8, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8999993894252227912, guid: ce066f6b2ade04ca8af15e37335423b8, type: 3}
       propertyPath: m_RootOrder
@@ -3175,6 +3199,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PillarTall (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 8623749453052311538, guid: ce066f6b2ade04ca8af15e37335423b8, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8999993894252227912, guid: ce066f6b2ade04ca8af15e37335423b8, type: 3}
       propertyPath: m_RootOrder
       value: 29
@@ -3240,6 +3268,10 @@ PrefabInstance:
     - target: {fileID: 8623749453052311538, guid: ce066f6b2ade04ca8af15e37335423b8, type: 3}
       propertyPath: m_Name
       value: PillarTall (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623749453052311538, guid: ce066f6b2ade04ca8af15e37335423b8, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8999993894252227912, guid: ce066f6b2ade04ca8af15e37335423b8, type: 3}
       propertyPath: m_RootOrder
