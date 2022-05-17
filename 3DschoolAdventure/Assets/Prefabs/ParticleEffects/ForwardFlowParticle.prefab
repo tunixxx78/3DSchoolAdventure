@@ -1333,7 +1333,7 @@ ParticleSystem:
       minGradient:
         serializedVersion: 2
         key0: {r: 1, g: 0.357633, b: 0, a: 1}
-        key1: {r: 0.48584908, g: 1, b: 0.86264473, a: 1}
+        key1: {r: 1, g: 0, b: 0.03836775, a: 1}
         key2: {r: 0.9607843, g: 0.8901961, b: 0.72156864, a: 0}
         key3: {r: 0.9607843, g: 0.8901961, b: 0.72156864, a: 0}
         key4: {r: 0.9607843, g: 0.8901961, b: 0.72156864, a: 0}
@@ -3982,7 +3982,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     minVertexDistance: 20
-    textureMode: 1
+    textureMode: 0
     ribbonCount: 1
     shadowBias: 0
     worldSpace: 0
@@ -4758,7 +4758,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ac2f2b754c7871d4480ebbcb480b5d96, type: 2}
+  - {fileID: 2100000, guid: 45a16af3c54404b4daea7f0c6acf85d5, type: 2}
   - {fileID: 2100000, guid: e6b93195df180c24f8c5295fc222e6c2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
