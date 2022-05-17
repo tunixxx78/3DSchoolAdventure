@@ -794,7 +794,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7558999817025524597, guid: 8188eb915859367489b93f416a718d94, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 58318594
+      value: 4286177026
       objectReference: {fileID: 0}
     - target: {fileID: 7558999817075604038, guid: 8188eb915859367489b93f416a718d94, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1867,7 +1867,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16448250
+    rgba: 200997626
   m_fontColor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
