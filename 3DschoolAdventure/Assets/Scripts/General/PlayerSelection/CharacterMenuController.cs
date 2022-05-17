@@ -7,6 +7,13 @@ public class CharacterMenuController : MonoBehaviour
     [SerializeField] Animator characterSelectionAnimator;
     public float StartGameDelay;
 
+    SoundFX soundFX;
+
+    private void Awake()
+    {
+        soundFX = FindObjectOfType<SoundFX>();
+    }
+
     private void Start()
     {
         PlayerPrefs.SetInt("MyCharacter", 1);
@@ -28,6 +35,7 @@ public class CharacterMenuController : MonoBehaviour
 
     public void SelectPlayerOne()
     {
+        soundFX.characterSelection.Play();
         string player = "C0Active";
         characterSelectionAnimator.SetTrigger("TriggerC0");
 
@@ -36,6 +44,7 @@ public class CharacterMenuController : MonoBehaviour
 
     public void SelectPlayerTwo()
     {
+        soundFX.characterSelection.Play();
         string player = "C1Active";
         characterSelectionAnimator.SetTrigger("TriggerC1");
 
@@ -44,6 +53,7 @@ public class CharacterMenuController : MonoBehaviour
 
     public void SelectPlayerThree()
     {
+        soundFX.characterSelection.Play();
         string player = "C2Active";
         characterSelectionAnimator.SetTrigger("TriggerC2");
 
@@ -52,6 +62,7 @@ public class CharacterMenuController : MonoBehaviour
 
     public void GameOn()
     {
+        soundFX.pickCharacter.Play();
         characterSelectionAnimator.SetTrigger("Play");
     }
 
