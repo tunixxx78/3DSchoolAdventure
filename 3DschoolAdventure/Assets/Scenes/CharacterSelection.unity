@@ -794,7 +794,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7558999817025524597, guid: 8188eb915859367489b93f416a718d94, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 7986946
+      value: 58318594
       objectReference: {fileID: 0}
     - target: {fileID: 7558999817075604038, guid: 8188eb915859367489b93f416a718d94, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1125,7 +1125,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8a3b71f35fe192543a0fd65000ef88b7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f069ada83123a3042ba543861c6f572b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
