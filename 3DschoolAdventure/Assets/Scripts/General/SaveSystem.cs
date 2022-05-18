@@ -10,8 +10,8 @@ public class SaveSystem : MonoBehaviour
 {
     public static SaveSystem savingInstance;
 
-    public bool continueGame = false, introIsSkipped = false, notFirstTimeToPlay = false;
-    public float cX, cY, cZ;
+    public bool continueGame = false, introIsSkipped = false, notFirstTimeToPlay = false, notFirstTimeToStart = false;
+    
 
     private void Awake()
     {
@@ -37,11 +37,20 @@ public class SaveSystem : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
+    private void Start()
+    {
+        if(notFirstTimeToStart == false)
+        {
+            notFirstTimeToPlay = false;
+        }
+    }
+
     private void Update()
     {
         if (Input.GetKey(KeyCode.M))
         {
             notFirstTimeToPlay = false;
+            notFirstTimeToStart = false;
             SaveData();
         }
     }
@@ -54,9 +63,8 @@ public class SaveSystem : MonoBehaviour
 
         data.continueGame = continueGame;
         data.notFirstTimeToPlay = notFirstTimeToPlay;
-        data.cX = cX;
-        data.cY = cY;
-        data.cZ = cZ;
+        data.notFirstTimeToStart = notFirstTimeToStart;
+       
 
         bf.Serialize(file, data);
         file.Close();
@@ -72,10 +80,8 @@ public class SaveSystem : MonoBehaviour
 
             continueGame = data.continueGame;
             notFirstTimeToPlay = data.notFirstTimeToPlay;
-
-            cX = data.cX;
-            cY = data.cY;
-            cZ = data.cZ;
+            notFirstTimeToStart = data.notFirstTimeToStart;
+         
 
 
         }
@@ -86,6 +92,6 @@ public class SaveSystem : MonoBehaviour
 
 class GameData
 {
-    public bool continueGame, introIsSkipped, notFirstTimeToPlay;
-    public float cX, cY, cZ;
+    public bool continueGame, introIsSkipped, notFirstTimeToPlay, notFirstTimeToStart;
+    
 }

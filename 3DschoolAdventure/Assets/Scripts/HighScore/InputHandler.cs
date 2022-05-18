@@ -18,6 +18,13 @@ public class InputHandler : MonoBehaviour
 
     private void Awake()
     {
+        if(SaveSystem.savingInstance.notFirstTimeToStart == false)
+        {
+            highscoreHandler.AddHighscoreIfPossible(new HighscoreElement("DevTeam", 215000));
+            SaveSystem.savingInstance.notFirstTimeToStart = true;
+            SaveSystem.savingInstance.SaveData();
+        }
+
         testPoints = PlayerPrefs.GetInt("PointsToNextLevel");
         playerScore = testPoints;
         playerPoints.text = playerScore.ToString();
